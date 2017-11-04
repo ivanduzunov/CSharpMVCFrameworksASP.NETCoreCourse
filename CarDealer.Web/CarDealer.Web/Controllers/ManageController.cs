@@ -10,9 +10,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using CarDealer.Web.Models;
+using CarDealer.Data.Models;
 using CarDealer.Web.Models.ManageViewModels;
-using CarDealer.Web.Services;
 
 namespace CarDealer.Web.Controllers
 {
@@ -20,24 +19,20 @@ namespace CarDealer.Web.Controllers
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IEmailSender _emailSender;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
         private readonly UrlEncoder _urlEncoder;
 
         private const string AuthenicatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
         public ManageController(
-          UserManager<ApplicationUser> userManager,
-          SignInManager<ApplicationUser> signInManager,
-          IEmailSender emailSender,
+          UserManager<User> userManager,
+          SignInManager<User> signInManager,
           ILogger<ManageController> logger,
           UrlEncoder urlEncoder)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
-            _emailSender = emailSender;
             _logger = logger;
             _urlEncoder = urlEncoder;
         }
@@ -121,9 +116,7 @@ namespace CarDealer.Web.Controllers
             }
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-            var email = user.Email;
-            await _emailSender.SendEmailConfirmationAsync(email, callbackUrl);
+            
 
             StatusMessage = "Verification email sent. Please check your email.";
             return RedirectToAction(nameof(Index));
@@ -248,10 +241,8 @@ namespace CarDealer.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LinkLogin(string provider)
         {
-            // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            // Request a redirect to the external login provider to link a login for the current user
             var redirectUrl = Url.Action(nameof(LinkLoginCallback));
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl, _userManager.GetUserId(User));
             return new ChallengeResult(provider, properties);
@@ -402,7 +393,6 @@ namespace CarDealer.Web.Controllers
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            // Strip spaces and hypens
             var verificationCode = model.Code.Replace(" ", string.Empty).Replace("-", string.Empty);
 
             var is2faTokenValid = await _userManager.VerifyTwoFactorTokenAsync(

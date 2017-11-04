@@ -2522,6 +2522,20 @@
         "runtime": {
           "lib/net46/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "CarDealer.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CarDealer.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarDealer.Data.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.6.1/win7-x86": {
@@ -4921,6 +4935,20 @@
         },
         "runtime": {
           "lib/net46/System.Xml.XPath.XDocument.dll": {}
+        }
+      },
+      "CarDealer.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CarDealer.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarDealer.Data.dll": {}
         }
       }
     }
@@ -9395,10 +9423,16 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "CarDealer.Data/1.0.0": {
+      "type": "project",
+      "path": "../CarDealer.Data/CarDealer.Data.csproj",
+      "msbuildProject": "../CarDealer.Data/CarDealer.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.6.1": [
+      "CarDealer.Data >= 1.0.0",
       "Microsoft.AspNetCore >= 2.0.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 2.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 2.0.0",
@@ -9423,11 +9457,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "c:\\users\\ivan\\documents\\visual studio 2017\\Projects\\CarDealer.Web\\CarDealer.Web\\CarDealer.Web.csproj",
+      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\visual studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer.Web\\CarDealer.Web\\CarDealer.Web.csproj",
       "projectName": "CarDealer.Web",
-      "projectPath": "c:\\users\\ivan\\documents\\visual studio 2017\\Projects\\CarDealer.Web\\CarDealer.Web\\CarDealer.Web.csproj",
+      "projectPath": "C:\\Users\\Ivan\\Documents\\visual studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer.Web\\CarDealer.Web\\CarDealer.Web.csproj",
       "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\ivan\\documents\\visual studio 2017\\Projects\\CarDealer.Web\\CarDealer.Web\\obj\\",
+      "outputPath": "C:\\Users\\Ivan\\Documents\\visual studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer.Web\\CarDealer.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9445,7 +9479,11 @@
       },
       "frameworks": {
         "net461": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Ivan\\Documents\\visual studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer.Web\\CarDealer.Data\\CarDealer.Data.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\visual studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer.Web\\CarDealer.Data\\CarDealer.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
