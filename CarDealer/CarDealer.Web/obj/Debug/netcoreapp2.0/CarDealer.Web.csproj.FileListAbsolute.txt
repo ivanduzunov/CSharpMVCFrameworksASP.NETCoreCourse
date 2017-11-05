@@ -12,3 +12,5 @@ C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCo
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Web\obj\Debug\netcoreapp2.0\CarDealer.Web.AssemblyInfo.cs
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Web\obj\Debug\netcoreapp2.0\CarDealer.Web.dll
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Web\obj\Debug\netcoreapp2.0\CarDealer.Web.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Web\bin\Debug\netcoreapp2.0\CarDealer.Services.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Web\bin\Debug\netcoreapp2.0\CarDealer.Services.pdb

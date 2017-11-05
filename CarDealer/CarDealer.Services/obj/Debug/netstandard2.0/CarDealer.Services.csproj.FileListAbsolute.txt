@@ -1,0 +1,11 @@
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\bin\Debug\netstandard2.0\CarDealer.Services.deps.json
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\bin\Debug\netstandard2.0\CarDealer.Services.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\obj\Debug\netstandard2.0\CarDealer.Services.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\obj\Debug\netstandard2.0\CarDealer.Services.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\obj\Debug\netstandard2.0\CarDealer.Services.AssemblyInfoInputs.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\obj\Debug\netstandard2.0\CarDealer.Services.AssemblyInfo.cs
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\bin\Debug\netstandard2.0\CarDealer.Services.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\bin\Debug\netstandard2.0\CarDealer.Data.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\bin\Debug\netstandard2.0\CarDealer.Data.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\obj\Debug\netstandard2.0\CarDealer.Services.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\CarDealer\CarDealer.Services\obj\Debug\netstandard2.0\CarDealer.Services.pdb

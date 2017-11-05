@@ -5043,6 +5043,21 @@
         "runtime": {
           "bin/placeholder/CarDealer.Data.dll": {}
         }
+      },
+      "CarDealer.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "CarDealer.Data": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CarDealer.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CarDealer.Services.dll": {}
+        }
       }
     }
   },
@@ -13124,11 +13139,17 @@
       "type": "project",
       "path": "../CarDealer.Data/CarDealer.Data.csproj",
       "msbuildProject": "../CarDealer.Data/CarDealer.Data.csproj"
+    },
+    "CarDealer.Services/1.0.0": {
+      "type": "project",
+      "path": "../CarDealer.Services/CarDealer.Services.csproj",
+      "msbuildProject": "../CarDealer.Services/CarDealer.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "CarDealer.Data >= 1.0.0",
+      "CarDealer.Services >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
@@ -13168,6 +13189,9 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer\\CarDealer.Services\\CarDealer.Services.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer\\CarDealer.Services\\CarDealer.Services.csproj"
+            },
             "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer\\CarDealer.Data\\CarDealer.Data.csproj": {
               "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CarDealer\\CarDealer.Data\\CarDealer.Data.csproj"
             }

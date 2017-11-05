@@ -24,6 +24,7 @@
       "CarDealer.Web/1.0.0": {
         "dependencies": {
           "CarDealer.Data": "1.0.0",
+          "CarDealer.Services": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
@@ -4068,6 +4069,19 @@
           "CarDealer.Data.dll": {}
         }
       },
+      "CarDealer.Services/1.0.0": {
+        "dependencies": {
+          "CarDealer.Data": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0"
+        },
+        "runtime": {
+          "CarDealer.Services.dll": {}
+        },
+        "compile": {
+          "CarDealer.Services.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.0.0": {
         "dependencies": {
           "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
@@ -6381,6 +6395,11 @@
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
     },
     "CarDealer.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CarDealer.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
