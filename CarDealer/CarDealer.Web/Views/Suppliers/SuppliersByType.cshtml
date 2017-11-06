@@ -1,0 +1,39 @@
+﻿@model SuppliersByType
+@{
+    ViewData["Title"] = $"Suppliers {Model.Type}";
+}
+
+<h2>Suppliers</h2>
+<h3>@Model.Type</h3>
+
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <td>
+                Id
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Number of Parts
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var supplier in Model.Suppliers)
+        {
+            <tr>
+                <td text-transform:capitalize>
+                    @supplier.Id
+                </td>
+                <td>
+                    @supplier.Name
+                </td>
+                <td>
+                    @supplier.NumberOfParts
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

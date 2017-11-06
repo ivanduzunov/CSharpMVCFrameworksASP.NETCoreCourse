@@ -1,0 +1,62 @@
+﻿@model AllCarsWithParts
+@{
+    ViewData["Title"] = "Cars With Parts";
+}
+<h2>All Cars With Parts</h2>
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <td>
+                Make
+            </td>
+            <td>
+                Model
+            </td>
+            <td>
+                Travelled Distance
+            </td>
+            <td>
+                Parts
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model.Cars)
+        {
+            <tr>
+                <td text-transform:capitalize>
+                    @car.Make
+                </td>
+                <td>
+                    @car.Model
+                </td>
+                <td>
+                    @(car.TravelledDistance / 1000) km
+                </td>
+                <td>
+                    @foreach (var part in car.Parts)
+                    {
+                        <table class="table table-bordered table table-hover">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>
+                                        Price
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@part.Name</td>
+                                    <td>@part.Price</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
