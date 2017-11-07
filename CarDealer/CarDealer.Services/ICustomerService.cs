@@ -8,5 +8,7 @@ namespace CarDealer.Services
     public interface ICustomerService
     {
         IEnumerable<CustomerModel> OrderedCustomers(OrderDirection order);
+
+        TotalSalesByCustomerModel TotalSalesByCustomer(string id);
     }
 }

@@ -34,27 +34,30 @@
                     @(car.TravelledDistance / 1000) km
                 </td>
                 <td>
-                    @foreach (var part in car.Parts)
-                    {
-                        <table class="table table-bordered table table-hover">
-                            <thead>
-                                <tr>
-                                    <td>
-                                        Name
-                                    </td>
-                                    <td>
-                                        Price
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    <table class="table table-bordered table table-hover">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Name
+                                </td>
+                                <td>
+                                    Price
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var part in car.Parts)
+                            {
+
+
                                 <tr>
                                     <td>@part.Name</td>
                                     <td>@part.Price</td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    }
+
+                            }
+                        </tbody>
+                    </table>
                 </td>
             </tr>
         }

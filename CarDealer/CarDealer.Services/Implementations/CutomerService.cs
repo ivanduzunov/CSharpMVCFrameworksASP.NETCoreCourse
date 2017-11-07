@@ -41,5 +41,21 @@ namespace CarDealer.Services.Implementations
                 IsYoungDriver = c.IsYoungDriver
             }).ToList();
         }
+
+        public TotalSalesByCustomerModel TotalSalesByCustomer(string id)
+        {
+
+            var customer = db.Customers
+                .Where(c => c.Id == int.Parse(id))
+                .Select(c => new TotalSalesByCustomerModel
+                {
+                    Name = c.Name,
+                    BoughtCarsCount = c.Sales.Count,
+                    TotalSpendMoney = c.Sales.Where(s => s.CustomerId == int.Parse(id))
+                    .Sum(s => s.Car.Parts.Sum(p => p.Part.Price)
+                )}).FirstOrDefault();
+
+            return customer;
+        }
     }
 }
