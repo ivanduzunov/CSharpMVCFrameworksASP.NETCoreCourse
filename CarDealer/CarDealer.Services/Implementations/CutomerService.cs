@@ -45,15 +45,21 @@ namespace CarDealer.Services.Implementations
         public TotalSalesByCustomerModel TotalSalesByCustomer(string id)
         {
 
-            var customer = db.Customers
+            var customer = this.db.Customers
                 .Where(c => c.Id == int.Parse(id))
                 .Select(c => new TotalSalesByCustomerModel
                 {
                     Name = c.Name,
-                    BoughtCarsCount = c.Sales.Count,
-                    TotalSpendMoney = c.Sales.Where(s => s.CustomerId == int.Parse(id))
-                    .Sum(s => s.Car.Parts.Sum(p => p.Part.Price)
-                )}).FirstOrDefault();
+
+                    IsYoungDriver = c.IsYoungDriver,
+                    BoughtCars = c.Sales.Select(s => new SaleModel
+                    {
+                        Price = s.Car.Parts.Sum(p => p.Part.Price),
+                        Discount = s.Discount
+                    })
+                })
+                .FirstOrDefault();
+
 
             return customer;
         }

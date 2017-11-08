@@ -1,0 +1,43 @@
+﻿@model AllSales
+@{ 
+    var percent = (Model.Sales.Select(s => s.Discount + (s.IsYoungDriver ? 0.05 : 0)).First() * 100);
+}
+@{
+    ViewData["Title"] = $"Discounted By {percent}";
+}
+
+<h2>@ViewData["Title"] %</h2>
+
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <td>
+                Customer Name
+            </td>
+            <td>
+                Price
+            </td>
+            <td>
+                Discount
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model.Sales)
+        {
+            <tr>
+                <td>
+                    @sale.CustomerName
+                </td>
+                <td>
+                    @sale.Price.ToString("F2")$
+                </td>
+                <td>
+                    @sale.DiscountedPrice.ToString("F2")$
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

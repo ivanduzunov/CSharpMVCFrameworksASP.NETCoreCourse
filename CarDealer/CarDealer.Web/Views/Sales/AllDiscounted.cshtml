@@ -1,0 +1,45 @@
+﻿@model AllSales
+@{
+    ViewData["Title"] = "Discounted Sales";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <td>
+                Customer Name
+            </td>
+            <td>
+                Price
+            </td>
+            <td>
+                Discount
+            </td>
+            <td>
+                Discounted Price
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model.Sales)
+        {
+            <tr>
+                <td>
+                    @sale.CustomerName
+                </td>
+                <td>
+                    @sale.Price.ToString("F2")$
+                </td>
+                <td>
+                    @(sale.Discount * 100)%
+                </td>
+                <td>
+                    @sale.DiscountedPrice.ToString("F2")$
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

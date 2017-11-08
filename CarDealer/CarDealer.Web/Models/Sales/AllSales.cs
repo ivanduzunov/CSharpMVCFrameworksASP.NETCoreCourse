@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using CarDealer.Services.Models;
 
-namespace CarDealer.Web.Models.Customers
+namespace CarDealer.Web.Models.Sales
 {
-    public class CustomerWithSales
+    public class AllSales
     {
-        public  TotalSalesByCustomerModel Sales { get; set; }
+        public IEnumerable<SaleListModel> Sales { get; set; }
     }
 }

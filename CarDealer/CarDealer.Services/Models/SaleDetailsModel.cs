@@ -4,10 +4,8 @@ using System.Text;
 
 namespace CarDealer.Services.Models
 {
-    public class SaleModel
+    public class SaleDetailsModel : CarModel
     {
-        public decimal Price { get; set; }
-
-        public double Discount { get; set; }
+        public string CustomerName { get; set; }
     }
 }

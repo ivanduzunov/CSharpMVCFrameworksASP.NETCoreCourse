@@ -35,15 +35,11 @@ namespace CarDealer.Web.Controllers
         }
 
         [Route("customers/{id}")]
-        public IActionResult TotalSalesByCustomer(string id)
+        public IActionResult TotalSales(string id)
         {
             var result = this.customers.TotalSalesByCustomer(id);
 
-            return View(new CustomerWithSales
-            {
-                Sales = result
-            });
+            return View(result);
         }
-
     }
 }

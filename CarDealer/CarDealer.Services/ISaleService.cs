@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CarDealer.Services.Models;
 
 namespace CarDealer.Services
 {
+    using Services.Models;
+
     public interface ISaleService
     {
-        IEnumerable<SaleModel> AllSales();
+        IEnumerable<SaleListModel> All();
+
+        SaleDetailsModel SaleDetails(string id);
     }
 }
