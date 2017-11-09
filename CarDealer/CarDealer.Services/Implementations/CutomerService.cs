@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using CarDealer.Services.Models;
 using CarDealer.Data;
+using CarDealer.Data.Models;
 using System.Linq;
 
 namespace CarDealer.Services.Implementations
@@ -15,6 +16,7 @@ namespace CarDealer.Services.Implementations
         {
             this.db = db;
         }
+
 
         public IEnumerable<CustomerModel> OrderedCustomers(OrderDirection order)
         {
@@ -63,5 +65,19 @@ namespace CarDealer.Services.Implementations
 
             return customer;
         }
+
+        public void CreateCustomer(CutomerCreateModel customerModel)
+        {
+            var cust = new Customer
+            {
+                Name = customerModel.Name,
+                BirthDay = customerModel.BirthDay,
+                IsYoungDriver = customerModel.IsYoungDriver
+            };
+
+            db.Customers.Add(cust);
+            db.SaveChanges();
+        }
+
     }
 }

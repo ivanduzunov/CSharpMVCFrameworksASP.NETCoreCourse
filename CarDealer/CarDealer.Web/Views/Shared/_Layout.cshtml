@@ -33,19 +33,37 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/customers/all/ascending">Customers</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/sales">All Sales</a>
-                    </li>
-                </ul>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Customers
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/customers/all/ascending">Customers</a>
+                            </li>
+                            <li>
+                                <a href="/customers/create">Create Customer</a>
+                            </li>
 
+                        </ul>
+                    </li>
+                </ul>
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/sales/discounted">Discounted Sales</a>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Sales
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/sales">All Sales</a>
+                            </li>
+                            <li>
+                                <a href="/sales/discounted">Discounted Sales</a>
+                            </li>
+                            
+                        </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav">

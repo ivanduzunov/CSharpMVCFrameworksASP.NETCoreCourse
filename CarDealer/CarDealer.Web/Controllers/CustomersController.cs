@@ -41,5 +41,20 @@ namespace CarDealer.Web.Controllers
 
             return View(result);
         }
+
+        [Route("customers/create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("customers/create")]
+        public IActionResult Create(CutomerCreateModel customerModel)
+        {
+            customers.CreateCustomer(customerModel);
+
+            return Redirect("/customers/all/ascending");
+        }
     }
 }

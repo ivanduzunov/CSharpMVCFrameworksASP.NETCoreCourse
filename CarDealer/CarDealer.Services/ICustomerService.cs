@@ -10,5 +10,7 @@ namespace CarDealer.Services
         IEnumerable<CustomerModel> OrderedCustomers(OrderDirection order);
 
         TotalSalesByCustomerModel TotalSalesByCustomer(string id);
+
+        void CreateCustomer(CutomerCreateModel customerModel);
     }
 }
