@@ -1,0 +1,13 @@
+﻿@model SaleDetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<h3>Customer Name: @Model.CustomerName</h3>
+<h3>Car Make: @Model.Make</h3>
+<h3>Car Model: @Model.Model</h3>
+<h3>Travelled Distance: @Model.TravelledDistance</h3>
+<br />
+<a class="btn btn-success" href="/sales/discounted">Back</a>

@@ -58,5 +58,9 @@ namespace CarDealer.Web.Controllers
         [Route("sales/{id}")]
         public IActionResult Details(string id)
             => this.View(sales.SaleDetails(id));
+
+        [Route("sales/discounted/{id}")]
+        public IActionResult DetailsForDiscounted(string id)
+            => this.View(sales.SaleDetails(id));
     }
 }
