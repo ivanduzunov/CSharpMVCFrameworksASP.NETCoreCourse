@@ -1,14 +1,28 @@
-﻿
+﻿@model CustomerCreateModel
 @{
     ViewData["Title"] = "Create";
 }
-
-<h2>Create Customer</h2>
-
-<form method="post">
-    <input name="Name" type="text" value="" id="TextBox1" />
-    <input name="BirthDay" type="text" value="" id="TextBox1" />
-    <input name="IsYoungDriver" type="text" value="" id="TextBox1" />
-    <input type="submit"/>
-</form>
+<h2>Add Customer</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" class="form-control" id="name">
+                <span asp-validation-for="Name" class="form-text text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday">Birthday</label>
+                <input asp-for="Birthday" type="date" class="form-control" id="birthday">
+                <span asp-validation-for="Birthday" class="form-text text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsYoungDriver"></label>
+                <input asp-for="IsYoungDriver"  id="isYoungDriver">
+                <span asp-validation-for="IsYoungDriver" class="form-text text-danger"></span>
+            </div>
+            <input type="submit" class="btn btn-success" value="Add Customer"/>
+        </form>
+    </div>
+</div>
 

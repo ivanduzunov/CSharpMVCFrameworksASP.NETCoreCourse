@@ -66,18 +66,17 @@ namespace CarDealer.Services.Implementations
             return customer;
         }
 
-        public void CreateCustomer(CutomerCreateModel customerModel)
+        public void CreateCustomer(string name, DateTime birthday, bool isYoungDriver)
         {
             var cust = new Customer
             {
-                Name = customerModel.Name,
-                BirthDay = customerModel.BirthDay,
-                IsYoungDriver = customerModel.IsYoungDriver
+                Name = name,
+                BirthDay = birthday,
+                IsYoungDriver = isYoungDriver
             };
 
-            db.Customers.Add(cust);
-            db.SaveChanges();
+            this.db.Customers.Add(cust);
+            this.db.SaveChanges();
         }
-
     }
 }

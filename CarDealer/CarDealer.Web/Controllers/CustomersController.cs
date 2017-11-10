@@ -50,11 +50,18 @@ namespace CarDealer.Web.Controllers
 
         [HttpPost]
         [Route("customers/create")]
-        public IActionResult Create(CutomerCreateModel customerModel)
+        public IActionResult Create(CustomerCreateModel model)
         {
-            customers.CreateCustomer(customerModel);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-            return Redirect("/customers/all/ascending");
+            this.customers.CreateCustomer(
+                model.Name, model.Birthday, model.IsYoungDriver);
+
+            return RedirectToAction
+                (nameof(All),new { order = OrderDirection.Ascending});
         }
     }
 }
