@@ -7,6 +7,8 @@ namespace CarDealer.Services
 {
     public interface ISupplierService
     {
-        IEnumerable<SupplierModel> AllSuppliers(string type);
+        IEnumerable<SupplierListingModel> AllSuppliers(string type);
+
+        IEnumerable<SupplierModel> All();
     }
 }

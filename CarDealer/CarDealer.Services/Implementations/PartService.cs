@@ -30,5 +30,7 @@ namespace CarDealer.Services.Implementations
             })
             .ToList();
         }
+
+        
     }
 }

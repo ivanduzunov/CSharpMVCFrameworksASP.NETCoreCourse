@@ -8,5 +8,7 @@ namespace CarDealer.Services
     public interface IPartService
     {
         IEnumerable<PartModel> All();
+
+        //void CreatePart(string Name, )
     }
 }

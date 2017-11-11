@@ -8,7 +8,7 @@ namespace CarDealer.Web.Models.Suppliers
 {
     public class SuppliersByType
     {
-        public IEnumerable<SupplierModel> Suppliers { get; set; }
+        public IEnumerable<SupplierListingModel> Suppliers { get; set; }
 
         public string Type { get; set; }
     }

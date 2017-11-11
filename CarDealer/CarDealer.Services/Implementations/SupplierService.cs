@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace CarDealer.Services.Implementations
 {
-    public class SupplierService : ISupplierService
+    public class SupplierService :  ISupplierService
     {
         private readonly CarDealerDbContext db;
 
@@ -17,7 +17,9 @@ namespace CarDealer.Services.Implementations
             this.db = db;
         }
 
-        public IEnumerable<SupplierModel> AllSuppliers(string type)
+       
+
+        public IEnumerable<SupplierListingModel> AllSuppliers(string type)
         {
             var suppliersQuery = db.Suppliers.AsQueryable();
 
@@ -36,7 +38,7 @@ namespace CarDealer.Services.Implementations
             }
 
             var result = suppliersQuery
-                .Select(s => new SupplierModel
+                .Select(s => new SupplierListingModel
                 {
                     Id = s.Id,
                     Name = s.Name,
@@ -44,6 +46,18 @@ namespace CarDealer.Services.Implementations
                 }).ToList();
 
             return result;
+        }
+
+        public IEnumerable<SupplierModel> All()
+        {
+            return this.db.Suppliers
+                 .OrderBy(s => s.Name)
+                 .Select(s => new SupplierModel
+                 {
+                     Id = s.Id,
+                     Name = s.Name
+                 })
+                 .ToList();
         }
     }
 }
