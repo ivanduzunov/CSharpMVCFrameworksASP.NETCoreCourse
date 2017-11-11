@@ -50,7 +50,7 @@ namespace CarDealer.Web.Controllers
 
         [HttpPost]
         [Route("customers/create")]
-        public IActionResult Create(CustomerCreateModel model)
+        public IActionResult Create(CustomerFormModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -61,7 +61,48 @@ namespace CarDealer.Web.Controllers
                 model.Name, model.Birthday, model.IsYoungDriver);
 
             return RedirectToAction
-                (nameof(All),new { order = OrderDirection.Ascending});
+                (nameof(All), new { order = OrderDirection.Ascending });
+        }
+
+        [Route("/customers/edit/{id}")]
+        public IActionResult Edit(string id)
+        {
+            var cust = this.customers.ById(id);
+
+            if (cust == null)
+            {
+                return NotFound();
+            }
+
+            return this.View(new CustomerFormModel
+            {
+                Name = cust.Name,
+                Birthday = cust.BirthDay,
+                IsYoungDriver = cust.IsYoungDriver
+            });
+        }
+
+        [HttpPost]
+        [Route("/customers/edit/{id}")]
+        public IActionResult Edit(string id, CustomerFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var customerExists = this.customers.Exists(id);
+
+            if (!customerExists)
+            {
+                return NotFound();
+            }
+
+            this.customers.Edit(
+               id, model.Name, model.Birthday, model.IsYoungDriver);
+
+            return RedirectToAction
+               (nameof(All), new { order = OrderDirection.Ascending });
         }
     }
 }

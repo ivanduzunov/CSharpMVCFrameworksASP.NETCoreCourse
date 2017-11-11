@@ -12,5 +12,11 @@ namespace CarDealer.Services
         TotalSalesByCustomerModel TotalSalesByCustomer(string id);
 
         void CreateCustomer(string name, DateTime birthday, bool isYoungDriver);
+
+        void Edit(string id, string name, DateTime birthday, bool isYoungDriver);
+
+        CustomerModel ById(string id);
+
+        bool Exists(string id);
     }
 }

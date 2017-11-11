@@ -1,8 +1,10 @@
 ﻿@model CustomerFormModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit Customer";
 }
-<h2>Add Customer</h2>
+
+<h2>@ViewData["Title"]</h2>
+
 <div class="row">
     <div class="col-md-4">
         <form method="post">
@@ -18,10 +20,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="IsYoungDriver"></label>
-                <input asp-for="IsYoungDriver"  id="isYoungDriver">
+                <input asp-for="IsYoungDriver" id="isYoungDriver">
                 <span asp-validation-for="IsYoungDriver" class="form-text text-danger"></span>
             </div>
-            <input type="submit" class="btn btn-success" value="Add Customer"/>
+            <input type="submit" class="btn btn-success" value="Edit" />
         </form>
     </div>
 </div>

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CarDealer.Web.Models.Customers
 {
-    public class CustomerCreateModel
+    public class CustomerFormModel
     {
         [Required]
         [MaxLength(200)]

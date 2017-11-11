@@ -38,6 +38,7 @@ namespace CarDealer.Services.Implementations
 
             return customersQuery.Select(c => new CustomerModel
             {
+                Id = c.Id,
                 Name = c.Name,
                 BirthDay = c.BirthDay,
                 IsYoungDriver = c.IsYoungDriver
@@ -78,5 +79,35 @@ namespace CarDealer.Services.Implementations
             this.db.Customers.Add(cust);
             this.db.SaveChanges();
         }
+
+        public void Edit(string id, string name, DateTime birthday, bool isYoungDriver)
+        {
+            var existingCustomer = this.db.Customers.Find(int.Parse(id));
+
+            if (existingCustomer == null)
+            {
+                return;
+            }
+
+            existingCustomer.Name = name;
+            existingCustomer.BirthDay = birthday;
+            existingCustomer.IsYoungDriver = isYoungDriver;
+
+            this.db.SaveChanges();
+        }
+
+        public CustomerModel ById(string id)
+            => this.db.Customers
+            .Where(c => c.Id == int.Parse(id))
+            .Select(c => new CustomerModel
+            {
+                Id = c.Id,
+                Name = c.Name,
+                BirthDay = c.BirthDay,
+                IsYoungDriver = c.IsYoungDriver
+            }).FirstOrDefault();
+
+        public bool Exists(string id)
+        => this.db.Customers.Any(c => c.Id == int.Parse(id));
     }
 }
