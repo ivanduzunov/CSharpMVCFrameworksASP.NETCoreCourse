@@ -1,0 +1,45 @@
+﻿@model PartsListModel
+@{
+    ViewData["Title"] = "All Parts";
+}
+<h2>@ViewData["Title"]</h2>
+<br />
+<a class="btn btn-default" style="background-color: blue; color:antiquewhite" href="/parts/create">Add Part</a>
+<br />
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                Price
+            </td>
+            <td>
+                Quantity
+            </td>
+            <td>
+                Supplier
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var part in Model.Parts)
+        {
+            <tr>
+                <td>
+                    @part.Name
+                </td>
+                <td>
+                    @part.Price.ToString("F2")
+                </td>
+                <td>
+                    @part.Quantity
+                </td>
+                <td>
+                    @part.SupplierName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
