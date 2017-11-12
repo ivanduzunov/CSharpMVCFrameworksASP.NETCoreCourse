@@ -10,5 +10,8 @@ namespace CarDealer.Services
         IEnumerable<CarModel> ByMake(string make);
 
         IEnumerable<CarWithPartsModel> CarsWithParts();
+
+        void Create(string make, string model,
+            long travelledDistance, List<int> partsId);
     }
 }

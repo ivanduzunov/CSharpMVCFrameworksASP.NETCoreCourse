@@ -32,10 +32,15 @@ namespace CarDealer.Services.Implementations
             .ToList();
         }
 
-        public object ById(string id)
-        {
-            throw new NotImplementedException();
-        }
+        public PartModel ById(string id)
+          => this.db.Parts
+            .Where(c => c.Id == int.Parse(id))
+            .Select(c => new PartModel
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Price = c.Price
+            }).FirstOrDefault();
 
         public void CreatePart(string name, decimal price, int quantity, int supplierId)
         {
@@ -63,5 +68,26 @@ namespace CarDealer.Services.Implementations
             this.db.Parts.Remove(part);
             this.db.SaveChanges();
         }
+
+        public void Edit(string id, decimal price, int quantity)
+        {
+            var existingPart = this.db.Parts.Find(int.Parse(id));
+
+            if (existingPart == null)
+            {
+                return;
+            }
+
+            existingPart.Price = price;
+            existingPart.Quantity = quantity;
+
+
+            this.db.SaveChanges();
+        }
+
+        public bool Exists(string id)
+        => this.db.Parts.Any(c => c.Id == int.Parse(id));
+
+
     }
 }

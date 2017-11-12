@@ -37,7 +37,7 @@ namespace CarDealer.Web.Controllers
         [Route("parts/create")]
         public IActionResult Create()
         {
-            return View( new PartsFormModel
+            return View(new PartsFormModel
             {
                 Suppliers = this.suppliers.All()
                 .Select(s => new SelectListItem
@@ -74,20 +74,43 @@ namespace CarDealer.Web.Controllers
             return RedirectToAction("All");
         }
 
-        [Route("customers/edit/{id}")]
+        [Route("parts/edit/{id}")]
         public IActionResult Edit(string id)
         {
-            var cust = this.parts.ById(id);
+            var part = this.parts.ById(id);
 
-            if (cust == null)
+            if (part == null)
             {
                 return NotFound();
             }
 
-            return this.View(new PartsFormModel
+            return this.View(new PartsEditModel
             {
-               
+                Price = part.Price,
+                Quantity = part.Quantity
             });
+        }
+
+        [HttpPost]
+        [Route("parts/edit/{id}")]
+        public IActionResult Edit(string id, PartsEditModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var customerExists = this.parts.Exists(id);
+
+            if (!customerExists)
+            {
+                return NotFound();
+            }
+
+            this.parts.Edit(
+               id,  model.Price, model.Quantity);
+
+            return Redirect("/parts/all");
         }
     }
 }

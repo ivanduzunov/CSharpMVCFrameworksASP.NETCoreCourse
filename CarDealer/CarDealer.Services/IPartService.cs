@@ -9,8 +9,14 @@ namespace CarDealer.Services
     {
         IEnumerable<PartModel> All();
 
-        void CreatePart(string name, decimal price, int quantity, int supplierI);
+        void CreatePart(string name, decimal price, int quantity, int supplierId);
+
         void Delete(int id);
-        object ById(string id);
+
+        PartModel ById(string id);
+
+        bool Exists(string id);
+
+        void Edit(string id,  decimal price, int quantity);
     }
 }

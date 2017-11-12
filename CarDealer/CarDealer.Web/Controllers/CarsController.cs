@@ -5,16 +5,19 @@ using Microsoft.AspNetCore.Mvc;
 using CarDealer.Services;
 using CarDealer.Services.Models;
 using CarDealer.Web.Models.Cars;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CarDealer.Web.Controllers
 {
     public class CarsController : Controller
     {
         private readonly ICarService cars;
+        private readonly IPartService parts;
 
-        public CarsController(ICarService car)
+        public CarsController(ICarService car, IPartService parts)
         {
             this.cars = car;
+            this.parts = parts;
         }
 
         [Route("cars/{make}")]
@@ -38,6 +41,35 @@ namespace CarDealer.Web.Controllers
             {
                 Cars = result
             });
+        }
+
+        [Route("cars/create")]
+        public IActionResult Create()
+        {
+            return View(new CarsFormModel
+            {
+                Parts = this.parts.All()
+               .Select(s => new SelectListItem
+               {
+                   Text = s.Name,
+                   Value = s.Id.ToString()
+               })
+            });
+        }
+
+        [HttpPost]
+        [Route("cars/create")]
+        public IActionResult Create(CarsFormModel carModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Create();
+            }
+
+            this.cars.Create(carModel.Make, carModel.Model,
+                carModel.TravelledDistance, carModel.PartsIds);
+
+            return this.Redirect("/cars/parts");
         }
     }
 }

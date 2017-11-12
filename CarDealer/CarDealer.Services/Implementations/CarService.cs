@@ -4,6 +4,7 @@ using System.Text;
 using CarDealer.Services.Models;
 using CarDealer.Data;
 using System.Linq;
+using CarDealer.Data.Models;
 
 namespace CarDealer.Services.Implementations
 {
@@ -15,8 +16,6 @@ namespace CarDealer.Services.Implementations
         {
             this.db = db;
         }
-
-
 
         public IEnumerable<CarModel> ByMake(string make)
         {
@@ -50,5 +49,32 @@ namespace CarDealer.Services.Implementations
                 });
         }
 
+        public void Create(string make, string modelCar,
+            long travelledDistance, List<int> partsId)
+        {           
+            var car = new Car
+            {
+                Make = make,
+                Model = modelCar,
+                TravelledDistance = travelledDistance
+            };
+
+            //Add parts to the added car
+
+            foreach (var part in this.db.Parts)
+            {
+                if (partsId.Contains(part.Id))
+                {
+                    car.Parts.Add(new PartCar
+                    {
+                        Part = part,
+                        Car = car
+                    });
+                }
+            }
+
+            this.db.Cars.Add(car);
+            this.db.SaveChanges();
+        }
     }
 }

@@ -64,7 +64,7 @@ namespace CarDealer.Web.Controllers
                 (nameof(All), new { order = OrderDirection.Ascending });
         }
 
-        [Route("/customers/edit/{id}")]
+        [Route("customers/edit/{id}")]
         public IActionResult Edit(string id)
         {
             var cust = this.customers.ById(id);
