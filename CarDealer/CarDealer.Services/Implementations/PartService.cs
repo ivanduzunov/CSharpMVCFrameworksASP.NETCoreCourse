@@ -23,6 +23,7 @@ namespace CarDealer.Services.Implementations
 
             return parts.Select(p => new PartModel
             {
+                Id = p.Id,
                 Name = p.Name,
                 Price = p.Price,
                 Quantity = p.Quantity,
@@ -31,6 +32,36 @@ namespace CarDealer.Services.Implementations
             .ToList();
         }
 
-        
+        public object ById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreatePart(string name, decimal price, int quantity, int supplierId)
+        {
+            var part = new Part
+            {
+                Name = name,
+                Price = price,
+                Quantity = quantity,
+                Supplier = db.Suppliers.Where(s => s.Id == supplierId).FirstOrDefault()
+            };
+
+            db.Parts.Add(part);
+            db.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var part = this.db.Parts.Find(id);
+
+            if (part == null)
+            {
+                return;
+            }
+
+            this.db.Parts.Remove(part);
+            this.db.SaveChanges();
+        }
     }
 }

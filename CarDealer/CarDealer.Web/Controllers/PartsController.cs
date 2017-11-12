@@ -52,7 +52,42 @@ namespace CarDealer.Web.Controllers
         [Route("parts/create")]
         public IActionResult Create(PartsFormModel model)
         {
-            return null;
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            parts.CreatePart
+                (model.Name, model.Price, model.Quantity, model.SupplierId);
+
+            return this.Redirect("all");
+        }
+
+        [Route("parts/delete/{id}")]
+        public IActionResult Delete(int id) => View(id);
+
+        [Route("parts/destroy/{id}")]
+        public IActionResult Destroy(int id)
+        {
+            this.parts.Delete(id);
+
+            return RedirectToAction("All");
+        }
+
+        [Route("customers/edit/{id}")]
+        public IActionResult Edit(string id)
+        {
+            var cust = this.parts.ById(id);
+
+            if (cust == null)
+            {
+                return NotFound();
+            }
+
+            return this.View(new PartsFormModel
+            {
+               
+            });
         }
     }
 }
