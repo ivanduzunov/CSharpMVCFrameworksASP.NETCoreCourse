@@ -11,5 +11,7 @@ namespace CarDealer.Services
         IEnumerable<SaleListModel> All();
 
         SaleDetailsModel SaleDetails(string id);
+
+        void Create(int carId, int customerId, double discount);
     }
 }

@@ -6,6 +6,7 @@ using CarDealer.Services;
 using CarDealer.Services.Models;
 using CarDealer.Web.Models.Cars;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarDealer.Web.Controllers
 {
@@ -43,6 +44,7 @@ namespace CarDealer.Web.Controllers
             });
         }
 
+        [Authorize]
         [Route("cars/create")]
         public IActionResult Create()
         {
@@ -57,6 +59,7 @@ namespace CarDealer.Web.Controllers
             });
         }
 
+        [Authorize]
         [HttpPost]
         [Route("cars/create")]
         public IActionResult Create(CarsFormModel carModel)

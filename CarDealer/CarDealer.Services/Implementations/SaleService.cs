@@ -6,6 +6,7 @@ namespace CarDealer.Services.Implementations
 {
     using Models;
     using Data;
+    using Data.Models;
     using System.Linq;
 
     public class SaleService : ISaleService
@@ -27,6 +28,7 @@ namespace CarDealer.Services.Implementations
            Discount = s.Discount
        }).ToList();
 
+       
         public SaleDetailsModel SaleDetails(string id)
                 => db.Sales.Where(s => s.Id == int.Parse(id))
                 .Select(s => new SaleDetailsModel
@@ -37,6 +39,23 @@ namespace CarDealer.Services.Implementations
                     TravelledDistance = s.Car.TravelledDistance
                 })
             .FirstOrDefault();
+
+        public void Create(int carId, int customerId, double discount)
+        {
+            
+           var sale = new Sale
+            {
+                Car = this.db.Cars.Where(c => c.Id == carId).FirstOrDefault(),
+                Customer = this.db.Customers.Where(c => c.Id == customerId).FirstOrDefault(),
+                Discount = discount
+            };
+
+
+            this.db.Sales.Add(sale);
+
+            this.db.SaveChanges();
+        }
+
 
     }
 }

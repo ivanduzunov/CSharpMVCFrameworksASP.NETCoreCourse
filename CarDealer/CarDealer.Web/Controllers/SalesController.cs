@@ -6,15 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using CarDealer.Services;
 using CarDealer.Services.Models;
 using CarDealer.Web.Models.Sales;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace CarDealer.Web.Controllers
 {
     public class SalesController : Controller
     {
         private readonly ISaleService sales;
+        private readonly ICarService cars;
+        private readonly ICustomerService customers;
 
-        public SalesController(ISaleService sales)
+        public SalesController(ISaleService sales, ICarService cars, ICustomerService customers)
         {
+            this.customers = customers;
+            this.cars = cars;
             this.sales = sales;
         }
 
@@ -62,5 +69,52 @@ namespace CarDealer.Web.Controllers
         [Route("sales/discounted/{id}")]
         public IActionResult DetailsForDiscounted(string id)
             => this.View(sales.SaleDetails(id));
+
+        [Route("sales/create")]
+        public IActionResult Create()
+       => View(new SaleFormModel
+       {
+           Cars = this.cars.CarsWithParts()
+               .Select(s => new SelectListItem
+               {
+                   Text = $"{s.Make} {s.Model}",
+                   Value = s.Id.ToString()
+               }),
+
+           Customers = this.customers.OrderedCustomers(OrderDirection.Ascending)
+              .Select(c => new SelectListItem
+              {
+                  Text = c.Name,
+                  Value = c.Id.ToString()
+              })
+       });
+
+        [HttpPost]
+        [Route("sales/create")]
+        public IActionResult Create(SaleFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View(new SaleFormModel
+                {
+                    Cars = this.cars.CarsWithParts()
+               .Select(s => new SelectListItem
+               {
+                   Text = $"{s.Make} {s.Model}",
+                   Value = s.Id.ToString()
+               }),
+
+                    Customers = this.customers.OrderedCustomers(OrderDirection.Ascending)
+              .Select(c => new SelectListItem
+              {
+                  Text = c.Name,
+                  Value = c.Id.ToString()
+              })
+                });
+            }
+            this.sales.Create(model.CarId, model.CustomerId, model.Discount);
+
+            return Redirect("/sales");
+        }      
     }
 }
