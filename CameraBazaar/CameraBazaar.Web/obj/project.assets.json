@@ -13145,11 +13145,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CameraBazaar\\CameraBazaar.Web\\CameraBazaar.Web.csproj",
+      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Web\\CameraBazaar.Web.csproj",
       "projectName": "CameraBazaar.Web",
-      "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CameraBazaar\\CameraBazaar.Web\\CameraBazaar.Web.csproj",
+      "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Web\\CameraBazaar.Web.csproj",
       "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CameraBazaar\\CameraBazaar.Web\\obj\\",
+      "outputPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13168,8 +13168,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CameraBazaar\\CameraBazaar.Data\\CameraBazaar.Data.csproj": {
-              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CameraBazaar\\CameraBazaar.Data\\CameraBazaar.Data.csproj"
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Data\\CameraBazaar.Data.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Data\\CameraBazaar.Data.csproj"
             }
           }
         }
