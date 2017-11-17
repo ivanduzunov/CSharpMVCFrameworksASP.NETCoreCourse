@@ -6,5 +6,7 @@
 
     public class User : IdentityUser
     {
+        public IEnumerable<Camera> Cameras { get; set; }
+            = new List<Camera>();
     }
 }
