@@ -15,6 +15,7 @@ namespace CameraBazaar.Web.Models.Camera
 
         [Required]
         [Display(Name = "Model:")]
+        [RegularExpression("[A-Z0-9- ]+", ErrorMessage = "The model can contains only uppercase letters, digits and '-' sign.")]
         public string CameraModel { get; set; }
 
         [Required]
@@ -64,6 +65,7 @@ namespace CameraBazaar.Web.Models.Camera
         public string Description { get; set; }
 
         [Required]
+        [RegularExpression(@"http:\/\/.*|https:\/\/.*", ErrorMessage = "Invalid url format.")]
         [StringLength(2000, MinimumLength = 10)]
         [Display(Name = "Image URL:")]
         public string ImageUrl { get; set; }

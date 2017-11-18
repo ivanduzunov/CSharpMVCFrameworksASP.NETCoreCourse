@@ -13,6 +13,9 @@ using CameraBazaar.Data.Models;
 using CameraBazaar.Web.Infrastrucrure.Extentions;
 using CameraBazaar.Web.Models;
 using CameraBazaar.Data.Migrations;
+using CameraBazaar.Services;
+using CameraBazaar.Services.Implementations;
+
 
 namespace CameraBazaar.Web
 {
@@ -36,16 +39,13 @@ namespace CameraBazaar.Web
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireDigit = false;
-                options.Password.RequireUppercase = false;               
-            }
-          
-           
-           
-                )
+                options.Password.RequireUppercase = false;
+            })
                 .AddEntityFrameworkStores<CameraBazaarDbContext>()
                 .AddDefaultTokenProviders();
 
-            
+            services.AddTransient<ICameraService, CameraService>();
+
             services.AddMvc();
         }
 

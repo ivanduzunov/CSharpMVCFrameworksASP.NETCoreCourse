@@ -5043,6 +5043,19 @@
         "runtime": {
           "bin/placeholder/CameraBazaar.Data.dll": {}
         }
+      },
+      "CameraBazaar.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "CameraBazaar.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CameraBazaar.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CameraBazaar.Services.dll": {}
+        }
       }
     }
   },
@@ -13124,11 +13137,17 @@
       "type": "project",
       "path": "../CameraBazaar.Data/CameraBazaar.Data.csproj",
       "msbuildProject": "../CameraBazaar.Data/CameraBazaar.Data.csproj"
+    },
+    "CameraBazaar.Services/1.0.0": {
+      "type": "project",
+      "path": "../CameraBazaar.Services/CameraBazaar.Services.csproj",
+      "msbuildProject": "../CameraBazaar.Services/CameraBazaar.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "CameraBazaar.Data >= 1.0.0",
+      "CameraBazaar.Services >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
@@ -13170,6 +13189,9 @@
           "projectReferences": {
             "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Data\\CameraBazaar.Data.csproj": {
               "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Data\\CameraBazaar.Data.csproj"
+            },
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Services\\CameraBazaar.Services.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\CameraBazaar\\CameraBazaar.Services\\CameraBazaar.Services.csproj"
             }
           }
         }
