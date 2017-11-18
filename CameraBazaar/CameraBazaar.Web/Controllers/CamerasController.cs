@@ -57,5 +57,14 @@
 
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult All()
+        {
+            var camerasList = cameras.All();
+
+            return View(camerasList);
+        }
     }
 }

@@ -5,9 +5,12 @@ using CameraBazaar.Data.Enums;
 using CameraBazaar.Data;
 using CameraBazaar.Data.Models;
 using System.Linq;
+using CameraBazaar.Services.Models;
 
 namespace CameraBazaar.Services.Implementations
 {
+    using Models;
+
     public class CameraService : ICameraService
     {
         private readonly CameraBazaarDbContext db;
@@ -15,6 +18,38 @@ namespace CameraBazaar.Services.Implementations
         public CameraService(CameraBazaarDbContext db)
         {
             this.db = db;
+        }
+
+        public IEnumerable<CameraListModel> All()
+        {
+            var cameras = this.db.Cameras
+                 .Select(c => new CameraListModel
+                 {
+                     Id = c.Id,
+                     Make = c.Make.ToString(),
+                     Model = c.Model,
+                     Price = c.Price,
+                     IsInStock = c.Quantity > 0 ? true : false,
+                     ImageUrl = c.ImageUrl
+                 });
+
+            return cameras;
+        }
+
+        public IEnumerable<CameraListModel> ByUserId(string id)
+        {
+            var cameras = this.db.Cameras.Where(c => c.UserId == id)
+                 .Select(c => new CameraListModel
+                 {
+                     Id = c.Id,
+                     Make = c.Make.ToString(),
+                     Model = c.Model,
+                     Price = c.Price,
+                     IsInStock = c.Quantity > 0 ? true : false,
+                     ImageUrl = c.ImageUrl
+                 });
+
+            return cameras;
         }
 
         public void Create(MakeType make,

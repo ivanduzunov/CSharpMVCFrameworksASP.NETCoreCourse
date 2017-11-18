@@ -1,4 +1,9 @@
 ﻿@model CameraCreateViewModel
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
 @{
     ViewData["Title"] = "Add Camera";
 }
@@ -82,6 +87,3 @@
     </div>
 </div>
 
-@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
-}

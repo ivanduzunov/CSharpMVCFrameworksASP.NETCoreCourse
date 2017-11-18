@@ -31,7 +31,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Cameras" asp-action="Add">Cameras</a></li>
+                    <li><a asp-area="" asp-controller="Cameras" asp-action="All">All Cameras</a></li>
+                    <li><a asp-area="" asp-controller="Cameras" asp-action="Add">Add Camera</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -41,7 +42,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - CameraBazaar.Web</p>
+            <p>&copy; 2017 - CameraBazaar Corporation</p>
         </footer>
     </div>
 

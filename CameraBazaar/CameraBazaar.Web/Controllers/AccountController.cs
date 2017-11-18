@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using CameraBazaar.Data.Models;
 using CameraBazaar.Web.Models.AccountViewModels;
+using CameraBazaar.Services;
+using CameraBazaar.Web.Models.Account;
 
 namespace CameraBazaar.Web.Controllers
 {
@@ -19,6 +21,7 @@ namespace CameraBazaar.Web.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
+        private readonly ICameraService cameras;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
@@ -26,15 +29,37 @@ namespace CameraBazaar.Web.Controllers
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            ICameraService cameras)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            this.cameras = cameras;
         }
 
         [TempData]
         public string ErrorMessage { get; set; }
+
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult UserProfile()
+        {
+            var userId = _userManager.GetUserId(HttpContext.User);
+
+            //var model = GetSomeModelByUserId(userId);
+
+            var cams = cameras.ByUserId(userId);
+
+
+
+            return View(new UserProfileViewModel
+            {
+                Username = _userManager.GetUserName(HttpContext.User),
+                Cameras = cams
+            });
+        }
 
         [HttpGet]
         [AllowAnonymous]
