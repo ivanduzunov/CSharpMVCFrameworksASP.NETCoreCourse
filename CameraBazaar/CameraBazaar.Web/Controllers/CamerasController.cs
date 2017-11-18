@@ -6,16 +6,20 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
-    using CameraBazaar.Services;
+    using Microsoft.AspNetCore.Identity;
+    using Data.Models;
+    using Services;
     using Models.Camera;
 
     public class CamerasController : Controller
     {
         private readonly ICameraService cameras;
+        private readonly UserManager<User> userManager;
 
-        public CamerasController(ICameraService cameras)
+        public CamerasController(ICameraService cameras, UserManager<User> userManager)
         {
             this.cameras = cameras;
+            this.userManager = userManager;
         }
 
         [Authorize]
@@ -47,7 +51,8 @@
                 model.MinShutterSpeed,
                 model.MaxShutterSpeed,
                 model.ImageUrl,
-                model.VideoResolution
+                model.VideoResolution,
+                this.userManager.GetUserId(User)
                 );
 
             return RedirectToAction(nameof(HomeController.Index), "Home");

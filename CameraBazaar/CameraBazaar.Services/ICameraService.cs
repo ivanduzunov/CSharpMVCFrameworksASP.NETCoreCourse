@@ -8,6 +8,6 @@ namespace CameraBazaar.Services
 {
     public interface ICameraService
     {
-        void Create(MakeType make, string cameraModel, decimal price, int quantity, string description, bool isFullFrame, IEnumerable<LightMeteringType> lightMetering, MinISOType minISO, int maxISO, int minShutterSpeed, int maxShutterSpeed, string imageUrl, string videoResolution);
+        void Create(MakeType make, string cameraModel, decimal price, int quantity, string description, bool isFullFrame, IEnumerable<LightMeteringType> lightMetering, MinISOType minISO, int maxISO, int minShutterSpeed, int maxShutterSpeed, string imageUrl, string videoResolution, string userId);
     }
 }

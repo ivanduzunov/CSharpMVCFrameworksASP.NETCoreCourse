@@ -29,12 +29,14 @@ namespace CameraBazaar.Services.Implementations
             int minShutterSpeed,
             int maxShutterSpeed,
             string imageUrl,
-            string videoResolution)
+            string videoResolution,
+            string userId)
         {
             var camera = new Camera
             {
                 Make = make,
                 Model = cameraModel,
+                Price = price,
                 Quantity = quantity,
                 Description = description,
                 IsFullFrame = isFullFrame,
@@ -44,7 +46,8 @@ namespace CameraBazaar.Services.Implementations
                 MinShutterSpeed = minShutterSpeed,
                 MaxShutterSpeed = maxShutterSpeed,
                 ImageUrl = imageUrl,
-                VideoResolution = videoResolution
+                VideoResolution = videoResolution,
+                UserId = userId
             };
 
             db.Cameras.Add(camera);

@@ -15,7 +15,7 @@ namespace CameraBazaar.Web.Models.Camera
 
         [Required]
         [Display(Name = "Model:")]
-        [RegularExpression("[A-Z0-9- ]+", ErrorMessage = "The model can contains only uppercase letters, digits and '-' sign.")]
+        [RegularExpression("[A-Za-z0-9- ]+", ErrorMessage = "The model can contains only uppercase letters, digits and '-' sign.")]
         public string CameraModel { get; set; }
 
         [Required]
