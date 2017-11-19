@@ -46,6 +46,8 @@ namespace CameraBazaar.Web
 
             services.AddTransient<ICameraService, CameraService>();
 
+            services.AddTransient<IUserService, UserService>();
+
             services.AddMvc();
         }
 

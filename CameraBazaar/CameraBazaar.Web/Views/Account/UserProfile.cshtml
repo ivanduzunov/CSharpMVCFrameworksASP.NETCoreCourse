@@ -4,12 +4,15 @@
 }
 
 <h2>UserProfile</h2>
-<h2>@Model.Username</h2>
+<h2>Username: @Model.Username</h2>
+<h3>Email: @Model.Email</h3>
+<h3>Phone: <i>@Model.Phone</i></h3>
+<h3>Cameras: @($"{Model.CamerasInStock} in stock/{Model.CamerasOutOfStock} out of stock")</h3>
 
 @foreach (var camera in Model.Cameras)
 {
     <div class="table-bordered">
-        <img src="@camera.ImageUrl" height="100" width="100" />
+        <img src="@camera.ImageUrl" height="150" width="150" />
         <h3>@($"{camera.Make} {camera.Model}")</h3>
         <h4>@($"${camera.Price}")</h4>
         <a href="/cameras/details/@camera.Id">Details</a>

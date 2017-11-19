@@ -22,6 +22,7 @@ namespace CameraBazaar.Web.Controllers
     public class AccountController : Controller
     {
         private readonly ICameraService cameras;
+        private readonly IUserService users;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
@@ -30,11 +31,13 @@ namespace CameraBazaar.Web.Controllers
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ILogger<AccountController> logger,
+            IUserService users,
             ICameraService cameras)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            this.users = users;
             this.cameras = cameras;
         }
 
@@ -47,16 +50,16 @@ namespace CameraBazaar.Web.Controllers
         public IActionResult UserProfile()
         {
             var userId = _userManager.GetUserId(HttpContext.User);
-
-            //var model = GetSomeModelByUserId(userId);
-
             var cams = cameras.ByUserId(userId);
-
-
+            var userElements = users.UserProfileElements(userId);
 
             return View(new UserProfileViewModel
             {
-                Username = _userManager.GetUserName(HttpContext.User),
+                Username = userElements.Username,
+                Email = userElements.Email,
+                Phone = userElements.Phone,
+                CamerasInStock = userElements.CamerasInStock,
+                CamerasOutOfStock = userElements.CamerasOutOfStock,
                 Cameras = cams
             });
         }

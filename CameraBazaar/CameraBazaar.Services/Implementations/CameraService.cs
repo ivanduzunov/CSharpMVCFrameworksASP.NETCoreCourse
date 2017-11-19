@@ -47,7 +47,7 @@ namespace CameraBazaar.Services.Implementations
                      Price = c.Price,
                      IsInStock = c.Quantity > 0 ? true : false,
                      ImageUrl = c.ImageUrl
-                 });
+                 }).ToList();
 
             return cameras;
         }
