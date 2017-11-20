@@ -1,0 +1,24 @@
+﻿@model CameraDetailsViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+@{string isInStock = Model.IsInStock ? "IN STOCK" : "OUT OF STOCK";}
+<h2>@($"{Model.Make} {Model.Model} - ${Model.Price} - {isInStock}")</h2>
+<h2>Seller: @Model.SellersUsername</h2>
+
+<div>
+    <img src="@Model.ImageUrl" height="300" width="300" />
+</div>
+<div>
+    @{string fullFrame = Model.IsFullFrame ? "Yes" : "No";}
+    <h3>Is Full Frame: @fullFrame</h3>
+    <h3>Min Shutter Speed: @Model.MinShutterSpeed</h3>
+    <h3>Max Shutter Speed: @Model.MaxShutterSpeed</h3>
+    <h3>Min ISO: @((int)Model.MinISO)</h3>
+    <h3>Max ISO: @Model.MaxISO</h3>
+    <h3>Video Resolution: @Model.VideoResolution</h3>
+    <h3>Light-Metering/s: @Model.LightMeterings</h3>
+    <h3>Description: @Model.Description</h3>
+</div>
+
+
