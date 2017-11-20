@@ -15,5 +15,7 @@ namespace CameraBazaar.Services
         IEnumerable<CameraListModel> All();
 
         IEnumerable<CameraListModel> ByUserId(string id);
+
+        CameraDetailsViewModel CameraDetails(string id);
     }
 }

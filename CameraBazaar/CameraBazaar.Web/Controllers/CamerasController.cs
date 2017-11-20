@@ -66,5 +66,15 @@
 
             return View(camerasList);
         }
+
+        [Route("cameras/details/{id}")]
+        [Authorize]
+        [HttpGet]
+        public IActionResult Details(string id)
+        {
+            var camera = cameras.CameraDetails(id);
+
+            return View(camera);
+        }
     }
 }

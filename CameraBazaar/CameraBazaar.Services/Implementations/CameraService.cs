@@ -52,6 +52,31 @@ namespace CameraBazaar.Services.Implementations
             return cameras;
         }
 
+        public CameraDetailsViewModel CameraDetails(string id)
+        => this.db.Cameras.Where(c => c.Id.ToString() == id)
+            .Select(c => new CameraDetailsViewModel
+            {
+                Make = c.Make,
+                Model = c.Model,
+                Price = c.Price,
+                SellersUsername = c.User.UserName,
+                IsInStock = c.Quantity > 0,
+                ImageUrl = c.ImageUrl,
+                MaxISO = c.MaxISO,
+                MinISO = c.MinISO,
+                MinShutterSpeed = c.MinShutterSpeed,
+                MaxShutterSpeed = c.MaxShutterSpeed,
+                IsFullFrame = c.IsFullFrame,
+                VideoResolution = c.VideoResolution,
+                Description = c.Description,
+                LightMeterings = c.LightMetering,
+            }
+            )
+            .FirstOrDefault();
+  
+
+
+
         public void Create(MakeType make,
             string cameraModel,
             decimal price,
@@ -73,7 +98,7 @@ namespace CameraBazaar.Services.Implementations
                 Model = cameraModel,
                 Price = price,
                 Quantity = quantity,
-                Description = description,
+                Description = description,  
                 IsFullFrame = isFullFrame,
                 LightMetering = (LightMeteringType)lightMetering.Cast<int>().Sum(),
                 MinISO = minISO,
@@ -88,5 +113,7 @@ namespace CameraBazaar.Services.Implementations
             db.Cameras.Add(camera);
             db.SaveChanges();
         }
+
+        
     }
 }
