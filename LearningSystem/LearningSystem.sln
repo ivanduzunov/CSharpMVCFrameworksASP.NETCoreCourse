@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Web", "LearningSystem.Web\LearningSystem.Web.csproj", "{B40FFF81-69A1-4CB7-97D1-BFCBBD61F37D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Data", "LearningSystem.Data\LearningSystem.Data.csproj", "{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B40FFF81-69A1-4CB7-97D1-BFCBBD61F37D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40FFF81-69A1-4CB7-97D1-BFCBBD61F37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40FFF81-69A1-4CB7-97D1-BFCBBD61F37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40FFF81-69A1-4CB7-97D1-BFCBBD61F37D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B64F5B57-448E-4C96-9B89-566843DAFCE1}
+	EndGlobalSection
+EndGlobal
