@@ -3676,11 +3676,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj",
       "projectName": "LearningSystem.Data",
-      "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj",
+      "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj",
       "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\LearningSystem\\LearningSystem.Data\\obj\\",
+      "outputPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

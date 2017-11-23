@@ -13215,11 +13215,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\LearningSystem\\LearningSystem.Web\\LearningSystem.Web.csproj",
+      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Web\\LearningSystem.Web.csproj",
       "projectName": "LearningSystem.Web",
-      "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\LearningSystem\\LearningSystem.Web\\LearningSystem.Web.csproj",
+      "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Web\\LearningSystem.Web.csproj",
       "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\LearningSystem\\LearningSystem.Web\\obj\\",
+      "outputPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13238,8 +13238,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj": {
-              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj"
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj"
             }
           }
         }

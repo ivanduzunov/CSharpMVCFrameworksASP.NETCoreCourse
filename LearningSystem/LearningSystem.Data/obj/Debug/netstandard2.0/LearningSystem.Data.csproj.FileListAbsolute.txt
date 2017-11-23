@@ -7,3 +7,12 @@ C:\Users\Ivan\Documents\Visual Studio 2017\Projects\LearningSystem\LearningSyste
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\LearningSystem\LearningSystem.Data\bin\Debug\netstandard2.0\LearningSystem.Data.pdb
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\LearningSystem\LearningSystem.Data\obj\Debug\netstandard2.0\LearningSystem.Data.dll
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\LearningSystem\LearningSystem.Data\obj\Debug\netstandard2.0\LearningSystem.Data.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\bin\Debug\netstandard2.0\LearningSystem.Data.deps.json
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\bin\Debug\netstandard2.0\LearningSystem.Data.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\bin\Debug\netstandard2.0\LearningSystem.Data.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\obj\Debug\netstandard2.0\LearningSystem.Data.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\obj\Debug\netstandard2.0\LearningSystem.Data.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\obj\Debug\netstandard2.0\LearningSystem.Data.AssemblyInfoInputs.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\obj\Debug\netstandard2.0\LearningSystem.Data.AssemblyInfo.cs
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\obj\Debug\netstandard2.0\LearningSystem.Data.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Data\obj\Debug\netstandard2.0\LearningSystem.Data.pdb
