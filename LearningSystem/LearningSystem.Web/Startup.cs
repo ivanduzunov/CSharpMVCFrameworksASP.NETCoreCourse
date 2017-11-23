@@ -31,11 +31,23 @@ namespace LearningSystem.Web
             services.AddDbContext<LearningSystemDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            })
                 .AddEntityFrameworkStores<LearningSystemDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddAutoMapper();
+
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();

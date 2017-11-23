@@ -20,8 +20,8 @@ C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCo
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\bin\Debug\netcoreapp2.0\LearningSystem.Data.pdb
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\obj\Debug\netcoreapp2.0\LearningSystem.Web.csprojResolveAssemblyReference.cache
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\obj\Debug\netcoreapp2.0\LearningSystem.Web.csproj.CoreCompileInputs.cache
-C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\obj\Debug\netcoreapp2.0\LearningSystem.Web.AssemblyInfoInputs.cache
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\obj\Debug\netcoreapp2.0\LearningSystem.Web.AssemblyInfo.cs
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\obj\Debug\netcoreapp2.0\LearningSystem.Web.dll
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\obj\Debug\netcoreapp2.0\LearningSystem.Web.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Web\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

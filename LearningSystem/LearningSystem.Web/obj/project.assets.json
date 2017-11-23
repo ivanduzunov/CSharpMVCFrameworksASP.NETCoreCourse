@@ -1148,10 +1148,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.NodeServices.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Owin/2.0.0": {
+      "Microsoft.AspNetCore.Owin/2.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http": "2.0.0"
+          "Microsoft.AspNetCore.Http": "2.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Owin.dll": {}
@@ -5871,14 +5871,14 @@
         "microsoft.aspnetcore.nodeservices.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Owin/2.0.0": {
-      "sha512": "40rTHUS3dKwgo2k2yvhmnYGpHzvyLKv0AWfm8boNzRZajvLh99QJk/2t7PDI0bx7UOMpX3SjHcSskCJIoGa5Xw==",
+    "Microsoft.AspNetCore.Owin/2.0.1": {
+      "sha512": "K54YgOdNwVQbjXg/EPucK20oRCSdJ5gS2wQsN1Twk434yLTTzaSYaipYZ3oFwHgClEdxVQvlHcDiKXii2NtJwg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.owin/2.0.0",
+      "path": "microsoft.aspnetcore.owin/2.0.1",
       "files": [
         "lib/netstandard2.0/Microsoft.AspNetCore.Owin.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Owin.xml",
-        "microsoft.aspnetcore.owin.2.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.owin.2.0.1.nupkg.sha512",
         "microsoft.aspnetcore.owin.nuspec"
       ]
     },
@@ -13200,6 +13200,7 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 3.2.0",
       "LearningSystem.Data >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
+      "Microsoft.AspNetCore.Owin >= 2.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0"
@@ -13265,6 +13266,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "2.0.0"
+          },
+          "Microsoft.AspNetCore.Owin": {
+            "target": "Package",
+            "version": "2.0.1"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
