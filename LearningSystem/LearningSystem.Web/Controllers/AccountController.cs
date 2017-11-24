@@ -317,7 +317,7 @@ namespace LearningSystem.Web.Controllers
                 {
                     throw new ApplicationException("Error loading external login information during confirmation.");
                 }
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email, Name = info.ProviderDisplayName };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

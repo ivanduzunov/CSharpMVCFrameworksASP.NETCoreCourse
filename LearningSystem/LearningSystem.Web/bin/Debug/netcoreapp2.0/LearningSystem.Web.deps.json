@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "d661d01fad6266a15b2892a5ab9d2815dbdcc022"
+    "signature": "55490304d5a97e686b83f1127e15eb98810a63de"
   },
   "compilationOptions": {
     "defines": [
@@ -26,6 +26,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "3.2.0",
           "LearningSystem.Data": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.0",
+          "Microsoft.AspNetCore.Authentication.Facebook": "2.0.1",
           "Microsoft.AspNetCore.Owin": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
           "Microsoft.NETCore.App": "2.0.0",
@@ -200,11 +201,11 @@
           "Microsoft.AspNetCore.Authentication.Abstractions": "2.0.1",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.0.1",
           "Microsoft.AspNetCore.Authentication.Core": "2.0.1",
-          "Microsoft.AspNetCore.Authentication.Facebook": "2.0.0",
+          "Microsoft.AspNetCore.Authentication.Facebook": "2.0.1",
           "Microsoft.AspNetCore.Authentication.Google": "2.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.0",
           "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "2.0.0",
-          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.0",
+          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.1",
           "Microsoft.AspNetCore.Authentication.OpenIdConnect": "2.0.0",
           "Microsoft.AspNetCore.Authentication.Twitter": "2.0.0",
           "Microsoft.AspNetCore.Authorization": "2.0.0",
@@ -417,9 +418,9 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authentication.Facebook/2.0.0": {
+      "Microsoft.AspNetCore.Authentication.Facebook/2.0.1": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
@@ -430,7 +431,7 @@
       },
       "Microsoft.AspNetCore.Authentication.Google/2.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Google.dll": {}
@@ -453,7 +454,7 @@
       },
       "Microsoft.AspNetCore.Authentication.MicrosoftAccount/2.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll": {}
@@ -462,7 +463,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authentication.OAuth/2.0.0": {
+      "Microsoft.AspNetCore.Authentication.OAuth/2.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication": "2.0.1",
           "Newtonsoft.Json": "10.0.1"
@@ -476,7 +477,7 @@
       },
       "Microsoft.AspNetCore.Authentication.OpenIdConnect/2.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.0",
+          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.1",
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "2.1.4"
         },
         "runtime": {
@@ -488,7 +489,7 @@
       },
       "Microsoft.AspNetCore.Authentication.Twitter/2.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Twitter.dll": {}
@@ -4394,12 +4395,12 @@
       "path": "microsoft.aspnetcore.authentication.core/2.0.1",
       "hashPath": "microsoft.aspnetcore.authentication.core.2.0.1.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authentication.Facebook/2.0.0": {
+    "Microsoft.AspNetCore.Authentication.Facebook/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5jkm/lj+QXWIMqPZ7YuBDdGcoJMQHxnsfoOYH/OyR+3g9FzeLjWi/QoSsMtcIc/YsHtjiO1YW2X0aWMPjslfhA==",
-      "path": "microsoft.aspnetcore.authentication.facebook/2.0.0",
-      "hashPath": "microsoft.aspnetcore.authentication.facebook.2.0.0.nupkg.sha512"
+      "sha512": "sha512-TPKzhxEb1KevANRtJ2ph5bM7/Y209iOnC25RUGA8OwtLHRw0A/K1tEebbbfRXOrDnOujEBkbhdcoChOK2YOHbQ==",
+      "path": "microsoft.aspnetcore.authentication.facebook/2.0.1",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.2.0.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.Google/2.0.0": {
       "type": "package",
@@ -4422,12 +4423,12 @@
       "path": "microsoft.aspnetcore.authentication.microsoftaccount/2.0.0",
       "hashPath": "microsoft.aspnetcore.authentication.microsoftaccount.2.0.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authentication.OAuth/2.0.0": {
+    "Microsoft.AspNetCore.Authentication.OAuth/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sE4lO7U/rxI8NSgfRmvKMW5exMjr4NtHvlQU+HqjBBrbvgOs+GCI3heMN4hNb+bvtEBbnEzrh+QOXX3q/X4qSg==",
-      "path": "microsoft.aspnetcore.authentication.oauth/2.0.0",
-      "hashPath": "microsoft.aspnetcore.authentication.oauth.2.0.0.nupkg.sha512"
+      "sha512": "sha512-GpPv8ojFzn3LjD6Q6aCDE8Q382ug4D7fVwjnGyZwEESLNeg6r3w/zffAN18smjKznJuTTUcsZS4lYWDmbsFoGQ==",
+      "path": "microsoft.aspnetcore.authentication.oauth/2.0.1",
+      "hashPath": "microsoft.aspnetcore.authentication.oauth.2.0.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.OpenIdConnect/2.0.0": {
       "type": "package",

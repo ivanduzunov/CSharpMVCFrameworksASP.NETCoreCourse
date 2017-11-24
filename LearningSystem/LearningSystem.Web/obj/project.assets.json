@@ -404,10 +404,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authentication.Facebook/2.0.0": {
+      "Microsoft.AspNetCore.Authentication.Facebook/2.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.0"
+          "Microsoft.AspNetCore.Authentication.OAuth": "2.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
@@ -453,10 +453,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authentication.OAuth/2.0.0": {
+      "Microsoft.AspNetCore.Authentication.OAuth/2.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication": "2.0.0",
+          "Microsoft.AspNetCore.Authentication": "2.0.1",
           "Newtonsoft.Json": "10.0.1"
         },
         "compile": {
@@ -5281,14 +5281,14 @@
         "microsoft.aspnetcore.authentication.core.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Authentication.Facebook/2.0.0": {
-      "sha512": "5jkm/lj+QXWIMqPZ7YuBDdGcoJMQHxnsfoOYH/OyR+3g9FzeLjWi/QoSsMtcIc/YsHtjiO1YW2X0aWMPjslfhA==",
+    "Microsoft.AspNetCore.Authentication.Facebook/2.0.1": {
+      "sha512": "TPKzhxEb1KevANRtJ2ph5bM7/Y209iOnC25RUGA8OwtLHRw0A/K1tEebbbfRXOrDnOujEBkbhdcoChOK2YOHbQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authentication.facebook/2.0.0",
+      "path": "microsoft.aspnetcore.authentication.facebook/2.0.1",
       "files": [
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Facebook.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Facebook.xml",
-        "microsoft.aspnetcore.authentication.facebook.2.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.facebook.2.0.1.nupkg.sha512",
         "microsoft.aspnetcore.authentication.facebook.nuspec"
       ]
     },
@@ -5325,14 +5325,14 @@
         "microsoft.aspnetcore.authentication.microsoftaccount.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Authentication.OAuth/2.0.0": {
-      "sha512": "sE4lO7U/rxI8NSgfRmvKMW5exMjr4NtHvlQU+HqjBBrbvgOs+GCI3heMN4hNb+bvtEBbnEzrh+QOXX3q/X4qSg==",
+    "Microsoft.AspNetCore.Authentication.OAuth/2.0.1": {
+      "sha512": "GpPv8ojFzn3LjD6Q6aCDE8Q382ug4D7fVwjnGyZwEESLNeg6r3w/zffAN18smjKznJuTTUcsZS4lYWDmbsFoGQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authentication.oauth/2.0.0",
+      "path": "microsoft.aspnetcore.authentication.oauth/2.0.1",
       "files": [
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.OAuth.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.OAuth.xml",
-        "microsoft.aspnetcore.authentication.oauth.2.0.0.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.oauth.2.0.1.nupkg.sha512",
         "microsoft.aspnetcore.authentication.oauth.nuspec"
       ]
     },
@@ -13200,6 +13200,7 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 3.2.0",
       "LearningSystem.Data >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
+      "Microsoft.AspNetCore.Authentication.Facebook >= 2.0.1",
       "Microsoft.AspNetCore.Owin >= 2.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
@@ -13254,6 +13255,10 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Facebook": {
+            "target": "Package",
+            "version": "2.0.1"
+          },
           "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
             "version": "2.0.1"
