@@ -1,0 +1,13 @@
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\LearningSystem.Services.deps.json
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\LearningSystem.Services.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\obj\Debug\netstandard2.0\LearningSystem.Services.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\obj\Debug\netstandard2.0\LearningSystem.Services.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\obj\Debug\netstandard2.0\LearningSystem.Services.AssemblyInfoInputs.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\obj\Debug\netstandard2.0\LearningSystem.Services.AssemblyInfo.cs
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\LearningSystem.Services.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\LearningSystem.Common.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\LearningSystem.Data.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\LearningSystem.Common.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\LearningSystem.Data.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\obj\Debug\netstandard2.0\LearningSystem.Services.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\obj\Debug\netstandard2.0\LearningSystem.Services.pdb

@@ -2,27 +2,20 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "AutoMapper/6.1.1": {
+      "AutoMapper/6.2.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
-          "System.Collections": "4.3.0",
+          "NETStandard.Library": "1.6.1",
           "System.Collections.Concurrent": "4.3.0",
           "System.Collections.Specialized": "4.3.0",
           "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
           "System.Dynamic.Runtime": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Linq.Expressions": "4.3.0",
           "System.Linq.Queryable": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0"
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0"
         },
         "compile": {
           "lib/netstandard1.3/AutoMapper.dll": {}
@@ -5073,6 +5066,19 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "LearningSystem.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "AutoMapper": "6.2.1"
+        },
+        "compile": {
+          "bin/placeholder/LearningSystem.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LearningSystem.Common.dll": {}
+        }
+      },
       "LearningSystem.Data/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -5087,17 +5093,35 @@
         "runtime": {
           "bin/placeholder/LearningSystem.Data.dll": {}
         }
+      },
+      "LearningSystem.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "AutoMapper": "6.2.1",
+          "LearningSystem.Common": "1.0.0",
+          "LearningSystem.Data": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.0.1"
+        },
+        "compile": {
+          "bin/placeholder/LearningSystem.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LearningSystem.Services.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "AutoMapper/6.1.1": {
-      "sha512": "A+6PAblvzmkXPS20nFBQJvlNSW5oEdyfN5+cxT/Du35fTNyuP5pNDXT64KT/jBgxt7CPduOM0Y7oLnNe0E5IXg==",
+    "AutoMapper/6.2.1": {
+      "sha512": "ZD9he/2wsNQbfnZJMc7Ijvz0hf2Lc6R8Tk97k8Q741flowTHd/YPxG8d5P0BVOJAPLVXjjX6IZ8l0u0A2l+K2g==",
       "type": "package",
-      "path": "automapper/6.1.1",
+      "path": "automapper/6.2.1",
       "files": [
-        "automapper.6.1.1.nupkg.sha512",
+        "automapper.6.2.1.nupkg.sha512",
         "automapper.nuspec",
+        "lib/net40/AutoMapper.dll",
+        "lib/net40/AutoMapper.xml",
         "lib/net45/AutoMapper.dll",
         "lib/net45/AutoMapper.xml",
         "lib/netstandard1.1/AutoMapper.dll",
@@ -13189,16 +13213,28 @@
         "windowsazure.storage.nuspec"
       ]
     },
+    "LearningSystem.Common/1.0.0": {
+      "type": "project",
+      "path": "../LearningSystem.Common/LearningSystem.Common.csproj",
+      "msbuildProject": "../LearningSystem.Common/LearningSystem.Common.csproj"
+    },
     "LearningSystem.Data/1.0.0": {
       "type": "project",
       "path": "../LearningSystem.Data/LearningSystem.Data.csproj",
       "msbuildProject": "../LearningSystem.Data/LearningSystem.Data.csproj"
+    },
+    "LearningSystem.Services/1.0.0": {
+      "type": "project",
+      "path": "../LearningSystem.Services/LearningSystem.Services.csproj",
+      "msbuildProject": "../LearningSystem.Services/LearningSystem.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 3.2.0",
+      "LearningSystem.Common >= 1.0.0",
       "LearningSystem.Data >= 1.0.0",
+      "LearningSystem.Services >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.AspNetCore.Authentication.Facebook >= 2.0.1",
       "Microsoft.AspNetCore.Owin >= 2.0.1",
@@ -13240,8 +13276,14 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Common\\LearningSystem.Common.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Common\\LearningSystem.Common.csproj"
+            },
             "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj": {
               "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Data\\LearningSystem.Data.csproj"
+            },
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Services\\LearningSystem.Services.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\LearningSystem\\LearningSystem.Services\\LearningSystem.Services.csproj"
             }
           }
         }

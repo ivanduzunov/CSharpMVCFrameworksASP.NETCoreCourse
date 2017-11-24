@@ -1,0 +1,9 @@
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\bin\Debug\netstandard2.0\LearningSystem.Common.deps.json
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\bin\Debug\netstandard2.0\LearningSystem.Common.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\obj\Debug\netstandard2.0\LearningSystem.Common.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\obj\Debug\netstandard2.0\LearningSystem.Common.AssemblyInfoInputs.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\obj\Debug\netstandard2.0\LearningSystem.Common.AssemblyInfo.cs
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\bin\Debug\netstandard2.0\LearningSystem.Common.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\obj\Debug\netstandard2.0\LearningSystem.Common.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\obj\Debug\netstandard2.0\LearningSystem.Common.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Common\obj\Debug\netstandard2.0\LearningSystem.Common.pdb

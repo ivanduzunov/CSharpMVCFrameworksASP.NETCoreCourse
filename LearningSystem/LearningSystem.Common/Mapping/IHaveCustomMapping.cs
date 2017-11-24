@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 
-namespace LearningSystem.Web.Infrastructure.Mapping
+namespace LearningSystem.Common.Mapping
 {
     public interface IHaveCustomMapping
     {

@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Web", "LearningSystem.Web\LearningSystem.Web.csproj", "{B40FFF81-69A1-4CB7-97D1-BFCBBD61F37D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSystem.Web", "LearningSystem.Web\LearningSystem.Web.csproj", "{B40FFF81-69A1-4CB7-97D1-BFCBBD61F37D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Data", "LearningSystem.Data\LearningSystem.Data.csproj", "{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSystem.Data", "LearningSystem.Data\LearningSystem.Data.csproj", "{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Services", "LearningSystem.Services\LearningSystem.Services.csproj", "{3C7C8AB5-2A9D-4469-9CA8-7FB35118B8A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Common", "LearningSystem.Common\LearningSystem.Common.csproj", "{810108E6-A825-4709-8494-CBBBD63ACE44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C7C8AB5-2A9D-4469-9CA8-7FB35118B8A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C7C8AB5-2A9D-4469-9CA8-7FB35118B8A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C7C8AB5-2A9D-4469-9CA8-7FB35118B8A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C7C8AB5-2A9D-4469-9CA8-7FB35118B8A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{810108E6-A825-4709-8494-CBBBD63ACE44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{810108E6-A825-4709-8494-CBBBD63ACE44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{810108E6-A825-4709-8494-CBBBD63ACE44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{810108E6-A825-4709-8494-CBBBD63ACE44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

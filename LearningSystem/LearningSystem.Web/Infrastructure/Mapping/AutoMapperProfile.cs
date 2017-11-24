@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace LearningSystem.Web.Infrastructure.Mapping
 {
+    using Common.Mapping;
+
     public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()

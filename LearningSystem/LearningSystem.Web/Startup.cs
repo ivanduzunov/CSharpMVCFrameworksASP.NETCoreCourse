@@ -13,6 +13,9 @@ using LearningSystem.Data;
 using LearningSystem.Data.Models;
 using LearningSystem.Web.Services;
 using LearningSystem.Web.Infrastructure.Extentions;
+using LearningSystem.Services.Admin;
+using LearningSystem.Services.Admin.Implementations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LearningSystem.Web
 {
@@ -51,7 +54,12 @@ namespace LearningSystem.Web
 
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            services.AddTransient<IAdminUserService, AdminUserService>();
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -75,6 +83,10 @@ namespace LearningSystem.Web
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
