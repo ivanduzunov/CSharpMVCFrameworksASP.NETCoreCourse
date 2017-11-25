@@ -5,11 +5,8 @@ using System.Threading.Tasks;
 
 namespace LearningSystem.Services.Admin
 {
-    using Models;
-    using Data.Models;
-
-    public interface IAdminUserService
+    public interface IAdminCourseService
     {
-        Task<IEnumerable<AdminUserListingServiceModel>> All();
+        Task CreateAsync(string name, string description, DateTime startDate, DateTime endDate, string trainerId);
     }
 }

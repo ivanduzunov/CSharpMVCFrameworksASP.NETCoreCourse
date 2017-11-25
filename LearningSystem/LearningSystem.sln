@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSystem.Web", "Learn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSystem.Data", "LearningSystem.Data\LearningSystem.Data.csproj", "{450D8F54-EA4A-4CA1-B5CE-EBDB1B939CDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Services", "LearningSystem.Services\LearningSystem.Services.csproj", "{3C7C8AB5-2A9D-4469-9CA8-7FB35118B8A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSystem.Services", "LearningSystem.Services\LearningSystem.Services.csproj", "{3C7C8AB5-2A9D-4469-9CA8-7FB35118B8A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Common", "LearningSystem.Common\LearningSystem.Common.csproj", "{810108E6-A825-4709-8494-CBBBD63ACE44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSystem.Common", "LearningSystem.Common\LearningSystem.Common.csproj", "{810108E6-A825-4709-8494-CBBBD63ACE44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

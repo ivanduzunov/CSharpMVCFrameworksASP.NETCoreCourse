@@ -10,6 +10,7 @@ namespace LearningSystem.Services.Admin.Implementations
 {
     using AutoMapper.QueryableExtensions;
     using Data;
+    using LearningSystem.Data.Models;
     using Microsoft.EntityFrameworkCore;
 
     public class AdminUserService : IAdminUserService
@@ -25,6 +26,8 @@ namespace LearningSystem.Services.Admin.Implementations
         => await this.db
             .Users
             .ProjectTo<AdminUserListingServiceModel>()
-            .ToListAsync();      
+            .ToListAsync();
+
+       
     }
 }

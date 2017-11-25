@@ -56,6 +56,8 @@ namespace LearningSystem.Web
 
             services.AddTransient<IAdminUserService, AdminUserService>();
 
+            services.AddTransient<IAdminCourseService, AdminCourseService>();
+
             services.AddMvc(options =>
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
