@@ -29,7 +29,7 @@ namespace LearningSystem.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Create()
         {
             var result = await GetTrainers();
-           
+
             return View(new AddCourseFormModel
             {
                 Trainers = result,

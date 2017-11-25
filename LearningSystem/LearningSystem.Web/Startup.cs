@@ -16,6 +16,8 @@ using LearningSystem.Web.Infrastructure.Extentions;
 using LearningSystem.Services.Admin;
 using LearningSystem.Services.Admin.Implementations;
 using Microsoft.AspNetCore.Mvc;
+using LearningSystem.Services.Articles;
+using LearningSystem.Services.Articles.Implementations;
 
 namespace LearningSystem.Web
 {
@@ -57,6 +59,8 @@ namespace LearningSystem.Web
             services.AddTransient<IAdminUserService, AdminUserService>();
 
             services.AddTransient<IAdminCourseService, AdminCourseService>();
+
+            services.AddTransient<IArticlesService, ArticlesService>();
 
             services.AddMvc(options =>
             {

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ArticlesListServiceModel>
+@{
+    ViewData["Title"] = "Articles";
+}
+<h1>@ViewData["Title"]</h1>
+<br />
+@if (User.IsInRole(LearningSystem.Web.WebConstants.BlogAuthorRole))
+{
+    <li><a class="btn btn-success" asp-area="Blog" asp-controller="Articles" asp-action="Create">Add Article</a></li>
+}
+@foreach (var article in Model.OrderBy(a => a.PublishDate))
+{
+    <article>
+        <h2>@article.Title</h2>
+        <p>@article.Content</p>
+        <h3>From @article.PublishDate</h3>
+    </article>
+    <hr />
+}
