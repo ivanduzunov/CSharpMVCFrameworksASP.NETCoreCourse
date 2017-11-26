@@ -8,12 +8,13 @@
 {
     <li><a class="btn btn-success" asp-area="Blog" asp-controller="Articles" asp-action="Create">Add Article</a></li>
 }
-@foreach (var article in Model.OrderBy(a => a.PublishDate))
+@foreach (var article in Model.OrderByDescending(a => a.PublishDate))
 {
     <article>
         <h2>@article.Title</h2>
         <p>@article.Content</p>
-        <h3>From @article.PublishDate</h3>
+        <h4>Published: @($"{article.PublishDate.DayOfWeek}, {article.PublishDate.Month}/{article.PublishDate.Day}/{article.PublishDate.Year}")</h4>
+        <h4>Author: @($"{article.Author.Name} ({article.Author.UserName})")</h4>
     </article>
     <hr />
 }

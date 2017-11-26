@@ -55,7 +55,7 @@ namespace LearningSystem.Web.Areas.Admin.Controllers
 
             TempData.AddSuccessMessage($"SUCCESS! Course {model.Name} added successully.");
 
-            return this.RedirectToAction(nameof(HomeController.Index), "Home");
+            return this.Redirect("/");
         }
 
         private async Task<IEnumerable<SelectListItem>> GetTrainers()

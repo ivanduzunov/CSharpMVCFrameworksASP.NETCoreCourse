@@ -12,8 +12,7 @@ using LearningSystem.Web.Infrastructure.Extentions;
 
 namespace LearningSystem.Web.Areas.Blog.Controllers
 {
-    [Area("Blog")]
-    [Authorize]
+    [Area("Blog")]  
     public class ArticlesController : Controller
     {
         private readonly IArticlesService articles;
@@ -25,11 +24,17 @@ namespace LearningSystem.Web.Areas.Blog.Controllers
             this.users = users;
         }
 
-
+        [Authorize]
         public async Task<IActionResult> Index()
-        => View(await this.articles.All()); //todo: show the author in the view
+        {
+            var result = await this.articles.All();
+
+            return View(result);
+        }
+       
 
         //todo: Make Authorize only for BlogAuthor role
+        [Authorize(Roles = WebConstants.BlogAuthorRole)]
         public async Task<IActionResult> Create()
         {
             return View(new AddArticleFormModel
@@ -39,6 +44,7 @@ namespace LearningSystem.Web.Areas.Blog.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = WebConstants.BlogAuthorRole)]
         public async Task<IActionResult> Create(AddArticleFormModel model)
         {
             if (!ModelState.IsValid)
@@ -52,7 +58,7 @@ namespace LearningSystem.Web.Areas.Blog.Controllers
                 (model.Title,
                model.Content,
                model.PublishDate,
-               author.Id);
+               author);
 
             TempData.AddSuccessMessage($"Congratulations, {author.UserName}! Article {model.Title} added successully.");
 

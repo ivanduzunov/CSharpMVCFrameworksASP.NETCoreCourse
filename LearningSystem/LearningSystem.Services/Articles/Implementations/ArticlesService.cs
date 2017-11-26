@@ -30,14 +30,14 @@ namespace LearningSystem.Services.Articles.Implementations
         public async Task CreateAsync(string title, 
             string content, 
             DateTime publishDate, 
-            string authorId)
+            User author)
         {
             var article = new Article
             {
                 Title = title,
                 Content = content,
                 PublishDate = publishDate,
-                AuthorId = authorId
+                Author = author
             };
 
             this.db.Articles.Add(article);
