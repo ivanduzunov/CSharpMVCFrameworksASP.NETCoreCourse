@@ -15,10 +15,16 @@
 
 @if (!Model.UserIsSigned)
 {
-    <a  class="btn btn-success" asp-area="" asp-controller="Courses" asp-action="SignIn" asp-route-id="@Model.Id">Sign in to course</a>
+    <form  asp-action="SignIn" asp-route-id="@Model.Id">
+        <input type="submit" class="btn btn-success" value="Sign In" />
+    </form>
+
 }
 else
 {
-    <a class="btn btn-danger" asp-area="" asp-controller="Courses" asp-action="SignOut" asp-route-id="@Model.Id">Sign out from the course</a>
+    <form asp-action="SignOut" asp-route-id="@Model.Id">
+        <input type="submit" class="btn btn-danger" value="Sign Out" />
+    </form>
+    
 }
 

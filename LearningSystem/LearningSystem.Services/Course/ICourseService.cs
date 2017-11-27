@@ -13,8 +13,10 @@ namespace LearningSystem.Services.Course
 
         Task<CourseDetailsServiceModel> Details(int id, string userId);
 
-        void SignIn(string userId, int courseId);
+        Task<bool> SignInUser(int courseId, string userId);
 
-        void SignOut(string userId, int courseId);
+        Task<bool> SignOutUser(int courseId, string userId);
+
+        Task<bool> UserIsSignedInCourse(int courseId, string userId);
     }
 }

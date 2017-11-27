@@ -37,12 +37,16 @@ namespace LearningSystem.Web.Controllers
         }
 
         [Authorize]
-   
+        [HttpPost]
         public async Task<IActionResult> SignIn(int id)
         {
-            var currentUser = await users.GetUserAsync(HttpContext.User);
+            var currentUserId = users.GetUserId(User);
 
-            this.courses.SignIn(currentUser.Id, id);
+            var success = await this.courses.SignInUser(id, currentUserId);
+            if (!success)
+            {
+                return BadRequest();
+            }
 
             TempData.AddSuccessMessage($"SUCCESS! You Sign In in the course. Good Luck!");
 
@@ -50,14 +54,14 @@ namespace LearningSystem.Web.Controllers
         }
 
         [Authorize]
-     
+        [HttpPost]
         public async Task<IActionResult> SignOut(int id)
         {
             var currentUser = await users.GetUserAsync(HttpContext.User);
 
-            this.courses.SignOut(currentUser.Id, id);
+            var result = await this.courses.SignOutUser(id, currentUser.Id);
 
-            TempData.AddSuccessMessage($"SUCCESS! You Sign Out from the course.");
+            TempData.AddSuccessMessage($"SUCCESS! You Sign Out from the course. Good Luck from now on!");
 
             return Redirect("/");
         }

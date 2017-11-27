@@ -31,7 +31,9 @@ namespace LearningSystem.Services.Course.Implementations
             var user = await this.db.Users.FindAsync(userId);
 
             var course = this.db.Courses.Where(c => c.Id == id).FirstOrDefault();
-            var isSigned = user.Courses.Where(c => c.CourseId == id && c.StudentId == userId).FirstOrDefault() != null;
+
+            bool isSigned = await UserIsSignedInCourse(id, userId);
+
             var trainer = await this.db.Users.FindAsync(course.TrainerId);
 
             return new CourseDetailsServiceModel()
@@ -46,29 +48,66 @@ namespace LearningSystem.Services.Course.Implementations
             };
         }
 
-        public void SignIn(string userId, int courseId)
+        public async Task<bool> SignInUser(int courseId, string userId)
         {
-            var course = this.db.Courses.Where(c => c.Id == courseId).FirstOrDefault();
+            var courseInfo = await this.db.Courses
+                .Where(c => c.Id == courseId)
+                .Select(c => new
+                {
+                    c.StartDate,
+                    UserIdSignedIn = c.Students.Any(s => s.StudentId == userId)
+                })
+                .FirstOrDefaultAsync();
 
-            var courseToAdd = new StudentCourse { StudentId = userId, CourseId = courseId };
+            if (courseInfo.StartDate < DateTime.UtcNow
+                || courseInfo.UserIdSignedIn)
+            {
+                return false;
+            }
 
-            var user = this.db.Users.Where(c => c.Id == userId).FirstOrDefault();
+            var studentCourse = new StudentCourse
+            {
+                CourseId = courseId,
+                StudentId = userId
+            };
+            this.db.Add(studentCourse);
 
-            user.Courses.Add(courseToAdd);
-            db.SaveChanges();
+            await this.db.SaveChangesAsync();
+
+            return true;
         }
 
-        public void SignOut(string userId, int courseId)
+        public async Task<bool> SignOutUser(int courseId, string userId)
         {
-            var course = this.db.Courses.Where(c => c.Id == courseId).FirstOrDefault();
-            var user = this.db.Users.Where(c => c.Id == userId).FirstOrDefault();
+            var courseInfo = await this.db.Courses
+                 .Where(c => c.Id == courseId)
+                 .Select(c => new
+                 {
+                     c.StartDate,
+                     UserIdSignedIn = c.Students.Any(s => s.StudentId == userId)
+                 })
+                 .FirstOrDefaultAsync();
 
-            var courseToRemove = course.Students.Where(s => s.StudentId == userId && s.CourseId == courseId).FirstOrDefault();
+            if (courseInfo == null ||
+                courseInfo.StartDate < DateTime.UtcNow)
+            {
+                return false;
+            }
+            //IDIOT WAY TO DO IT !!!
+            var studentInCourse = await this.db
+                 .FindAsync(typeof(StudentCourse),
+                 userId,
+                 courseId);
 
-            course.Students.Remove(courseToRemove);
-            user.Courses.Remove(courseToRemove);
+            this.db.Remove(studentInCourse);
+            await this.db.SaveChangesAsync();
 
-            db.SaveChanges();
+            return true;
         }
+
+        public async Task<bool> UserIsSignedInCourse(int courseId, string userId)
+        => await this.db
+            .Courses
+            .AnyAsync(c => c.Id == courseId && c.Students.Any(s => s.StudentId == userId));
     }
 }
