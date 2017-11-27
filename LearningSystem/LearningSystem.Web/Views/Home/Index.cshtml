@@ -18,14 +18,14 @@
     <h4>End Date:@($"{course.EndDate.Month}/{course.EndDate.Day}/{course.EndDate.Year}")</h4>
     <h4>Duration: @((course.EndDate - course.StartDate).TotalDays) days</h4>
     <p>@course.Description</p>
-   
+
     <h4>Trainer: @($"{course.Trainer.Name} ({course.Trainer.UserName})")</h4>
 
 
 
-    @if (!User.IsInRole(WebConstants.TrainerRole) && SignInManager.IsSignedIn(User))
+    @if (SignInManager.IsSignedIn(User))
     {
-        <a class="btn btn-success" asp-area="" asp-controller="Courses" asp-action="Details">Details</a>
+        <a class="btn btn-success" asp-area="" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">Details</a>
     }
     <hr />
 }

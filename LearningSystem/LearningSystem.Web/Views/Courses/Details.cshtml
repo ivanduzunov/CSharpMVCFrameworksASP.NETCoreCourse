@@ -1,0 +1,24 @@
+﻿@model CourseDetailsServiceModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.Name</h1>
+<hr />
+
+
+<h4>Start Date:@($"{Model.StartDate.Month}/{Model.StartDate.Day}/{Model.StartDate.Year}")</h4>
+<h4>End Date:@($"{Model.EndDate.Month}/{Model.EndDate.Day}/{Model.EndDate.Year}")</h4>
+<h4>Duration: @((Model.EndDate - Model.StartDate).TotalDays) days</h4>
+<h3>@Model.Description</h3>
+<h4>Trainer: @Model.Trainer.Name (@Model.Trainer.UserName)</h4>
+
+@if (!Model.UserIsSigned)
+{
+    <a  class="btn btn-success" asp-area="" asp-controller="Courses" asp-action="SignIn" asp-route-id="@Model.Id">Sign in to course</a>
+}
+else
+{
+    <a class="btn btn-danger" asp-area="" asp-controller="Courses" asp-action="SignOut" asp-route-id="@Model.Id">Sign out from the course</a>
+}
+

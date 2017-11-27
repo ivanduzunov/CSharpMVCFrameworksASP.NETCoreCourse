@@ -9,6 +9,12 @@ namespace LearningSystem.Services.Course
 {
     public interface ICourseService
     {
-        Task <IEnumerable<CourseListingServiceModel>> All();
+        Task<IEnumerable<CourseListingServiceModel>> All();
+
+        Task<CourseDetailsServiceModel> Details(int id, string userId);
+
+        void SignIn(string userId, int courseId);
+
+        void SignOut(string userId, int courseId);
     }
 }
