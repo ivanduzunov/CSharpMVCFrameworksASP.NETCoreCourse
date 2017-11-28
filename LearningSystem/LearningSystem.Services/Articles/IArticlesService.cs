@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace LearningSystem.Services.Articles
 {
+    using Data.Models;
+
     public interface IArticlesService
     {
         Task<IEnumerable<ArticlesListServiceModel>> All();
