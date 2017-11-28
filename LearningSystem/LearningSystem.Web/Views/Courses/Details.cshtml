@@ -13,18 +13,22 @@
 <h3>@Model.Description</h3>
 <h4>Trainer: @Model.Trainer.Name (@Model.Trainer.UserName)</h4>
 
-@if (!Model.UserIsSigned)
+@if (@Model.Trainer.UserName == User.Identity.Name)
+{
+<a class="btn btn-default" asp-area="" asp-controller="Trainer" asp-action="CourseDetails" asp-route-id="@Model.Id">Trainer Tools</a>
+}
+else if (!Model.UserIsSigned)
 {
     <form  asp-action="SignIn" asp-route-id="@Model.Id">
         <input type="submit" class="btn btn-success" value="Sign In" />
     </form>
-
 }
+
 else
 {
     <form asp-action="SignOut" asp-route-id="@Model.Id">
         <input type="submit" class="btn btn-danger" value="Sign Out" />
-    </form>
-    
+    </form>  
 }
+
 

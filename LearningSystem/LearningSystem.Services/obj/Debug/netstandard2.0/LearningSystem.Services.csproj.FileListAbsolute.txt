@@ -11,3 +11,5 @@ C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCo
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\LearningSystem.Data.pdb
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\obj\Debug\netstandard2.0\LearningSystem.Services.dll
 C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\obj\Debug\netstandard2.0\LearningSystem.Services.pdb
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\Users\Ivan\Documents\Visual Studio 2017\Projects\CSharpMVCFrameworksASP.NETCoreCourse\LearningSystem\LearningSystem.Services\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Mvc.ViewFeatures.xml
