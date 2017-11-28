@@ -5,6 +5,12 @@
 <h2>@ViewData["Title"]</h2>
 <hr />
 <h3>@Model.Name - @Model.Birthdate.ToShortDateString()</h3>
+
+@if (Model.UserName == User.Identity.Name)
+{
+    <a class="btn btn-success" asp-area="" asp-controller="Manage" asp-action="Index">Edit Profile</a>
+}
+<br />
 <table class="table table-bordered table-bordered table-hover">
     <thead>
         <tr>
