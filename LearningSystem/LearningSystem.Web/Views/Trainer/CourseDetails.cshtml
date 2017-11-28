@@ -1,0 +1,43 @@
+﻿@model CourseDetailsTrainerServiceView
+@{
+    ViewData["Title"] = $"{Model.Name} course trainer tool";
+}
+<h2>@ViewData["Title"]</h2>
+<h4>@($"From {Model.StartDate.ToShortDateString()} to {Model.EndDate.ToShortDateString()}")</h4>
+<hr />
+<br />
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Student
+            </th>
+            <th>
+                Grade
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>
+                    @student.UserName
+                </td>
+                <td>
+                    <form asp-controller="Trainer" asp-action="AddGrade" method="post">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <input type="hidden" name="Grade" value="@student.Grade" />
+                                <select name="Grade" asp-items="@Html.GetEnumSelectList<Grade>()" class="form-control"></select>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="btn btn-sm btn-primary" type="submit" value="Assign Grade" />
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

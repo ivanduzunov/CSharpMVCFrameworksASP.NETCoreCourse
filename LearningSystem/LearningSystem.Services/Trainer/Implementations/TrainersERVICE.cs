@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LearningSystem.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LearningSystem.Services.Trainer.Implementations
 {
@@ -21,29 +22,29 @@ namespace LearningSystem.Services.Trainer.Implementations
 
         public async Task<CourseDetailsTrainerServiceView> CourseDetailsAsync(int id)
         {
-            IEnumerable<SelectListItem> grades = null;
-
-            var gradesEnum =  Enum.GetValues(typeof(Grade));
-            foreach (var item in grades)
-            {
-                
-            }
-            .ForEach(t => new SelectListItem
-            {
-                Text = t.UserName,
-                Value = t.Id
-            }).ToList();
+            var course = await this.db
+                .Courses
+                .FindAsync(id);
 
             var students = await this.db
                 .Users.Where(u => u.Courses.Any(c => c.CourseId == id))
                 .Select(s => new StudentGradeTrainerServiceView
                 {
-                    UserName = s.UserName,
-                    Grades = new SelectListItem
-                    {
-                        Text = Enum.GetNames(Grade)
-                    }
-                }).ToListAsync();
+                    Id = id,
+                    UserName = s.UserName,             
+                })
+                .ToListAsync();
+
+            var result = new CourseDetailsTrainerServiceView
+            {
+                Id = id,
+                Name = course.Name,
+                StartDate = course.StartDate,
+                EndDate = course.EndDate,
+                Students = students
+            };
+
+            return result;
 
         }
     }

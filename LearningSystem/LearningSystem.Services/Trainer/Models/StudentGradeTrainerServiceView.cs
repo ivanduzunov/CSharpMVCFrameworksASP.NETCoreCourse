@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using LearningSystem.Data.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,6 @@ namespace LearningSystem.Services.Trainer.Models
 
         public string UserName { get; set; }
 
-        public IEnumerable<SelectListItem> Grades { get; set; }
+        public Grade Grade { get; set; }
     }
 }

@@ -22,6 +22,8 @@ using LearningSystem.Services.Course;
 using LearningSystem.Services.Course.Implementations;
 using LearningSystem.Services.User;
 using LearningSystem.Services.User.Implementations;
+using LearningSystem.Services.Trainer;
+using LearningSystem.Services.Trainer.Implementations;
 
 namespace LearningSystem.Web
 {
@@ -69,6 +71,8 @@ namespace LearningSystem.Web
             services.AddTransient<ICourseService, CourseService>();
 
             services.AddTransient<IUserSevice, UserService>();
+
+            services.AddTransient<ITrainerService, TrainerService>();
 
             services.AddMvc(options =>
             {
