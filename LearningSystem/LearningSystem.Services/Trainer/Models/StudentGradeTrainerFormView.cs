@@ -6,11 +6,13 @@ using System.Text;
 
 namespace LearningSystem.Services.Trainer.Models
 {
-    public class StudentGradeTrainerServiceView
+    public class StudentGradeTrainerFormView
     {
-        public int Id { get; set; }
+        public string Username { get; set; }
 
-        public string UserName { get; set; }
+        public string UserId { get; set; }
+
+        public int CourseId { get; set; }
 
         public Grade Grade { get; set; }
     }

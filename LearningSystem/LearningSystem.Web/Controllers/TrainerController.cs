@@ -10,6 +10,7 @@ namespace LearningSystem.Web.Controllers
     using Data.Models;
     using LearningSystem.Services.Trainer;
     using LearningSystem.Services.Trainer.Models;
+    using LearningSystem.Web.Infrastructure.Extentions;
     using Microsoft.AspNetCore.Authorization;
 
     public class TrainerController : Controller
@@ -31,11 +32,13 @@ namespace LearningSystem.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddGrade(StudentGradeTrainerServiceView model)
+        public async Task<IActionResult> AddGrade(Grade grade, int courseId, string userId)
         {
-            //receive null value of the model
-            //ee how Kenov did it with the asigning users to role and fix it
-            return null;
+            await this.trainers.AddGrade(grade, courseId, userId);
+
+            TempData.AddSuccessMessage($"SUCCESS! Grade added!");
+
+            return Redirect($"/trainer/CourseDetails/{courseId}");
         }
     }
 }

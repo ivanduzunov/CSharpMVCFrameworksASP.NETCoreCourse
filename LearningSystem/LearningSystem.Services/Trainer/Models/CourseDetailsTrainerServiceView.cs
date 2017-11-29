@@ -17,6 +17,6 @@ namespace LearningSystem.Services.Trainer.Models
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
 
-        public IEnumerable<StudentGradeTrainerServiceView> Students { get; set; }
+        public IEnumerable<StudentGradeTrainerFormView> Students { get; set; }
     }
 }

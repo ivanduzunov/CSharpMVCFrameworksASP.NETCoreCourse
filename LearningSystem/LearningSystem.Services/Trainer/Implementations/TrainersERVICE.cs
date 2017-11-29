@@ -20,6 +20,22 @@ namespace LearningSystem.Services.Trainer.Implementations
             this.db = db;
         }
 
+        public async Task<bool> AddGrade(Grade grade, int courseId, string userId)
+        {
+            if (userId == null)
+            {
+                return false;
+            }
+
+            var studentInCourse = await this.db.FindAsync<StudentCourse>(userId, courseId);
+
+            studentInCourse.Grade = grade;
+
+            await this.db.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<CourseDetailsTrainerServiceView> CourseDetailsAsync(int id)
         {
             var course = await this.db
@@ -28,10 +44,11 @@ namespace LearningSystem.Services.Trainer.Implementations
 
             var students = await this.db
                 .Users.Where(u => u.Courses.Any(c => c.CourseId == id))
-                .Select(s => new StudentGradeTrainerServiceView
+                .Select(s => new StudentGradeTrainerFormView
                 {
-                    Id = id,
-                    UserName = s.UserName,             
+                    UserId = s.Id,
+                    CourseId = id,
+                    Username = s.UserName,
                 })
                 .ToListAsync();
 
