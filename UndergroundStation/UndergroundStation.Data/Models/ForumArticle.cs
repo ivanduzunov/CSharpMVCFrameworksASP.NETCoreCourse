@@ -30,9 +30,9 @@
 
         public ForumTheme ForumTheme { get; set; }
 
-        public int AnswerArticleId { get; set; }
+        public int? MotherArticleId { get; set; }
 
-        public ForumArticle AnswerArticle { get; set; }
+        public ForumArticle MotherArticle { get; set; }
 
         public List<ForumArticle> Answers { get; set; } = new List<ForumArticle>();
     }

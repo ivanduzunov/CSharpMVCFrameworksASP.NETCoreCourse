@@ -22,11 +22,11 @@
 
         public DateTime PublishedDate { get; set; }
 
-        public int ArtistId { get; set; }
+        public int? ArtistId { get; set; }
 
         public Artist Artist { get; set; }
 
-        public int MusicVideoId { get; set; }
+        public int? MusicVideoId { get; set; }
 
         public MusicVideo MusicVideo { get; set; }
 
@@ -34,7 +34,7 @@
 
         public User Author { get; set; }
 
-        public int AnswerCommentId { get; set; }
+        public int? AnswerCommentId { get; set; }
 
         public Comment AnswerComment { get; set; }
 

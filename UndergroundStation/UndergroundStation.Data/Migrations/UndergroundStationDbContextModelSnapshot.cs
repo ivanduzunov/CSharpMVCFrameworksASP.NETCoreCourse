@@ -154,9 +154,9 @@ namespace UndergroundStation.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AnswerCommentId");
+                    b.Property<int?>("AnswerCommentId");
 
-                    b.Property<int>("ArtistId");
+                    b.Property<int?>("ArtistId");
 
                     b.Property<string>("AuthorId");
 
@@ -164,7 +164,7 @@ namespace UndergroundStation.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(400);
 
-                    b.Property<int>("MusicVideoId");
+                    b.Property<int?>("MusicVideoId");
 
                     b.Property<DateTime>("PublishedDate");
 
@@ -190,8 +190,6 @@ namespace UndergroundStation.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AnswerArticleId");
-
                     b.Property<string>("AuthorId");
 
                     b.Property<string>("Content")
@@ -199,6 +197,8 @@ namespace UndergroundStation.Data.Migrations
                         .HasMaxLength(400);
 
                     b.Property<int>("ForumThemeId");
+
+                    b.Property<int?>("MotherArticleId");
 
                     b.Property<DateTime>("PublishedDate");
 
@@ -208,11 +208,11 @@ namespace UndergroundStation.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnswerArticleId");
-
                     b.HasIndex("AuthorId");
 
                     b.HasIndex("ForumThemeId");
+
+                    b.HasIndex("MotherArticleId");
 
                     b.ToTable("ForumArticles");
                 });
@@ -409,12 +409,11 @@ namespace UndergroundStation.Data.Migrations
                     b.HasOne("UndergroundStation.Data.Models.Comment", "AnswerComment")
                         .WithMany("Answers")
                         .HasForeignKey("AnswerCommentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("UndergroundStation.Data.Models.Artist", "Artist")
                         .WithMany("Comments")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ArtistId");
 
                     b.HasOne("UndergroundStation.Data.Models.User", "Author")
                         .WithMany("Comments")
@@ -423,16 +422,11 @@ namespace UndergroundStation.Data.Migrations
                     b.HasOne("UndergroundStation.Data.Models.MusicVideo", "MusicVideo")
                         .WithMany("Comments")
                         .HasForeignKey("MusicVideoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("UndergroundStation.Data.Models.ForumArticle", b =>
                 {
-                    b.HasOne("UndergroundStation.Data.Models.ForumArticle", "AnswerArticle")
-                        .WithMany("Answers")
-                        .HasForeignKey("AnswerArticleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("UndergroundStation.Data.Models.User", "Author")
                         .WithMany("ForumArticles")
                         .HasForeignKey("AuthorId");
@@ -440,7 +434,12 @@ namespace UndergroundStation.Data.Migrations
                     b.HasOne("UndergroundStation.Data.Models.ForumTheme", "ForumTheme")
                         .WithMany("Articles")
                         .HasForeignKey("ForumThemeId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("UndergroundStation.Data.Models.ForumArticle", "MotherArticle")
+                        .WithMany("Answers")
+                        .HasForeignKey("MotherArticleId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("UndergroundStation.Data.Models.MusicVideo", b =>

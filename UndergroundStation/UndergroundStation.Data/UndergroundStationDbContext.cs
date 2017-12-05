@@ -8,7 +8,8 @@
     {
         public UndergroundStationDbContext(DbContextOptions<UndergroundStationDbContext> options)
             : base(options)
-        {}
+        {
+        }
 
         public DbSet<Artist> Artists { get; set; }
 
@@ -44,7 +45,8 @@
                 .HasMany(c => c.Answers)
                 .WithOne(a => a.AnswerComment)
                 .HasForeignKey(a => a.AnswerCommentId)
-                 .OnDelete(DeleteBehavior.Cascade);
+                 .OnDelete(DeleteBehavior.Restrict)
+                 .IsRequired(false);
 
             builder.Entity<Comment>()
                 .HasOne(c => c.Author)
@@ -55,20 +57,23 @@
             builder.Entity<MusicVideo>()
                 .HasMany(mv => mv.Comments)
                 .WithOne(c => c.MusicVideo)
-                .HasForeignKey(c => c.MusicVideoId);
+                .HasForeignKey(c => c.MusicVideoId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             //The Forum Theme has many foorum articles
             builder.Entity<ForumTheme>()
                 .HasMany(ft => ft.Articles)
                 .WithOne(a => a.ForumTheme)
-                .HasForeignKey(a => a.ForumThemeId);
+                .HasForeignKey(a => a.ForumThemeId)
+                .OnDelete(DeleteBehavior.Restrict); 
 
             //The ForumArticle has many answers
             builder.Entity<ForumArticle>()
                 .HasMany(fa => fa.Answers)
-                .WithOne(a => a.AnswerArticle)
-                .HasForeignKey(a => a.AnswerArticleId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .WithOne(a => a.MotherArticle)
+                .HasForeignKey(a => a.MotherArticleId)
+               .OnDelete(DeleteBehavior.Restrict)
+                 .IsRequired(false);
 
             //Likes
             builder.Entity<UserArticleLike>()
