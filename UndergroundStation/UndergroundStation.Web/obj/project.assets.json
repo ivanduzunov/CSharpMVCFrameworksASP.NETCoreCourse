@@ -13233,11 +13233,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\UndergroundStation\\UndergroundStation.Web\\UndergroundStation.Web.csproj",
+      "projectUniqueName": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Web\\UndergroundStation.Web.csproj",
       "projectName": "UndergroundStation.Web",
-      "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\UndergroundStation\\UndergroundStation.Web\\UndergroundStation.Web.csproj",
+      "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Web\\UndergroundStation.Web.csproj",
       "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\UndergroundStation\\UndergroundStation.Web\\obj\\",
+      "outputPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13256,11 +13256,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\UndergroundStation\\UndergroundStation.Data\\UndergroundStation.Data.csproj": {
-              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\UndergroundStation\\UndergroundStation.Data\\UndergroundStation.Data.csproj"
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Data\\UndergroundStation.Data.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Data\\UndergroundStation.Data.csproj"
             },
-            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\UndergroundStation\\UndergroundStation.Common\\UndergroundStation.Common.csproj": {
-              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\UndergroundStation\\UndergroundStation.Common\\UndergroundStation.Common.csproj"
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Common\\UndergroundStation.Common.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Common\\UndergroundStation.Common.csproj"
             }
           }
         }

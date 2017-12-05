@@ -9,7 +9,7 @@ namespace UndergroundStation.Web.Infrastructure
     {
         public const string AdministratorRole = "Administrator";
         public const string AuthorRole = "Author";
-        public const string PublisherRole = "Publisher";
+        public const string ForumModeratorRole = "ForumModerator";
 
         public const string TempDataSuccessMessageKey = "SuccessMessage";
         public const string TempDataErrorMessageKey = "ErrorMessage";
