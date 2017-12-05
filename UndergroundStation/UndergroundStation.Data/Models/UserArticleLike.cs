@@ -1,8 +1,8 @@
 ﻿namespace UndergroundStation.Data.Models
 {
-    public class UserLike
+    public class UserArticleLike
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public User User { get; set; }
 

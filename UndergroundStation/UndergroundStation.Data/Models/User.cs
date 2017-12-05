@@ -5,14 +5,12 @@
 
     public class User : IdentityUser
     {
-        public string AvatarUrl { get; set; }
+        public List<UserArticleLike> Likes { get; set; } = new List<UserArticleLike>();
 
-        public List<UserLike> Likes { get; set; } = new List<UserLike>();
-
-        public List<UserUnlike> Unlikes { get; set; } = new List<UserUnlike>();
+        public List<UserArticleUnlike> Unlikes { get; set; } = new List<UserArticleUnlike>();
 
         public List<ForumArticle> ForumArticles { get; set; } = new List<ForumArticle>();
 
-        public List<Comment> ForumComments { get; set; } = new List<Comment>();
+        public List<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

@@ -2,19 +2,38 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
-    public  class ForumArticle
+    using static DataConstants;
+
+    public class ForumArticle
     {
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(ForumArticleTitleMinLenght)]
+        [MaxLength(ForumArticleTitleMaxLenght)]
         public string Title { get; set; }
+
+        [Required]
+        [MinLength(ForumArticleContentMinLenght)]
+        [MaxLength(ForumArticleContentMaxLenght)]
+        public string Content { get; set; }
 
         public DateTime PublishedDate { get; set; }
 
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
 
         public User Author { get; set; }
 
-        public List<Comment> Answers { get; set; } = new List<Comment>();
+        public int ForumThemeId { get; set; }
+
+        public ForumTheme ForumTheme { get; set; }
+
+        public int AnswerArticleId { get; set; }
+
+        public ForumArticle AnswerArticle { get; set; }
+
+        public List<ForumArticle> Answers { get; set; } = new List<ForumArticle>();
     }
 }

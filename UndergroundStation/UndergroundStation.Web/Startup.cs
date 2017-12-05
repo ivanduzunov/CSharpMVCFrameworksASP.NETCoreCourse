@@ -26,7 +26,14 @@
             services.AddDbContext<UndergroundStationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+            })
+
                 .AddEntityFrameworkStores<UndergroundStationDbContext>()
                 .AddDefaultTokenProviders();
 

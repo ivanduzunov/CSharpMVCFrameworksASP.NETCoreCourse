@@ -12,9 +12,10 @@ using UndergroundStation.Data.Models;
 namespace UndergroundStation.Data.Migrations
 {
     [DbContext(typeof(UndergroundStationDbContext))]
-    partial class UndergroundStationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171205210102_TablesComlete")]
+    partial class TablesComlete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
