@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\UndergroundStation.Common\UndergroundStation.Common.csproj" />
     <ProjectReference Include="..\UndergroundStation.Data\UndergroundStation.Data.csproj" />
+    <ProjectReference Include="..\UndergroundStation.Services\UndergroundStation.Services.csproj" />
   </ItemGroup>
 
 </Project>

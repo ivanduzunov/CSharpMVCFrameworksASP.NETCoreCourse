@@ -29,7 +29,8 @@
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
           "UndergroundStation.Common": "1.0.0",
-          "UndergroundStation.Data": "1.0.0"
+          "UndergroundStation.Data": "1.0.0",
+          "UndergroundStation.Services": "1.0.0"
         },
         "runtime": {
           "UndergroundStation.Web.dll": {}
@@ -4123,6 +4124,18 @@
           "UndergroundStation.Data.dll": {}
         }
       },
+      "UndergroundStation.Services/1.0.0": {
+        "dependencies": {
+          "UndergroundStation.Common": "1.0.0",
+          "UndergroundStation.Data": "1.0.0"
+        },
+        "runtime": {
+          "UndergroundStation.Services.dll": {}
+        },
+        "compile": {
+          "UndergroundStation.Services.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.0.0": {
         "dependencies": {
           "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
@@ -6455,6 +6468,11 @@
       "sha512": ""
     },
     "UndergroundStation.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UndergroundStation.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

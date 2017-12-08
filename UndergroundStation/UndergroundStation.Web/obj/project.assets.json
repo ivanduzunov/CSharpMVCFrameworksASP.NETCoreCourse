@@ -5100,6 +5100,20 @@
         "runtime": {
           "bin/placeholder/UndergroundStation.Data.dll": {}
         }
+      },
+      "UndergroundStation.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "UndergroundStation.Common": "1.0.0",
+          "UndergroundStation.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UndergroundStation.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UndergroundStation.Services.dll": {}
+        }
       }
     }
   },
@@ -13211,6 +13225,11 @@
       "type": "project",
       "path": "../UndergroundStation.Data/UndergroundStation.Data.csproj",
       "msbuildProject": "../UndergroundStation.Data/UndergroundStation.Data.csproj"
+    },
+    "UndergroundStation.Services/1.0.0": {
+      "type": "project",
+      "path": "../UndergroundStation.Services/UndergroundStation.Services.csproj",
+      "msbuildProject": "../UndergroundStation.Services/UndergroundStation.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13221,7 +13240,8 @@
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
       "UndergroundStation.Common >= 1.0.0",
-      "UndergroundStation.Data >= 1.0.0"
+      "UndergroundStation.Data >= 1.0.0",
+      "UndergroundStation.Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -13257,6 +13277,9 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
+            "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Services\\UndergroundStation.Services.csproj": {
+              "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Services\\UndergroundStation.Services.csproj"
+            },
             "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Data\\UndergroundStation.Data.csproj": {
               "projectPath": "C:\\Users\\Ivan\\Documents\\Visual Studio 2017\\Projects\\CSharpMVCFrameworksASP.NETCoreCourse\\UndergroundStation\\UndergroundStation.Data\\UndergroundStation.Data.csproj"
             },

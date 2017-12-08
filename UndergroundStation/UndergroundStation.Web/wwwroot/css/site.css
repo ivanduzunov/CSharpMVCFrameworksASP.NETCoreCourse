@@ -2,9 +2,6 @@
     background-color: #C0C0C0 !important;
     border: 0;
 }
-.nav.navbar-nav.navbar-right li a {
-    color: black;
-}
 
 .navbar-brand {
     background: url(images/coollogo_com-17807119.png) no-repeat;
@@ -15,8 +12,13 @@
 }
 
 body {
+    color: black;
     padding-top: 50px;
     padding-bottom: 20px;
+    background: url('images/background.jpg') center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
 }
 
 /* Wrapping element */

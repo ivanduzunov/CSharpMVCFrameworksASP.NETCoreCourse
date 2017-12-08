@@ -10,7 +10,12 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-
+    using UndergroundStation.Services;
+    using UndergroundStation.Services.Implementations;
+    using UndergroundStation.Services.Admin;
+    using UndergroundStation.Services.Admin.Implementations;
+    using UndergroundStation.Services.Author;
+    using UndergroundStation.Services.Author.Implementations;
 
     public class Startup
     {
@@ -39,7 +44,11 @@
 
             services.AddAutoMapper();
 
-            //services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<INewsService, NewsService>();
+
+            services.AddTransient<IAdminUserService, AdminUserService>();
+
+            services.AddTransient<IAuthorArticleService, AuthorArticleService>();
 
             services.AddMvc();
         }
@@ -65,6 +74,10 @@
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                   name: "areas",
+                   template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

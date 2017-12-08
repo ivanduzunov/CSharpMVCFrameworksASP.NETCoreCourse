@@ -1,23 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using UndergroundStation.Web.Models;
-
-namespace UndergroundStation.Web.Controllers
+﻿namespace UndergroundStation.Web.Controllers
 {
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+    using UndergroundStation.Web.Models;
+    using UndergroundStation.Services;
+    using System.Threading.Tasks;
+    using Models.HomeViewModels;
+
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly INewsService news;
+
+        public HomeController(INewsService news)
         {
-            return View();
+            this.news = news;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var newsList = await news.AllNewsAsync();
+
+            return View(new NewsListingModel
+            {
+                News = newsList
+            });
         }
 
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-    }
+    }  
 }
+
