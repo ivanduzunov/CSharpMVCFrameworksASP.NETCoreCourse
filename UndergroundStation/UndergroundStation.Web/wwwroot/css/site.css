@@ -11,15 +11,6 @@
     width: 280px;
 }
 
-body {
-    color: black;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    background: url('images/background.jpg') center center fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: black;
-}
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */

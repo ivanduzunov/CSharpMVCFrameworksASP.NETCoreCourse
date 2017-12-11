@@ -21,6 +21,7 @@
 
         public string ImageUrl { get; set; }
 
+        [Display(Name = "YouTube Id")]
         public string VideoUrl { get; set; }
     }
 }

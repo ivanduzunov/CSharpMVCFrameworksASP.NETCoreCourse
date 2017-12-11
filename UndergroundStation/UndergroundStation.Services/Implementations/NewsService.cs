@@ -5,9 +5,12 @@
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using UndergroundStation.Data;
+    using AutoMapper;
+    using Data;
+    using Data.Models;
     using Models;
-   
+
+
     public class NewsService : INewsService
     {
         private readonly UndergroundStationDbContext db;
@@ -24,5 +27,12 @@
               .OrderByDescending(na => na.PublishedDate)
               .ToListAsync();
 
+        public async Task<NewsDetailsServiceModel> ByIdAsync(int id)
+                => await this.db
+                .NewsArticles
+                .Where(a => a.Id == id)
+                .ProjectTo<NewsDetailsServiceModel>()
+                .FirstOrDefaultAsync();
+        
     }
 }

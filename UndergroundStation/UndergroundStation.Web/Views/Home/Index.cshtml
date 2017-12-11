@@ -12,7 +12,9 @@
 
 @if (User.IsInRole(WebConstants.AuthorRole))
 {
+    <br />
     <a class="btn btn-default" href="/author/articles/create">Add Article</a>
+    <br />
     <br />
 }
 
@@ -26,18 +28,13 @@
             <li data-target="#myCarousel" data-slide-to="2"></li>
             <li data-target="#myCarousel" data-slide-to="3"></li>
         </ol>
-
-
-
-
-
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="@(news[0].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200" />
                 <div class="carousel-caption" role="option">
-                    <p>
+                    <p style="border:groove; background-color:maroon">
                         @(news[0].Title)
-                        <a class="btn btn-success" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
+                        <a class="btn btn-success" href="@($"/articles/details/{news[0].Id}")">
                             Learn More
                         </a>
                     </p>
@@ -47,9 +44,9 @@
             <div class="item">
                 <img src="@(news[1].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200"  />
                 <div class="carousel-caption" role="option">
-                    <p>
+                    <p style="border:groove; background-color:maroon">
                         @(news[1].Title)
-                        <a class="btn btn-success" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
+                        <a class="btn btn-success" href="@($"/articles/details/{news[1].Id}")">
                             Learn More
                         </a>
                     </p>
@@ -59,9 +56,9 @@
             <div class="item">
                 <img src="@(news[2].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200"  />
                 <div class="carousel-caption" role="option">
-                    <p>
+                    <p style="border:groove; background-color:maroon">
                         @(news[2].Title)
-                        <a class="btn btn-success" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
+                        <a class="btn btn-success" href="@($"/articles/details/{news[2].Id}")">
                             Learn More
                         </a>
                     </p>
@@ -71,9 +68,9 @@
             <div class="item">
                 <img src="@(news[3].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200" />
                 <div class="carousel-caption" role="option">
-                    <p>
+                    <p style="border:groove; background-color:maroon">
                         @(news[3].Title)
-                        <a class="btn btn-success" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
+                        <a class="btn btn-success" href="@($"/articles/details/{news[3].Id}")">
                             Learn More
                         </a>
                     </p>
@@ -90,6 +87,19 @@
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+    </div>
+
+    <div class="jumbotron">
+        <h2>News</h2>
+        <ul class="list-group">
+            @foreach (var article in news)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="badge badge-primary badge-pill">@article.PublishedDate.ToShortDateString()</span>
+                    <a href="@($"/articles/details/{article.Id}")">@article.Title</a>                  
+                </li>
+            }
+        </ul>
     </div>
 }
 

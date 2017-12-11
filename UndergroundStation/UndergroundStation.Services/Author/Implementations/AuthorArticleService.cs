@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using Data;
     using Data.Models;
+    using System.Linq;
 
     public class AuthorArticleService : IAuthorArticleService
     {
@@ -19,12 +20,13 @@
             string imageUrl,
             string videoUrl)
         {
+
             var article = new NewsArticle
             {
                 Title = title,
                 Content = content,
                 ImageUrl = imageUrl,
-                VideoUrl = videoUrl,
+                VideoUrl = "https://www.youtube.com/embed/" + videoUrl, //this is just the id of the youtubeVideo
                 PublishedDate = DateTime.UtcNow
             };
 
@@ -32,5 +34,6 @@
 
             await this.db.SaveChangesAsync();
         }
+
     }
 }

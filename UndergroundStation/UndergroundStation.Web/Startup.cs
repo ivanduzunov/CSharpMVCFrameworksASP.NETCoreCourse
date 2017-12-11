@@ -10,12 +10,14 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.AspNetCore.Mvc.Filters;
     using UndergroundStation.Services;
     using UndergroundStation.Services.Implementations;
     using UndergroundStation.Services.Admin;
     using UndergroundStation.Services.Admin.Implementations;
     using UndergroundStation.Services.Author;
     using UndergroundStation.Services.Author.Implementations;
+    using Microsoft.AspNetCore.Mvc;
 
     public class Startup
     {
@@ -50,7 +52,10 @@
 
             services.AddTransient<IAuthorArticleService, AuthorArticleService>();
 
-            services.AddMvc();
+            services.AddMvc(options => 
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

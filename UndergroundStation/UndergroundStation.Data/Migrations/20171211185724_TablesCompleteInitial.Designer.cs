@@ -12,7 +12,7 @@ using UndergroundStation.Data.Models;
 namespace UndergroundStation.Data.Migrations
 {
     [DbContext(typeof(UndergroundStationDbContext))]
-    [Migration("20171205230453_TablesCompleteInitial")]
+    [Migration("20171211185724_TablesCompleteInitial")]
     partial class TablesCompleteInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,11 +137,11 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(800);
+                        .HasMaxLength(1000);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(100);
 
                     b.Property<int>("Style");
 
@@ -163,7 +163,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(400);
+                        .HasMaxLength(1000);
 
                     b.Property<int?>("MusicVideoId");
 
@@ -171,7 +171,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
@@ -195,7 +195,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(400);
+                        .HasMaxLength(3000);
 
                     b.Property<int>("ForumThemeId");
 
@@ -205,7 +205,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -225,11 +225,11 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(200);
+                        .HasMaxLength(2000);
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(80);
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
@@ -247,7 +247,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(30);
+                        .HasMaxLength(100);
 
                     b.Property<string>("Url")
                         .IsRequired();
@@ -266,7 +266,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(800);
+                        .HasMaxLength(4000);
 
                     b.Property<string>("ImageUrl");
 
@@ -274,7 +274,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(50);
+                        .HasMaxLength(200);
 
                     b.Property<string>("VideoUrl");
 

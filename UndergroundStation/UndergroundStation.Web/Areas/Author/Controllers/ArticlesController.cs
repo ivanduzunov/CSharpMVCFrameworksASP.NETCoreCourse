@@ -31,7 +31,7 @@
                 return BadRequest();
             }
 
-            var success = this.articles
+            await articles
                 .CreateAsync(model.Title,
                   model.Content,
                   model.ImageUrl,

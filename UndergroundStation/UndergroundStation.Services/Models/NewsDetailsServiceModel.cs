@@ -1,23 +1,16 @@
-﻿namespace UndergroundStation.Data.Models
+﻿namespace UndergroundStation.Services.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    using Data.Models;
+    using Common.Mapping;
 
-    using static DataConstants;
-
-    public class NewsArticle
+    public class NewsDetailsServiceModel : IMapFrom<NewsArticle>
     {
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(NewsArticleTitleMinLenght)]
-        [MaxLength(NewsArticleTitleMaxLenght)]
         public string Title { get; set; }
 
-        [Required]
-        [MinLength(NewsArticleContentMinLenght)]
-        [MaxLength(NewsArticleContentMaxLenght)]
         public string Content { get; set; }
 
         public string ImageUrl { get; set; }

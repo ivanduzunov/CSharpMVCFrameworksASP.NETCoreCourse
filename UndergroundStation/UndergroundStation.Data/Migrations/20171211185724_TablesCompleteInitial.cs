@@ -27,8 +27,8 @@ namespace UndergroundStation.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 800, nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    Description = table.Column<string>(maxLength: 1000, nullable: false),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
                     Style = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -42,8 +42,8 @@ namespace UndergroundStation.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 200, nullable: false),
-                    Title = table.Column<string>(maxLength: 80, nullable: false)
+                    Description = table.Column<string>(maxLength: 2000, nullable: false),
+                    Title = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,10 +56,10 @@ namespace UndergroundStation.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Content = table.Column<string>(maxLength: 800, nullable: false),
+                    Content = table.Column<string>(maxLength: 4000, nullable: false),
                     ImageUrl = table.Column<string>(nullable: true),
                     PublishedDate = table.Column<DateTime>(nullable: false),
-                    Title = table.Column<string>(maxLength: 50, nullable: false),
+                    Title = table.Column<string>(maxLength: 200, nullable: false),
                     VideoUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -75,7 +75,7 @@ namespace UndergroundStation.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ArtistId = table.Column<int>(nullable: false),
                     Style = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(maxLength: 30, nullable: false),
+                    Title = table.Column<string>(maxLength: 100, nullable: false),
                     Url = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -96,11 +96,11 @@ namespace UndergroundStation.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AuthorId = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(maxLength: 400, nullable: false),
+                    Content = table.Column<string>(maxLength: 3000, nullable: false),
                     ForumThemeId = table.Column<int>(nullable: false),
                     MotherArticleId = table.Column<int>(nullable: true),
                     PublishedDate = table.Column<DateTime>(nullable: false),
-                    Title = table.Column<string>(maxLength: 50, nullable: false)
+                    Title = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -182,10 +182,10 @@ namespace UndergroundStation.Data.Migrations
                     AnswerCommentId = table.Column<int>(nullable: true),
                     ArtistId = table.Column<int>(nullable: true),
                     AuthorId = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(maxLength: 400, nullable: false),
+                    Content = table.Column<string>(maxLength: 1000, nullable: false),
                     MusicVideoId = table.Column<int>(nullable: true),
                     PublishedDate = table.Column<DateTime>(nullable: false),
-                    Title = table.Column<string>(maxLength: 50, nullable: false)
+                    Title = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {

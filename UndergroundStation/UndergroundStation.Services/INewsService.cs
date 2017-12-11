@@ -7,5 +7,7 @@
     public interface INewsService
     {
         Task<IEnumerable<NewsListingServiceModel>> AllNewsAsync();
+
+        Task<NewsDetailsServiceModel> ByIdAsync(int id);
     }
 }

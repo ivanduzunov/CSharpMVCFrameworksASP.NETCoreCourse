@@ -1,0 +1,34 @@
+﻿@model NewsDetailsServiceModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+<div class="jumbotron jumbotron-fluid">
+    <h3>
+        @Model.Title
+    </h3>
+    <img src="@Model.ImageUrl" class="img-responsive" height="400" width="800">
+    <p>
+        @Model.Content
+    </p>
+    
+   @if (Model.VideoUrl != null)
+   {
+    <iframe width="570" height="325" 
+            src="@Model.VideoUrl" 
+            frameborder="1"
+            gesture="media" 
+            allow="encrypted-media" 
+            allowfullscreen ="true"></iframe>
+   }
+    
+</div>
+<div>
+    <h4>@($"Like: {Model.Likes.Count}")</h4>
+    <h4>@($"Unlike: {Model.Unlikes.Count}")</h4>
+</div>
+
+
+
+
+
+
