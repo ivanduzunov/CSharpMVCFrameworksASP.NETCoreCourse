@@ -28,7 +28,7 @@ namespace UndergroundStation.Data
         public const int NewsArticleTitleMaxLenght = 200;
 
         public const int NewsArticleContentMinLenght = 10;
-        public const int NewsArticleContentMaxLenght = 4000;
+        public const int NewsArticleContentMaxLenght = 6000;
 
         public const int ForumThemeTitleMinLenght = 5;
         public const int ForumThemeTitleMaxLenght = 100;

@@ -25,5 +25,7 @@
         public List<MusicVideo> Videos { get; set; } = new List<MusicVideo>();
 
         public List<Comment> Comments { get; set; } = new List<Comment>();
+
+        public List<Like> Likes { get; set; } = new List<Like>();
     }
 }

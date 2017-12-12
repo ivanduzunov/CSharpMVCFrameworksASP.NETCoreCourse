@@ -24,10 +24,8 @@
 
         public string VideoUrl { get; set; }
 
-        public List<UserArticleLike> Likes { get; set; }
-
-        public List<UserArticleUnlike> Unlikes { get; set; }
-
         public DateTime PublishedDate { get; set; }
+
+        public List<Like> Likes { get; set; } = new List<Like>();
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace UndergroundStation.Data.Migrations
 {
-    public partial class TablesCompleteInitial : Migration
+    public partial class InitialTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,7 +56,7 @@ namespace UndergroundStation.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Content = table.Column<string>(maxLength: 4000, nullable: false),
+                    Content = table.Column<string>(maxLength: 6000, nullable: false),
                     ImageUrl = table.Column<string>(nullable: true),
                     PublishedDate = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(maxLength: 200, nullable: false),
@@ -126,54 +126,6 @@ namespace UndergroundStation.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserNewsArticleLikes",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(nullable: false),
-                    ArticleId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserNewsArticleLikes", x => new { x.UserId, x.ArticleId });
-                    table.ForeignKey(
-                        name: "FK_UserNewsArticleLikes_NewsArticles_ArticleId",
-                        column: x => x.ArticleId,
-                        principalTable: "NewsArticles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserNewsArticleLikes_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserNewsArticleUnlikes",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(nullable: false),
-                    ArticleId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserNewsArticleUnlikes", x => new { x.UserId, x.ArticleId });
-                    table.ForeignKey(
-                        name: "FK_UserNewsArticleUnlikes_NewsArticles_ArticleId",
-                        column: x => x.ArticleId,
-                        principalTable: "NewsArticles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserNewsArticleUnlikes_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
@@ -212,6 +164,54 @@ namespace UndergroundStation.Data.Migrations
                         name: "FK_Comments_MusicVideos_MusicVideoId",
                         column: x => x.MusicVideoId,
                         principalTable: "MusicVideos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Likes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ArtistId = table.Column<int>(nullable: true),
+                    ForumArticleId = table.Column<int>(nullable: true),
+                    IsLiked = table.Column<bool>(nullable: false),
+                    MusicVideoId = table.Column<int>(nullable: true),
+                    NewsArticleId = table.Column<int>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Likes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Likes_Artists_ArtistId",
+                        column: x => x.ArtistId,
+                        principalTable: "Artists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Likes_ForumArticles_ForumArticleId",
+                        column: x => x.ForumArticleId,
+                        principalTable: "ForumArticles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Likes_MusicVideos_MusicVideoId",
+                        column: x => x.MusicVideoId,
+                        principalTable: "MusicVideos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Likes_NewsArticles_NewsArticleId",
+                        column: x => x.NewsArticleId,
+                        principalTable: "NewsArticles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Likes_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -266,19 +266,34 @@ namespace UndergroundStation.Data.Migrations
                 column: "MotherArticleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MusicVideos_ArtistId",
-                table: "MusicVideos",
+                name: "IX_Likes_ArtistId",
+                table: "Likes",
                 column: "ArtistId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserNewsArticleLikes_ArticleId",
-                table: "UserNewsArticleLikes",
-                column: "ArticleId");
+                name: "IX_Likes_ForumArticleId",
+                table: "Likes",
+                column: "ForumArticleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserNewsArticleUnlikes_ArticleId",
-                table: "UserNewsArticleUnlikes",
-                column: "ArticleId");
+                name: "IX_Likes_MusicVideoId",
+                table: "Likes",
+                column: "MusicVideoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_NewsArticleId",
+                table: "Likes",
+                column: "NewsArticleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_UserId",
+                table: "Likes",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MusicVideos_ArtistId",
+                table: "MusicVideos",
+                column: "ArtistId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_AspNetUserTokens_AspNetUsers_UserId",
@@ -299,22 +314,19 @@ namespace UndergroundStation.Data.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
+                name: "Likes");
+
+            migrationBuilder.DropTable(
                 name: "ForumArticles");
-
-            migrationBuilder.DropTable(
-                name: "UserNewsArticleLikes");
-
-            migrationBuilder.DropTable(
-                name: "UserNewsArticleUnlikes");
 
             migrationBuilder.DropTable(
                 name: "MusicVideos");
 
             migrationBuilder.DropTable(
-                name: "ForumThemes");
+                name: "NewsArticles");
 
             migrationBuilder.DropTable(
-                name: "NewsArticles");
+                name: "ForumThemes");
 
             migrationBuilder.DropTable(
                 name: "Artists");

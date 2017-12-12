@@ -235,6 +235,38 @@ namespace UndergroundStation.Data.Migrations
                     b.ToTable("ForumThemes");
                 });
 
+            modelBuilder.Entity("UndergroundStation.Data.Models.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("ArtistId");
+
+                    b.Property<int?>("ForumArticleId");
+
+                    b.Property<bool>("IsLiked");
+
+                    b.Property<int?>("MusicVideoId");
+
+                    b.Property<int?>("NewsArticleId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArtistId");
+
+                    b.HasIndex("ForumArticleId");
+
+                    b.HasIndex("MusicVideoId");
+
+                    b.HasIndex("NewsArticleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Likes");
+                });
+
             modelBuilder.Entity("UndergroundStation.Data.Models.MusicVideo", b =>
                 {
                     b.Property<int>("Id")
@@ -265,7 +297,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(4000);
+                        .HasMaxLength(6000);
 
                     b.Property<string>("ImageUrl");
 
@@ -331,32 +363,6 @@ namespace UndergroundStation.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("UndergroundStation.Data.Models.UserArticleLike", b =>
-                {
-                    b.Property<string>("UserId");
-
-                    b.Property<int>("ArticleId");
-
-                    b.HasKey("UserId", "ArticleId");
-
-                    b.HasIndex("ArticleId");
-
-                    b.ToTable("UserNewsArticleLikes");
-                });
-
-            modelBuilder.Entity("UndergroundStation.Data.Models.UserArticleUnlike", b =>
-                {
-                    b.Property<string>("UserId");
-
-                    b.Property<int>("ArticleId");
-
-                    b.HasKey("UserId", "ArticleId");
-
-                    b.HasIndex("ArticleId");
-
-                    b.ToTable("UserNewsArticleUnlikes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -442,37 +448,38 @@ namespace UndergroundStation.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("UndergroundStation.Data.Models.Like", b =>
+                {
+                    b.HasOne("UndergroundStation.Data.Models.Artist", "Atrist")
+                        .WithMany("Likes")
+                        .HasForeignKey("ArtistId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("UndergroundStation.Data.Models.ForumArticle", "ForumArtcle")
+                        .WithMany("Likes")
+                        .HasForeignKey("ForumArticleId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("UndergroundStation.Data.Models.MusicVideo")
+                        .WithMany("Likes")
+                        .HasForeignKey("MusicVideoId");
+
+                    b.HasOne("UndergroundStation.Data.Models.NewsArticle", "NewsArticle")
+                        .WithMany("Likes")
+                        .HasForeignKey("NewsArticleId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("UndergroundStation.Data.Models.User", "User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
             modelBuilder.Entity("UndergroundStation.Data.Models.MusicVideo", b =>
                 {
                     b.HasOne("UndergroundStation.Data.Models.Artist", "Artist")
                         .WithMany("Videos")
                         .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("UndergroundStation.Data.Models.UserArticleLike", b =>
-                {
-                    b.HasOne("UndergroundStation.Data.Models.NewsArticle", "Article")
-                        .WithMany("Likes")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("UndergroundStation.Data.Models.User", "User")
-                        .WithMany("Likes")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("UndergroundStation.Data.Models.UserArticleUnlike", b =>
-                {
-                    b.HasOne("UndergroundStation.Data.Models.NewsArticle", "Article")
-                        .WithMany("Unlikes")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("UndergroundStation.Data.Models.User", "User")
-                        .WithMany("Unlikes")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

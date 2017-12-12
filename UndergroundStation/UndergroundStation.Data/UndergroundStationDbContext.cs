@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using Models;
+    using Models.Likes;
 
     public class UndergroundStationDbContext : IdentityDbContext<User>
     {
@@ -23,9 +24,7 @@
 
         public DbSet<NewsArticle> NewsArticles { get; set; }
 
-        public DbSet<UserArticleLike> UserNewsArticleLikes { get; set; }
-
-        public DbSet<UserArticleUnlike> UserNewsArticleUnlikes { get; set; }
+        public DbSet<Like> Likes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -65,43 +64,44 @@
                 .HasMany(ft => ft.Articles)
                 .WithOne(a => a.ForumTheme)
                 .HasForeignKey(a => a.ForumThemeId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
 
             //The ForumArticle has many answers
             builder.Entity<ForumArticle>()
                 .HasMany(fa => fa.Answers)
                 .WithOne(a => a.MotherArticle)
                 .HasForeignKey(a => a.MotherArticleId)
-               .OnDelete(DeleteBehavior.Restrict)
+                .OnDelete(DeleteBehavior.Restrict)
                  .IsRequired(false);
 
             //Likes
-            builder.Entity<UserArticleLike>()
-                .HasKey(ul => new { ul.UserId, ul.ArticleId });
 
-            builder.Entity<UserArticleLike>()
-                .HasOne(ul => ul.User)
-                .WithMany(u => u.Likes)
-                .HasForeignKey(ul => ul.UserId);
+            builder.Entity<Like>()
+                .HasOne(l => l.Atrist)
+                .WithMany(a => a.Likes)
+                .HasForeignKey(l => l.ArtistId)
+                 .OnDelete(DeleteBehavior.Restrict)
+                 .IsRequired(false);
 
-            builder.Entity<UserArticleLike>()
-                .HasOne(ul => ul.Article)
-                .WithMany(u => u.Likes)
-                .HasForeignKey(ul => ul.ArticleId);
+            builder.Entity<Like>()
+                .HasOne(l => l.ForumArtcle)
+                .WithMany(fa => fa.Likes)
+                .HasForeignKey(l => l.ForumArticleId)
+                 .OnDelete(DeleteBehavior.Restrict)
+                 .IsRequired(false);
 
-            //Unlikes
-            builder.Entity<UserArticleUnlike>()
-               .HasKey(ul => new { ul.UserId, ul.ArticleId });
+            builder.Entity<Like>()
+              .HasOne(l => l.NewsArticle)
+              .WithMany(na => na.Likes)
+              .HasForeignKey(l => l.NewsArticleId)
+               .OnDelete(DeleteBehavior.Restrict)
+               .IsRequired(false);
 
-            builder.Entity<UserArticleUnlike>()
-                .HasOne(ul => ul.User)
-                .WithMany(u => u.Unlikes)
-                .HasForeignKey(ul => ul.UserId);
-
-            builder.Entity<UserArticleUnlike>()
-                .HasOne(ul => ul.Article)
-                .WithMany(u => u.Unlikes)
-                .HasForeignKey(ul => ul.ArticleId);
+            builder.Entity<Like>()
+              .HasOne(l => l.User)
+              .WithMany(u => u.Likes)
+              .HasForeignKey(l => l.UserId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }

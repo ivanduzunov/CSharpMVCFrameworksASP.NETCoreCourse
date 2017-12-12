@@ -5,9 +5,7 @@
 
     public class User : IdentityUser
     {
-        public List<UserArticleLike> Likes { get; set; } = new List<UserArticleLike>();
-
-        public List<UserArticleUnlike> Unlikes { get; set; } = new List<UserArticleUnlike>();
+        public List<Like> Likes { get; set; } = new List<Like>();
 
         public List<ForumArticle> ForumArticles { get; set; } = new List<ForumArticle>();
 
