@@ -9,5 +9,9 @@
         Task<IEnumerable<NewsListingServiceModel>> AllNewsAsync();
 
         Task<NewsDetailsServiceModel> ByIdAsync(int id);
+
+        Task<bool> AddUnlikeAsync(int articleId, string userId);
+
+        Task<bool> AddLikeAsync(int articleId, string userId);
     }
 }

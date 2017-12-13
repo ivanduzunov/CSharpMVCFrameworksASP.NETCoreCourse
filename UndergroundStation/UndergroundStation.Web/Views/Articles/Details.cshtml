@@ -1,4 +1,6 @@
 ﻿@model NewsDetailsServiceModel
+@using System.Linq
+
 @{
     ViewData["Title"] = Model.Title;
 }
@@ -22,12 +24,10 @@
    }
     
 </div>
-@*<div>
-    <h4><a href="@($"/Articles/AddLike/{Model.Id}")">Like</a> @($": {Model.Likes.Count}")</h4>
-    <h4>@($"Unlike: {Model.Unlikes.Count}")</h4>
-</div>*@
-
-
+<div>  
+    <h4><a href="@($"/Articles/AddLike/{Model.Id}")" class="@(Model.IsLiked == true ? "not-active" : "active")">Like</a> @($": {Model.Likes.Where(l => l.IsLiked).Count()}")</h4>
+    <h4><a href="@($"/Articles/AddUnlike/{Model.Id}")" class="@(Model.IsLiked == true ? "not-active" : "active")">Unlike</a> @($": {Model.Likes.Where(l => l.IsLiked == false).Count()}")</h4>
+</div>
 
 
 

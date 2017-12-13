@@ -18,5 +18,9 @@
         public string VideoUrl { get; set; }
 
         public DateTime PublishedDate { get; set; }
+
+        public bool IsLiked { get; set; }
+
+        public List<Like> Likes { get; set; } = new List<Like>();
     }
 }
