@@ -34,41 +34,41 @@
                 return BadRequest();
             }
 
-            article.IsLiked = article.Likes.Where(l => l.UserId == userId) != null;
+            article.IsLiked = article.Likes.Where(l => l.UserId == userId).Count() == 1;
 
             return View(article);
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddLike(int articleId)
+        public async Task<IActionResult> AddUnlike(int id)
         {
-            if (!ModelState.IsValid)
+            var userId = userManager.GetUserId(HttpContext.User);
+
+            var success = await news.AddUnlikeAsync(id, userId);
+
+            if (!success)
             {
                 return BadRequest();
             }
 
-            var userId = userManager.GetUserId(HttpContext.User);
-
-            await news.AddLikeAsync(articleId, userId);
-
-            return RedirectToAction(nameof(Details), new { id = articleId });
+            return RedirectToAction(nameof(Details), new { id });
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddUnlike(int articleId)
+        public async Task<IActionResult> AddLike(int id)
         {
-            if (!ModelState.IsValid)
+            var userId = userManager.GetUserId(HttpContext.User);
+
+            var success = await news.AddLikeAsync(id, userId);
+
+            if (!success)
             {
                 return BadRequest();
             }
 
-            var userId = userManager.GetUserId(HttpContext.User);
-
-            await news.AddUnlikeAsync(articleId, userId);
-
-            return RedirectToAction(nameof(Details), new { id = articleId });
+            return RedirectToAction(nameof(Details), new { id });
         }
     }
 }

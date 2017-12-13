@@ -1,5 +1,5 @@
 ﻿@model NewsDetailsServiceModel
-@using System.Linq
+@using UndergroundStation.Web
 
 @{
     ViewData["Title"] = Model.Title;
@@ -12,23 +12,35 @@
     <p>
         @Model.Content
     </p>
-    
-   @if (Model.VideoUrl != null)
-   {
-    <iframe width="570" height="325" 
-            src="@Model.VideoUrl" 
-            frameborder="1"
-            gesture="media" 
-            allow="encrypted-media" 
-            allowfullscreen ="true"></iframe>
-   }
-    
-</div>
-<div>  
-    <h4><a href="@($"/Articles/AddLike/{Model.Id}")" class="@(Model.IsLiked == true ? "not-active" : "active")">Like</a> @($": {Model.Likes.Where(l => l.IsLiked).Count()}")</h4>
-    <h4><a href="@($"/Articles/AddUnlike/{Model.Id}")" class="@(Model.IsLiked == true ? "not-active" : "active")">Unlike</a> @($": {Model.Likes.Where(l => l.IsLiked == false).Count()}")</h4>
-</div>
 
+    @if (Model.VideoUrl != null)
+    {
+        <iframe width="570" height="325"
+                src="@Model.VideoUrl"
+                frameborder="1"
+                gesture="media"
+                allow="encrypted-media"
+                allowfullscreen="true"></iframe>
+    }
+
+</div>
+<div class="row">
+    @if (!Model.IsLiked && User.Identity.IsAuthenticated)
+    {
+        <form asp-action="AddLike" asp-route-id="@Model.Id" method="post">
+            <input type="submit" class="btn btn-success" value="@($"Like {Model.Likes.Where(l => l.IsLiked).Count()}")" />
+        </form>
+        <form asp-action="AddUnlike" asp-route-id="@Model.Id" method="post" >
+            <input type="submit" class="btn btn-danger" value="@($"Unlike {Model.Likes.Where(l => l.IsLiked == false).Count()}")" />
+        </form>
+    }
+    else
+    {
+        <h4  align="center" class="btn btn-success" > Likes @Model.Likes.Where(l => l.IsLiked).Count() </h4>
+        <br />
+        <h4 align="center"  class="btn btn-danger" >Unlikes @Model.Likes.Where(l => l.IsLiked == false).Count()</h4>
+    }
+</div>
 
 
 
