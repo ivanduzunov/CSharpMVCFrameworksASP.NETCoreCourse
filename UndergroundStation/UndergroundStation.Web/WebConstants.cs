@@ -11,5 +11,6 @@
 
         public const string AdminArea = "Admin";
         public const string AuthorArea = "Author";
+        public const string ForumArea = "Forum";
     }
 }

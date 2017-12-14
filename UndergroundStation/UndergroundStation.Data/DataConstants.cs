@@ -36,6 +36,12 @@ namespace UndergroundStation.Data
         public const int ForumThemeDescriptionMinLenght = 10;
         public const int ForumThemeDescriptionMaxLenght = 2000;
 
+        public const int ForumSectionTitleMinLenght = 5;
+        public const int ForumSectionTitleMaxLenght = 100;
+
+        public const int ForumSectionDescriptionMinLenght = 5;
+        public const int ForumSectionDescriptionMaxLenght = 2000;
+
         public const int MusicVideoTitleMinLenght = 4;
         public const int MusicVideoTitleMaxLenght = 100;
     }

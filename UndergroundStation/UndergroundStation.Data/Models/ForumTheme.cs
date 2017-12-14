@@ -20,6 +20,16 @@
         [MaxLength(ForumThemeDescriptionMaxLenght)]
         public string Description { get; set; }
 
+        public int ForumSectionId { get; set; }
+
+        public ForumSection ForumSection { get; set; }
+
+        public string CreatorId { get; set; }
+
+        public User Creator { get; set; }
+
+        public DateTime PublishedDate { get; set; }
+
         public List<ForumArticle> Articles { get; set; } = new List<ForumArticle>();
     }
 }

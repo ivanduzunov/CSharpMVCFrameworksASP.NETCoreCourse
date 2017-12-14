@@ -1,9 +1,8 @@
 ﻿namespace UndergroundStation.Web
 {
     using AutoMapper;
-    using Data;
-    using Data.Models;
     using Infrastructure.Extentions;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -11,13 +10,16 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.AspNetCore.Mvc.Filters;
-    using UndergroundStation.Services;
-    using UndergroundStation.Services.Implementations;
-    using UndergroundStation.Services.Admin;
-    using UndergroundStation.Services.Admin.Implementations;
-    using UndergroundStation.Services.Author;
-    using UndergroundStation.Services.Author.Implementations;
-    using Microsoft.AspNetCore.Mvc;
+    using Data;
+    using Data.Models;
+    using Services;
+    using Services.Implementations;
+    using Services.Admin;
+    using Services.Admin.Implementations;
+    using Services.Author;
+    using Services.Author.Implementations;
+    using Services.Forum;
+    using Services.Forum.Implementations;
 
     public class Startup
     {
@@ -51,6 +53,8 @@
             services.AddTransient<IAdminUserService, AdminUserService>();
 
             services.AddTransient<IAuthorArticleService, AuthorArticleService>();
+
+            services.AddTransient<ISectionsService, SectionsService>();
 
             services.AddMvc(options => 
             {

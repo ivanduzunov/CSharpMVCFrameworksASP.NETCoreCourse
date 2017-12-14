@@ -20,6 +20,8 @@
 
         public DbSet<ForumTheme> ForumThemes { get; set; }
 
+        public DbSet<ForumSection> ForumSections { get; set; }
+
         public DbSet<MusicVideo> MusicVideos { get; set; }
 
         public DbSet<NewsArticle> NewsArticles { get; set; }
@@ -58,6 +60,20 @@
                 .WithOne(c => c.MusicVideo)
                 .HasForeignKey(c => c.MusicVideoId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            //ForumSection - ForumThemes
+
+            builder.Entity<ForumTheme>()
+                .HasOne(ft => ft.ForumSection)
+                .WithMany(fs => fs.Themes)
+                .HasForeignKey(ft => ft.ForumSectionId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<ForumTheme>()
+               .HasOne(ft => ft.Creator)
+               .WithMany(c => c.ForumThemes)
+               .HasForeignKey(ft => ft.CreatorId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             //The Forum Theme has many foorum articles
             builder.Entity<ForumTheme>()

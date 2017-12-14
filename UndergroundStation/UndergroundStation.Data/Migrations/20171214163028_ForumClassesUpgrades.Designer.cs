@@ -12,9 +12,10 @@ using UndergroundStation.Data.Models;
 namespace UndergroundStation.Data.Migrations
 {
     [DbContext(typeof(UndergroundStationDbContext))]
-    partial class UndergroundStationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171214163028_ForumClassesUpgrades")]
+    partial class ForumClassesUpgrades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -247,8 +248,6 @@ namespace UndergroundStation.Data.Migrations
                         .HasMaxLength(2000);
 
                     b.Property<int>("ForumSectionId");
-
-                    b.Property<DateTime>("PublishedDate");
 
                     b.Property<string>("Title")
                         .IsRequired()

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SectionListingServiceModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="jumbotron home-jumbotron">
+    <h1 class="text-center">Welcome to The Underground Station Forum!</h1>
+    <h3 class="text-center">The voice of the underground community</h3>
+</div>
+@if (User.IsInRole(WebConstants.ForumModeratorRole))
+{
+    <a href="/Forum/Setions/Create" class="btn btn-success">Add Section</a>
+}
+
+<div class="jumbotron">
+    Forum Sections:
+    <table class="table-bordered table-hover">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        <h3>
+                            <a href="@($"/Forum/Sections/Details/{item.Id}")">@item.Tittle</a>
+                        </h3>
+                        <h5>@item.Description</h5>
+                        <h5>Themes: @(item.Themes.Count())</h5>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
