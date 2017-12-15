@@ -11,7 +11,7 @@
         [Required]
         [MinLength(ForumSectionTitleMinLenght)]
         [MaxLength(ForumSectionTitleMaxLenght)]
-        public string Tittle { get; set; }
+        public string Title { get; set; }
 
         [Required]
         [MinLength(ForumSectionDescriptionMinLenght)]

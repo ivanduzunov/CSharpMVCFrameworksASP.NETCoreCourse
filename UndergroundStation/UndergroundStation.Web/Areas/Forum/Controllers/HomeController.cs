@@ -22,9 +22,7 @@
         public async Task<IActionResult> Index()
             => View(await sections.AllAsync());
 
-        [Authorize(Roles = ForumModeratorRole)]
-        public async Task<IActionResult> Create()
-           => View();
+       
 
     }
 }

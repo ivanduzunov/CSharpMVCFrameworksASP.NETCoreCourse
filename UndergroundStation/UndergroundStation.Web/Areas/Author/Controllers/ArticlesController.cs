@@ -20,7 +20,7 @@
             this.articles = articles;
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
            => View();
 
         [HttpPost]

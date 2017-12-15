@@ -1,0 +1,30 @@
+﻿@model SectionDetailsServiceModel
+@{
+    ViewData["Title"] = Model.Tittle;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<br />
+<a class="btn btn-default" href="@($"/forum/sections/AddTheme/{Model.Id}")">Add Theme</a>
+<br />
+<br />
+
+<table class="table table-bordered table-hover" >
+    <tbody>
+        @foreach (var theme in Model.Themes)
+        {
+            <tr>
+                <th>
+                    <h3>
+                        <a href="@($"/Forum/Themes/Details{theme.Id}")">@theme.Title</a>
+                    </h3>
+                    <h5>@theme.Title</h5>
+                    <h5>Themes: @(theme.Articles.Count())</h5>
+                    <h5>By @theme.Creator.UserName</h5>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+  

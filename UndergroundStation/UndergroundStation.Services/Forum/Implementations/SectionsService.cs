@@ -4,8 +4,10 @@
     using System.Threading.Tasks;
     using AutoMapper.QueryableExtensions;
     using Microsoft.EntityFrameworkCore;
+    using System.Linq;
     using Models;
     using Data;
+    using Data.Models;
 
     public class SectionsService : ISectionsService
     {
@@ -22,5 +24,36 @@
                 .ForumSections
                 .ProjectTo<SectionListingServiceModel>()
                 .ToListAsync();
+
+        public async Task<SectionDetailsServiceModel> ById(int id)
+        {
+            var section = await this.db
+                .ForumSections
+                .Where(s => s.Id == id)
+                .ProjectTo<SectionDetailsServiceModel>()
+                .FirstOrDefaultAsync();
+
+            return  section;
+        }
+
+        public async Task<bool> Create(string title, string description)
+        {
+            if (title == null || description == null)
+            {
+                return false;
+            }
+
+            var section = new ForumSection
+            {
+                Tittle = title,
+                Description = description
+            };
+
+            db.Add(section);
+
+            await db.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

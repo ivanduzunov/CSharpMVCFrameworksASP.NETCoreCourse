@@ -7,5 +7,9 @@
     public  interface ISectionsService
     {
         Task<IEnumerable<SectionListingServiceModel>> AllAsync();
+
+        Task<SectionDetailsServiceModel> ById(int id);
+
+        Task <bool> Create(string title, string description);
     }
 }
