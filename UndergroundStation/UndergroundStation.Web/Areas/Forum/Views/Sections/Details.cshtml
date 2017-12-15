@@ -2,8 +2,9 @@
 @{
     ViewData["Title"] = Model.Tittle;
 }
-
-<h2>@ViewData["Title"]</h2>
+<br />
+<br />
+<h1>@ViewData["Title"]</h1>
 
 <br />
 <a class="btn btn-default" href="@($"/forum/sections/AddTheme/{Model.Id}")">Add Theme</a>
@@ -17,11 +18,11 @@
             <tr>
                 <th>
                     <h3>
-                        <a href="@($"/Forum/Themes/Details{theme.Id}")">@theme.Title</a>
+                        <a href="@($"/Forum/Themes/Details/{theme.Id}")">@theme.Title</a>
                     </h3>
-                    <h5>@theme.Title</h5>
-                    <h5>Themes: @(theme.Articles.Count())</h5>
                     <h5>By @theme.Creator.UserName</h5>
+                    <h5>Open at: @($"{theme.PublishedDate.ToShortTimeString()} on {theme.PublishedDate.ToShortDateString()}")</h5>
+                    <h5>Answers: @(theme.Articles.Count())</h5>
                 </th>
             </tr>
         }

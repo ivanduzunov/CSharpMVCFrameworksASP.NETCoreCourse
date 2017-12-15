@@ -22,7 +22,5 @@
         public async Task<IActionResult> Index()
             => View(await sections.AllAsync());
 
-       
-
     }
 }

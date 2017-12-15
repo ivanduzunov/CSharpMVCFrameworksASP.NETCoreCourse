@@ -7,7 +7,8 @@
     using System.Linq;
     using Models;
     using Data;
-
+    using Data.Models;
+    using System;
 
     public class ThemesService : IThemesService
     {
@@ -18,9 +19,44 @@
             this.db = db;
         }
 
-        public Task<bool> CreateTheme(int sectionId)
+        public async Task<bool> CreateThemeAsync
+           (string title,
+            string description,
+            string creatorId, 
+            int forumSectionId,
+            DateTime publishedDate)
         {
-            throw new System.NotImplementedException();
+            if (title == null 
+                || description == null 
+                || creatorId == null
+                || forumSectionId == 0
+                || publishedDate == null)
+            {
+                return false;
+            }
+
+            var theme = new ForumTheme
+            {
+                Title = title,
+                Description = description,
+                Creator = this.db.Users.Where(u => u.Id == creatorId).FirstOrDefault(),
+                ForumSection = this.db.ForumSections.Where(fs => fs.Id == forumSectionId).FirstOrDefault(),
+                PublishedDate = publishedDate
+            };
+
+            this.db.Add(theme);
+
+            await this.db.SaveChangesAsync();
+
+            return true;
         }
+
+        public async Task<ThemeDetailsServiceModel> Details(int id)
+           => await this.db.ForumThemes
+                .Where(ft => ft.Id == id)
+                .ProjectTo<ThemeDetailsServiceModel>()
+                .FirstOrDefaultAsync();
+                
+        
     }
 }

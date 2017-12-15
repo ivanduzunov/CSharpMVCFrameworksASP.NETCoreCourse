@@ -58,6 +58,9 @@
 
             services.AddTransient<IThemesService, ThemesService>();
 
+            services.AddTransient<IArticleService, ArticleService>();
+
+
             services.AddMvc(options => 
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
