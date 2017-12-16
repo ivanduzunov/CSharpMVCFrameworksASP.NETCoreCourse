@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Data.Models;
+    using Data.Models.Enums;
 
     using static Data.DataConstants;
 
@@ -20,6 +20,8 @@
         public string Content { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public ArticleType Type { get; set; }
 
         [Display(Name = "YouTube Id")]
         public string VideoUrl { get; set; }

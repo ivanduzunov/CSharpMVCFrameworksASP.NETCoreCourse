@@ -5,13 +5,13 @@
 <br />
 <br />
 <h1>@ViewData["Title"]</h1>
-
 <br />
 <a class="btn btn-default" href="@($"/forum/sections/AddTheme/{Model.Id}")">Add Theme</a>
 <br />
 <br />
 
-<table class="table table-bordered table-hover" >
+
+<table class="table table-bordered table-hover">
     <tbody>
         @foreach (var theme in Model.Themes)
         {
@@ -28,4 +28,4 @@
         }
     </tbody>
 </table>
-  
+

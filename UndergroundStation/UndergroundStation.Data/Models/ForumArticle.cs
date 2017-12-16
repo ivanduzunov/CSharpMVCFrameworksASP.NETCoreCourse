@@ -26,7 +26,7 @@
 
         public User Author { get; set; }
 
-        public int ForumThemeId { get; set; }
+        public int? ForumThemeId { get; set; }
 
         public ForumTheme ForumTheme { get; set; }
 

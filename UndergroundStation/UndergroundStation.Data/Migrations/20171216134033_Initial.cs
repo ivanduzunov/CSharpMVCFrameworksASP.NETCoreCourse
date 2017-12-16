@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace UndergroundStation.Data.Migrations
 {
-    public partial class InitialTables : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,32 +22,17 @@ namespace UndergroundStation.Data.Migrations
                 table: "AspNetRoles");
 
             migrationBuilder.CreateTable(
-                name: "Artists",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(maxLength: 1000, nullable: false),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
-                    Style = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Artists", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ForumThemes",
+                name: "ForumSections",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(maxLength: 2000, nullable: false),
-                    Title = table.Column<string>(maxLength: 100, nullable: false)
+                    Tittle = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ForumThemes", x => x.Id);
+                    table.PrimaryKey("PK_ForumSections", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,6 +41,7 @@ namespace UndergroundStation.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ArticleType = table.Column<int>(nullable: false),
                     Content = table.Column<string>(maxLength: 6000, nullable: false),
                     ImageUrl = table.Column<string>(nullable: true),
                     PublishedDate = table.Column<DateTime>(nullable: false),
@@ -68,25 +54,68 @@ namespace UndergroundStation.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MusicVideos",
+                name: "ForumThemes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ArtistId = table.Column<int>(nullable: false),
-                    Style = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(maxLength: 100, nullable: false),
-                    Url = table.Column<string>(nullable: false)
+                    CreatorId = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(maxLength: 2000, nullable: false),
+                    ForumSectionId = table.Column<int>(nullable: false),
+                    PublishedDate = table.Column<DateTime>(nullable: false),
+                    Title = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MusicVideos", x => x.Id);
+                    table.PrimaryKey("PK_ForumThemes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MusicVideos_Artists_ArtistId",
-                        column: x => x.ArtistId,
-                        principalTable: "Artists",
+                        name: "FK_ForumThemes_AspNetUsers_CreatorId",
+                        column: x => x.CreatorId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ForumThemes_ForumSections_ForumSectionId",
+                        column: x => x.ForumSectionId,
+                        principalTable: "ForumSections",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AuthorId = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(maxLength: 1000, nullable: false),
+                    MotherCommentId = table.Column<int>(nullable: true),
+                    NewsArticleId = table.Column<int>(nullable: true),
+                    PublishedDate = table.Column<DateTime>(nullable: false),
+                    Title = table.Column<string>(maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comments_Comments_MotherCommentId",
+                        column: x => x.MotherCommentId,
+                        principalTable: "Comments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comments_NewsArticles_NewsArticleId",
+                        column: x => x.NewsArticleId,
+                        principalTable: "NewsArticles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,7 +126,7 @@ namespace UndergroundStation.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AuthorId = table.Column<string>(nullable: true),
                     Content = table.Column<string>(maxLength: 3000, nullable: false),
-                    ForumThemeId = table.Column<int>(nullable: false),
+                    ForumThemeId = table.Column<int>(nullable: true),
                     MotherArticleId = table.Column<int>(nullable: true),
                     PublishedDate = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(maxLength: 200, nullable: false)
@@ -126,58 +155,13 @@ namespace UndergroundStation.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AnswerCommentId = table.Column<int>(nullable: true),
-                    ArtistId = table.Column<int>(nullable: true),
-                    AuthorId = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(maxLength: 1000, nullable: false),
-                    MusicVideoId = table.Column<int>(nullable: true),
-                    PublishedDate = table.Column<DateTime>(nullable: false),
-                    Title = table.Column<string>(maxLength: 100, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Comments_Comments_AnswerCommentId",
-                        column: x => x.AnswerCommentId,
-                        principalTable: "Comments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Comments_Artists_ArtistId",
-                        column: x => x.ArtistId,
-                        principalTable: "Artists",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Comments_AspNetUsers_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Comments_MusicVideos_MusicVideoId",
-                        column: x => x.MusicVideoId,
-                        principalTable: "MusicVideos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Likes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ArtistId = table.Column<int>(nullable: true),
                     ForumArticleId = table.Column<int>(nullable: true),
                     IsLiked = table.Column<bool>(nullable: false),
-                    MusicVideoId = table.Column<int>(nullable: true),
                     NewsArticleId = table.Column<int>(nullable: true),
                     UserId = table.Column<string>(nullable: true)
                 },
@@ -185,21 +169,9 @@ namespace UndergroundStation.Data.Migrations
                 {
                     table.PrimaryKey("PK_Likes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Likes_Artists_ArtistId",
-                        column: x => x.ArtistId,
-                        principalTable: "Artists",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Likes_ForumArticles_ForumArticleId",
                         column: x => x.ForumArticleId,
                         principalTable: "ForumArticles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Likes_MusicVideos_MusicVideoId",
-                        column: x => x.MusicVideoId,
-                        principalTable: "MusicVideos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -231,24 +203,19 @@ namespace UndergroundStation.Data.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_AnswerCommentId",
-                table: "Comments",
-                column: "AnswerCommentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_ArtistId",
-                table: "Comments",
-                column: "ArtistId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Comments_AuthorId",
                 table: "Comments",
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_MusicVideoId",
+                name: "IX_Comments_MotherCommentId",
                 table: "Comments",
-                column: "MusicVideoId");
+                column: "MotherCommentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_NewsArticleId",
+                table: "Comments",
+                column: "NewsArticleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ForumArticles_AuthorId",
@@ -266,19 +233,19 @@ namespace UndergroundStation.Data.Migrations
                 column: "MotherArticleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Likes_ArtistId",
-                table: "Likes",
-                column: "ArtistId");
+                name: "IX_ForumThemes_CreatorId",
+                table: "ForumThemes",
+                column: "CreatorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ForumThemes_ForumSectionId",
+                table: "ForumThemes",
+                column: "ForumSectionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Likes_ForumArticleId",
                 table: "Likes",
                 column: "ForumArticleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Likes_MusicVideoId",
-                table: "Likes",
-                column: "MusicVideoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Likes_NewsArticleId",
@@ -289,11 +256,6 @@ namespace UndergroundStation.Data.Migrations
                 name: "IX_Likes_UserId",
                 table: "Likes",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MusicVideos_ArtistId",
-                table: "MusicVideos",
-                column: "ArtistId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_AspNetUserTokens_AspNetUsers_UserId",
@@ -320,16 +282,13 @@ namespace UndergroundStation.Data.Migrations
                 name: "ForumArticles");
 
             migrationBuilder.DropTable(
-                name: "MusicVideos");
-
-            migrationBuilder.DropTable(
                 name: "NewsArticles");
 
             migrationBuilder.DropTable(
                 name: "ForumThemes");
 
             migrationBuilder.DropTable(
-                name: "Artists");
+                name: "ForumSections");
 
             migrationBuilder.DropIndex(
                 name: "UserNameIndex",

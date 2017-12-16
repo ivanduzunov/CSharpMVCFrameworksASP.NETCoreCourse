@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Data.Models;
     using Common.Mapping;
+    using Data.Models.Enums;
 
     public class NewsDetailsServiceModel : IMapFrom<NewsArticle>
     {
@@ -20,6 +21,10 @@
         public DateTime PublishedDate { get; set; }
 
         public bool IsLiked { get; set; }
+
+        public ArticleType ArticleType { get; set; }
+
+        public List<Comment> Comments { get; set; } = new List<Comment>();
 
         public List<Like> Likes { get; set; } = new List<Like>();
     }

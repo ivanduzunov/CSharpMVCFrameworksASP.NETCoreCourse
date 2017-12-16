@@ -31,11 +31,17 @@
                 return BadRequest();
             }
 
-            await articles
+           var success =  await articles
                 .CreateAsync(model.Title,
                   model.Content,
                   model.ImageUrl,
-                  model.VideoUrl);
+                  model.VideoUrl,
+                  model.Type);
+
+            if (!success)
+            {
+                return BadRequest();
+            }
 
             TempData.AddSuccessMessage($"Article {model.Title} successfully published.");
 

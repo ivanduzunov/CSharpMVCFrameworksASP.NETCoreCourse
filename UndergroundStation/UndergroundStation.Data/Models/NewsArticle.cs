@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Enums;
 
     using static DataConstants;
 
@@ -25,6 +26,10 @@
         public string VideoUrl { get; set; }
 
         public DateTime PublishedDate { get; set; }
+
+        public ArticleType ArticleType { get; set; }
+
+        public List<Comment> Comments { get; set; } = new List<Comment>();
 
         public List<Like> Likes { get; set; } = new List<Like>();
     }

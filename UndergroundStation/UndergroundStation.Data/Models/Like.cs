@@ -12,10 +12,6 @@
 
         public int? NewsArticleId { get; set; }
 
-        public Artist Atrist { get; set; }
-
-        public int? ArtistId { get; set; }
-
         public ForumArticle ForumArtcle { get; set; }
 
         public int? ForumArticleId { get; set; }

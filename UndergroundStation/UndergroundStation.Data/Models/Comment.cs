@@ -22,21 +22,17 @@
 
         public DateTime PublishedDate { get; set; }
 
-        public int? ArtistId { get; set; }
-
-        public Artist Artist { get; set; }
-
-        public int? MusicVideoId { get; set; }
-
-        public MusicVideo MusicVideo { get; set; }
-
         public string AuthorId { get; set; }
 
         public User Author { get; set; }
 
-        public int? AnswerCommentId { get; set; }
+        public int? NewsArticleId { get; set; }
 
-        public Comment AnswerComment { get; set; }
+        public NewsArticle NewsArticle { get; set; }
+
+        public int? MotherCommentId { get; set; }
+
+        public Comment MotherComment { get; set; }
 
         public List<Comment> Answers { get; set; } = new List<Comment>();
     }

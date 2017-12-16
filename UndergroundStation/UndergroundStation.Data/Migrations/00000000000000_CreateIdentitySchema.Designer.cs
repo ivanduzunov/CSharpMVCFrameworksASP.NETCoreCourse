@@ -24,6 +24,7 @@
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                
                     b.Property<string>("Name")
                         .HasAnnotation("MaxLength", 256);
 

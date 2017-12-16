@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using Models;
-    using Models.Likes;
 
     public class UndergroundStationDbContext : IdentityDbContext<User>
     {
@@ -11,8 +10,6 @@
             : base(options)
         {
         }
-
-        public DbSet<Artist> Artists { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
 
@@ -22,44 +19,33 @@
 
         public DbSet<ForumSection> ForumSections { get; set; }
 
-        public DbSet<MusicVideo> MusicVideos { get; set; }
-
         public DbSet<NewsArticle> NewsArticles { get; set; }
 
         public DbSet<Like> Likes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //The Artist has many videos and many comments
-            builder.Entity<Artist>()
-                .HasMany(a => a.Videos)
-                .WithOne(v => v.Artist)
-                .HasForeignKey(v => v.ArtistId);
-
-            builder.Entity<Artist>()
-               .HasMany(a => a.Comments)
-               .WithOne(v => v.Artist)
-               .HasForeignKey(v => v.ArtistId);
 
             //The Comment has one Author and many Answers
             builder.Entity<Comment>()
+             .HasOne(c => c.Author)
+             .WithMany(a => a.Comments)
+             .HasForeignKey(c => c.AuthorId);
+
+            builder.Entity<Comment>()
                 .HasMany(c => c.Answers)
-                .WithOne(a => a.AnswerComment)
-                .HasForeignKey(a => a.AnswerCommentId)
+                .WithOne(a => a.MotherComment)
+                .HasForeignKey(a => a.MotherCommentId)
                  .OnDelete(DeleteBehavior.Restrict)
                  .IsRequired(false);
 
+         
             builder.Entity<Comment>()
-                .HasOne(c => c.Author)
-                .WithMany(a => a.Comments)
-                .HasForeignKey(c => c.AuthorId);
-
-            //Music video has comments
-            builder.Entity<MusicVideo>()
-                .HasMany(mv => mv.Comments)
-                .WithOne(c => c.MusicVideo)
-                .HasForeignKey(c => c.MusicVideoId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(c => c.NewsArticle)
+                .WithMany(na => na.Comments)
+                .HasForeignKey(c => c.NewsArticleId)
+                 .OnDelete(DeleteBehavior.Restrict)
+                 .IsRequired(false);
 
             //ForumSection - ForumThemes
 
@@ -75,7 +61,7 @@
                .HasForeignKey(ft => ft.CreatorId)
                .OnDelete(DeleteBehavior.Restrict);
 
-            //The Forum Theme has many foorum articles
+            //The Forum Theme has many forum articles
             builder.Entity<ForumTheme>()
                 .HasMany(ft => ft.Articles)
                 .WithOne(a => a.ForumTheme)
@@ -92,13 +78,7 @@
 
             //Likes
 
-            builder.Entity<Like>()
-                .HasOne(l => l.Atrist)
-                .WithMany(a => a.Likes)
-                .HasForeignKey(l => l.ArtistId)
-                 .OnDelete(DeleteBehavior.Restrict)
-                 .IsRequired(false);
-
+          
             builder.Entity<Like>()
                 .HasOne(l => l.ForumArtcle)
                 .WithMany(fa => fa.Likes)

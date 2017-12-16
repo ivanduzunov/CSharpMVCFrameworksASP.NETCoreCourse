@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 using UndergroundStation.Data;
-using UndergroundStation.Data.Models;
+using UndergroundStation.Data.Models.Enums;
 
 namespace UndergroundStation.Data.Migrations
 {
     [DbContext(typeof(UndergroundStationDbContext))]
-    [Migration("20171212142703_InitialTables")]
-    partial class InitialTables
+    [Migration("20171216134033_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -130,34 +130,10 @@ namespace UndergroundStation.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("UndergroundStation.Data.Models.Artist", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1000);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<int>("Style");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Artists");
-                });
-
             modelBuilder.Entity("UndergroundStation.Data.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("AnswerCommentId");
-
-                    b.Property<int?>("ArtistId");
 
                     b.Property<string>("AuthorId");
 
@@ -165,7 +141,9 @@ namespace UndergroundStation.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(1000);
 
-                    b.Property<int?>("MusicVideoId");
+                    b.Property<int?>("MotherCommentId");
+
+                    b.Property<int?>("NewsArticleId");
 
                     b.Property<DateTime>("PublishedDate");
 
@@ -175,13 +153,11 @@ namespace UndergroundStation.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnswerCommentId");
-
-                    b.HasIndex("ArtistId");
-
                     b.HasIndex("AuthorId");
 
-                    b.HasIndex("MusicVideoId");
+                    b.HasIndex("MotherCommentId");
+
+                    b.HasIndex("NewsArticleId");
 
                     b.ToTable("Comments");
                 });
@@ -197,7 +173,7 @@ namespace UndergroundStation.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(3000);
 
-                    b.Property<int>("ForumThemeId");
+                    b.Property<int?>("ForumThemeId");
 
                     b.Property<int?>("MotherArticleId");
 
@@ -218,7 +194,7 @@ namespace UndergroundStation.Data.Migrations
                     b.ToTable("ForumArticles");
                 });
 
-            modelBuilder.Entity("UndergroundStation.Data.Models.ForumTheme", b =>
+            modelBuilder.Entity("UndergroundStation.Data.Models.ForumSection", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -227,11 +203,39 @@ namespace UndergroundStation.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(2000);
 
+                    b.Property<string>("Tittle")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ForumSections");
+                });
+
+            modelBuilder.Entity("UndergroundStation.Data.Models.ForumTheme", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatorId");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000);
+
+                    b.Property<int>("ForumSectionId");
+
+                    b.Property<DateTime>("PublishedDate");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
+
+                    b.HasIndex("ForumSectionId");
 
                     b.ToTable("ForumThemes");
                 });
@@ -241,13 +245,9 @@ namespace UndergroundStation.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ArtistId");
-
                     b.Property<int?>("ForumArticleId");
 
                     b.Property<bool>("IsLiked");
-
-                    b.Property<int?>("MusicVideoId");
 
                     b.Property<int?>("NewsArticleId");
 
@@ -255,11 +255,7 @@ namespace UndergroundStation.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtistId");
-
                     b.HasIndex("ForumArticleId");
-
-                    b.HasIndex("MusicVideoId");
 
                     b.HasIndex("NewsArticleId");
 
@@ -268,33 +264,12 @@ namespace UndergroundStation.Data.Migrations
                     b.ToTable("Likes");
                 });
 
-            modelBuilder.Entity("UndergroundStation.Data.Models.MusicVideo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ArtistId");
-
-                    b.Property<int>("Style");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Url")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArtistId");
-
-                    b.ToTable("MusicVideos");
-                });
-
             modelBuilder.Entity("UndergroundStation.Data.Models.NewsArticle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ArticleType");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -413,22 +388,18 @@ namespace UndergroundStation.Data.Migrations
 
             modelBuilder.Entity("UndergroundStation.Data.Models.Comment", b =>
                 {
-                    b.HasOne("UndergroundStation.Data.Models.Comment", "AnswerComment")
-                        .WithMany("Answers")
-                        .HasForeignKey("AnswerCommentId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("UndergroundStation.Data.Models.Artist", "Artist")
-                        .WithMany("Comments")
-                        .HasForeignKey("ArtistId");
-
                     b.HasOne("UndergroundStation.Data.Models.User", "Author")
                         .WithMany("Comments")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("UndergroundStation.Data.Models.MusicVideo", "MusicVideo")
+                    b.HasOne("UndergroundStation.Data.Models.Comment", "MotherComment")
+                        .WithMany("Answers")
+                        .HasForeignKey("MotherCommentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("UndergroundStation.Data.Models.NewsArticle", "NewsArticle")
                         .WithMany("Comments")
-                        .HasForeignKey("MusicVideoId")
+                        .HasForeignKey("NewsArticleId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -449,21 +420,25 @@ namespace UndergroundStation.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("UndergroundStation.Data.Models.Like", b =>
+            modelBuilder.Entity("UndergroundStation.Data.Models.ForumTheme", b =>
                 {
-                    b.HasOne("UndergroundStation.Data.Models.Artist", "Atrist")
-                        .WithMany("Likes")
-                        .HasForeignKey("ArtistId")
+                    b.HasOne("UndergroundStation.Data.Models.User", "Creator")
+                        .WithMany("ForumThemes")
+                        .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Restrict);
 
+                    b.HasOne("UndergroundStation.Data.Models.ForumSection", "ForumSection")
+                        .WithMany("Themes")
+                        .HasForeignKey("ForumSectionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("UndergroundStation.Data.Models.Like", b =>
+                {
                     b.HasOne("UndergroundStation.Data.Models.ForumArticle", "ForumArtcle")
                         .WithMany("Likes")
                         .HasForeignKey("ForumArticleId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("UndergroundStation.Data.Models.MusicVideo")
-                        .WithMany("Likes")
-                        .HasForeignKey("MusicVideoId");
 
                     b.HasOne("UndergroundStation.Data.Models.NewsArticle", "NewsArticle")
                         .WithMany("Likes")
@@ -474,14 +449,6 @@ namespace UndergroundStation.Data.Migrations
                         .WithMany("Likes")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("UndergroundStation.Data.Models.MusicVideo", b =>
-                {
-                    b.HasOne("UndergroundStation.Data.Models.Artist", "Artist")
-                        .WithMany("Videos")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
