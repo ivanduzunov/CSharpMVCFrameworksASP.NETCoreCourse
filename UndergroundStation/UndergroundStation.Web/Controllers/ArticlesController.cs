@@ -24,17 +24,17 @@
             this.signInManager = signInManager;
         }
 
-        public async Task<IActionResult> Details(int id)
+        public IActionResult Details(int id)
         {
-            var userId = userManager.GetUserId(HttpContext.User);
-            var article = await news.ByIdAsync(id);
+            var userId =  userManager.GetUserId(HttpContext.User);
+            var article = news.ByIdAsync(id);
 
             if (article == null)
             {
                 return BadRequest();
             }
 
-            article.IsLiked = article.Likes.Where(l => l.UserId == userId).Count() == 1;
+            article.IsLiked = article.Likes.Where(l => l.UserId == userId).Count() > 0;
 
             return View(article);
         }
@@ -67,6 +67,49 @@
             {
                 return BadRequest();
             }
+
+            return RedirectToAction(nameof(Details), new { id });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddCommentByArticle(int id, string comment)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            var userId = userManager.GetUserId(HttpContext.User);
+
+            var success = await news.AddCommentByArticleAsync(comment, id, userId);
+
+            if (!success)
+            {
+                return BadRequest();
+            }
+
+            return RedirectToAction(nameof(Details), new { id });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddCommentByComment(int id, string answer, int articleId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var userId = userManager.GetUserId(HttpContext.User);
+
+            var success = await news.AddCommentByCommentAsync(answer, id, userId);
+
+            if (!success)
+            {
+                return BadRequest();
+            }
+
+            id = articleId;
 
             return RedirectToAction(nameof(Details), new { id });
         }

@@ -1,5 +1,6 @@
 ﻿@model NewsDetailsServiceModel
 @using UndergroundStation.Web
+@using  System.Linq
 
 @{
     ViewData["Title"] = Model.Title;
@@ -8,6 +9,7 @@
     <h3>
         @Model.Title
     </h3>
+    <span class="badge badge-primary badge-pill">@Model.ArticleType</span>
     <img src="@Model.ImageUrl" class="img-responsive" height="400" width="800">
     <p>
         @Model.Content
@@ -23,24 +25,84 @@
                 allowfullscreen="true"></iframe>
     }
 
-</div>
-<div class="row">
-    @if (!Model.IsLiked && User.Identity.IsAuthenticated)
-    {
-        <form asp-action="AddLike" asp-route-id="@Model.Id" method="post">
-            <input type="submit" class="btn btn-success" value="@($"Like {Model.Likes.Where(l => l.IsLiked).Count()}")" />
-        </form>
-        <form asp-action="AddUnlike" asp-route-id="@Model.Id" method="post" >
-            <input type="submit" class="btn btn-danger" value="@($"Unlike {Model.Likes.Where(l => l.IsLiked == false).Count()}")" />
-        </form>
-    }
-    else
-    {
-        <h4  align="center" class="btn btn-success" > Likes @Model.Likes.Where(l => l.IsLiked).Count() </h4>
+
+    <div class="row">
+        @{
+            int likes = Model.Likes.Where(l => l.IsLiked).Count();
+            int unlikes = Model.Likes.Where(l => l.IsLiked == false).Count();
+        }
+
+        @if (!Model.IsLiked && User.Identity.IsAuthenticated)
+            {
+            <form asp-action="AddLike" asp-route-id="@Model.Id" method="post">
+                <input type="submit" class="btn btn-success" value="@($"Like {likes}")" />
+            </form>
+            <form asp-action="AddUnlike" asp-route-id="@Model.Id" method="post">
+                <input type="submit" class="btn btn-danger" value="@($"Unlike {unlikes}")" />
+            </form>
+        }
+        else
+        {
+            <h4 align="center" class="btn btn-success">Likes @likes </h4>
+            <br />
+            <h4 align="center" class="btn btn-danger">Unlikes @unlikes</h4>
+        }
         <br />
-        <h4 align="center"  class="btn btn-danger" >Unlikes @Model.Likes.Where(l => l.IsLiked == false).Count()</h4>
-    }
+        <br />
+        <h3>Comments</h3>
+
+        @foreach (var comment in Model.Comments.OrderBy(c => c.PublishedDate).ThenBy(c => c.PublishedDate.TimeOfDay))
+            {
+            <div class="jumbotron-fluid; col-md-7" style="background-color:gray">
+                <div class="jumbotron-fluid" style="background-color:lightgray">
+                    <h4 style="background-color:darkgray" font:bold">@($"{comment.AuthorUserName} ({comment.PublishedDate.ToShortTimeString()} {comment.PublishedDate.ToShortDateString()})")</h4>
+                    <p><h6 style="font:italic">@comment.Content</h6></p>
+                </div>
+                <div class="clearfix"></div>
+
+                @if (comment.Answers.Any())
+                {
+                    <h3>Answers:</h3>
+                    @foreach (var answer in comment.Answers.OrderByDescending(c => c.PublishedDate).ThenBy(c => c.PublishedDate.TimeOfDay))
+                    {
+                        <div class="jumbotron-fluid; col-md-offset-2" style="background-color:lightgray">
+                            <h4 style="background-color:darkgray" font:bold">@($"{answer.AuthorUserName} ({answer.PublishedDate.ToShortTimeString()} {answer.PublishedDate.ToShortDateString()})")</h4>
+                            <p><h6 style="font:italic">@answer.Content</h6></p>
+                        </div>
+                    }
+
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                  
+                       <form asp-action="AddCommentByComment" asp-route-id="@comment.Id" method="post">
+                           <textarea cols="20" rows="2" name="answer" id="answer"></textarea>
+                           <input type="hidden" name="articleId" id="articleId" value="@Model.Id" class="form-control">
+                           <br />
+                           <input type="submit" class="btn btn-info btn-sm" value="Add answer" )" />
+                       </form>
+                   
+                   
+
+                }
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+            <br />
+
+        }
+
+        @if (User.Identity.IsAuthenticated)
+        {
+           
+            <br />
+            <div>
+                <form asp-action="AddCommentByArticle" asp-route-id="@Model.Id" method="post">
+                    <textarea cols="60" rows="3" name="comment" id="comment"></textarea>
+                    <br />
+                    <input type="submit" class="btn btn-primary btn-sm" value="Add comment" )" />
+                </form>
+            </div>
+        }
+    </div>
 </div>
-
-
-

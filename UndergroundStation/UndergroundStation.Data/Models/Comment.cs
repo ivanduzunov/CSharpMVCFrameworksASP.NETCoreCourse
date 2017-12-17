@@ -32,7 +32,7 @@
 
         public int? MotherCommentId { get; set; }
 
-        public Comment MotherComment { get; set; }
+        public Comment  MotherComment { get; set; }
 
         public List<Comment> Answers { get; set; } = new List<Comment>();
     }

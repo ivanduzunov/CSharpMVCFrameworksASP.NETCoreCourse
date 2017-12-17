@@ -8,10 +8,14 @@
     {
         Task<IEnumerable<NewsListingServiceModel>> AllNewsAsync();
 
-        Task<NewsDetailsServiceModel> ByIdAsync(int id);
+        NewsDetailsServiceModel ByIdAsync(int id);
 
         Task<bool> AddUnlikeAsync(int articleId, string userId);
 
         Task<bool> AddLikeAsync(int articleId, string userId);
+
+        Task<bool> AddCommentByArticleAsync(string comment, int id, string userId);
+
+        Task<bool> AddCommentByCommentAsync(string answer, int id, string userId);
     }
 }

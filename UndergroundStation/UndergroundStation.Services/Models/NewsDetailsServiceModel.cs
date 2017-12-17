@@ -5,8 +5,9 @@
     using Data.Models;
     using Common.Mapping;
     using Data.Models.Enums;
+    using AutoMapper;
 
-    public class NewsDetailsServiceModel : IMapFrom<NewsArticle>
+    public class NewsDetailsServiceModel : IMapFrom<NewsArticle>, IHaveCustomMapping
     {
         public int Id { get; set; }
 
@@ -22,10 +23,21 @@
 
         public bool IsLiked { get; set; }
 
-        public ArticleType ArticleType { get; set; }
+        public string ArticleType { get; set; }
 
-        public List<Comment> Comments { get; set; } = new List<Comment>();
+        public List<CommentsListingServiceModel> Comments { get; set; } = new List<CommentsListingServiceModel>();
 
         public List<Like> Likes { get; set; } = new List<Like>();
+
+        public void ConfigureMapping(Profile mapper)
+        {
+            mapper
+                   .CreateMap<NewsArticle, NewsDetailsServiceModel>()
+                   .ForMember(c => c.ArticleType, cfg => cfg.MapFrom(c => c.ArticleType.ToString()));
+
+            mapper
+                 .CreateMap<Comment, CommentsListingServiceModel>()
+                 .ForMember(c => c.AuthorUserName, cfg => cfg.MapFrom(c => c.Author.UserName));
+        }
     }
 }
