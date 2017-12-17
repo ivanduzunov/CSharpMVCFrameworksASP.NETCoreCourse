@@ -62,7 +62,7 @@
 
                 @if (comment.Answers.Any())
                 {
-                    <h3>Answers:</h3>
+                    <h5>Answers:</h5>
                     @foreach (var answer in comment.Answers.OrderByDescending(c => c.PublishedDate).ThenBy(c => c.PublishedDate.TimeOfDay))
                     {
                         <div class="jumbotron-fluid; col-md-offset-2" style="background-color:lightgray">
