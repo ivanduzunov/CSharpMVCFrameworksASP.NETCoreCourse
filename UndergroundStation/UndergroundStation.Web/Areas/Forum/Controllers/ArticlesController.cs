@@ -69,7 +69,56 @@
                 return BadRequest();
             }
 
-            TempData.AddSuccessMessage($"Theme {model.Title} successfully published.");
+            TempData.AddSuccessMessage($"Article {model.Title} successfully published.");
+
+            return this.Redirect($"/forum/themes/details/{model.ForumThemeId}");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> CreateAnswer(string themeId, string articleId, string title)
+        {
+            var user = await userManager.GetUserAsync(HttpContext.User);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var model = new AnswerCreateFormModel
+            {
+               Title = title,
+               AuthorId = user.Id,
+               ForumThemeId = int.Parse(themeId),
+               MotherArticleId = int.Parse(articleId),
+               PublishedDate = DateTime.UtcNow
+            };
+
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateAnswer
+            (AnswerCreateFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var success = await this.articles.CreateAnswerAsync
+                (model.Title,
+                model.Content,
+                model.AuthorId,
+                model.PublishedDate,
+                model.MotherArticleId);
+
+            if (!success)
+            {
+                return BadRequest();
+            }
+
+            TempData.AddSuccessMessage($"Answer {model.Title} successfully published.");
 
             return this.Redirect($"/forum/themes/details/{model.ForumThemeId}");
         }

@@ -27,6 +27,7 @@
         public IActionResult Details(int id)
         {
             var userId =  userManager.GetUserId(HttpContext.User);
+
             var article = news.ByIdAsync(id);
 
             if (article == null)

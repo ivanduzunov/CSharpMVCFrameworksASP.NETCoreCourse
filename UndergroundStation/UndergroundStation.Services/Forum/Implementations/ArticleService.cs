@@ -48,5 +48,33 @@
 
             return true;
         }
+
+        public async Task<bool> CreateAnswerAsync
+            (string title,
+            string content, 
+            string authorId, 
+            DateTime publishedDate, 
+            int motherArticleId)
+        {
+            if (content == null || motherArticleId == 0)
+            {
+                return false;
+            }
+
+            var article = new ForumArticle
+            {
+                Title = "Re: " +  title,
+                Content = content,
+                AuthorId = authorId,
+                MotherArticleId = motherArticleId,
+                PublishedDate = publishedDate
+            };
+
+            this.db.Add(article);
+
+            await this.db.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

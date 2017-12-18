@@ -9,34 +9,37 @@
     <h4>@Model.ForumSectionTitle</h4>
     <h2>@Model.Title</h2>
 </div>
-
 <div class="jumbotron">
     <div class="jumbotron" style="border:double">
         <h3>@Model.CreatorName</h3>
         <div class="jumbotron" style="border:groove">
             <p>@Model.Description</p>
         </div>
-        <h4>@($"{Model.PublishedDate.ToShortTimeString()} / {Model.PublishedDate.ToShortDateString()}")</h4>  
+        <h4>@($"{Model.PublishedDate.ToShortTimeString()} / {Model.PublishedDate.ToShortDateString()}")</h4>
         <p align="right">
             <a style="align-self:flex-end" href="@($"/Forum/Articles/Create/{Model.Id}")" class="btn btn-success">Comment</a>
         </p>
     </div>
 
-   
-   
-   
-
     @foreach (var article in Model.Articles)
     {
-        <div class="jumbotron" style="border:double">
-            <h3>@article.Author.UserName</h3>
+        <div class="jumbotron-fluid" style="border:double">
+            <h3>@article.Title</h3>
+            <h3>@article.authorUserName</h3>
             <h4>@($"{article.PublishedDate.ToShortTimeString()} / {article.PublishedDate.ToShortDateString()}")</h4>
             <p>@article.Content</p>
             <p align="right">
-                <a style="align-self:flex-end" href="@($"/Forum/Articles/CreateAnswer/{article.Id}")" class="btn btn-success">Answer</a>
+                @{
+                    var dict =
+                        new Dictionary<string, string>
+                        {
+                             {"themeId", Model.Id.ToString()},
+                             {"articleId", article.Id.ToString()},
+                             {"title", article.Title}
+                        };
+                }
+                <a asp-area="Forum" asp-controller="Articles" asp-action="CreateAnswer" asp-route-id="@article.Id" asp-all-route-data="dict"> ProductName</a>
             </p>
         </div>
-        
-    }
+                    }
 </div>
-

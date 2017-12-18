@@ -33,7 +33,13 @@ namespace UndergroundStation.Services.Forum.Models
                   .ForMember(c => c.CreatorName, cfg => cfg.MapFrom(c => c.Creator.UserName));
 
             mapper
-                 .CreateMap<ForumTheme, ArticleListingServiceModel>();
+                 .CreateMap<ForumArticle, ArticleListingServiceModel>()
+                 .ForMember(c => c.authorUserName, cfg => cfg.MapFrom(c => c.Author.UserName));
+
+            mapper
+                 .CreateMap<ForumArticle, ArticleAnswerListingServiceModel>()
+                 .ForMember(c => c.authorUserName, cfg => cfg.MapFrom(c => c.Author.UserName))
+                  .ForMember(c => c.MotherArticleTitle, cfg => cfg.MapFrom(c => c.MotherArticle.Title));
         }
     }
 }

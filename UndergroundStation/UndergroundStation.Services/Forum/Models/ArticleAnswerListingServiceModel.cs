@@ -1,11 +1,12 @@
 ﻿namespace UndergroundStation.Services.Forum.Models
 {
-    using System;
     using System.Collections.Generic;
-    using Common.Mapping;
+    using UndergroundStation.Common.Mapping;
     using Data.Models;
+    using System;
+    using AutoMapper;
 
-    public class ArticleListingServiceModel : IMapFrom<ForumArticle>
+    public class ArticleAnswerListingServiceModel : IMapFrom<ForumArticle>
     {
         public int Id { get; set; }
 
@@ -17,12 +18,10 @@
 
         public string authorUserName { get; set; }
 
-        public int ForumThemeId { get; set; }
-
-        public ForumTheme ForumTheme { get; set; }
-
-        public List<ForumArticle> Answers { get; set; } = new List<ForumArticle>();
+        public string MotherArticleTitle { get; set; }
 
         public List<Like> Likes { get; set; } = new List<Like>();
+
+
     }
 }

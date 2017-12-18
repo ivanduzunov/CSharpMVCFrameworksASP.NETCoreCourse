@@ -8,5 +8,7 @@
     public interface IArticleService
     {
         Task<bool> Create(string title, string content, string authorId, int forumThemeId, DateTime publishedDate, int motherArticleId);
+
+        Task<bool> CreateAnswerAsync(string title, string content, string authorId, DateTime publishedDate, int motherArticleId);
     }
 }
