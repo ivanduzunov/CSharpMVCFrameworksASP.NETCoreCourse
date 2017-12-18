@@ -21,7 +21,7 @@
 
         public ForumTheme ForumTheme { get; set; }
 
-        public List<ForumArticle> Answers { get; set; } = new List<ForumArticle>();
+        public List<ArticleAnswerListingServiceModel> Answers { get; set; } = new List<ArticleAnswerListingServiceModel>();
 
         public List<Like> Likes { get; set; } = new List<Like>();
     }
