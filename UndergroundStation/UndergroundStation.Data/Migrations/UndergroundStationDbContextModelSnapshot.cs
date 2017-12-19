@@ -140,6 +140,8 @@ namespace UndergroundStation.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(1000);
 
+                    b.Property<bool>("IsDeleted");
+
                     b.Property<int?>("MotherCommentId");
 
                     b.Property<int?>("NewsArticleId");
@@ -174,6 +176,8 @@ namespace UndergroundStation.Data.Migrations
 
                     b.Property<int?>("ForumThemeId");
 
+                    b.Property<bool>("IsDeleted");
+
                     b.Property<int?>("MotherArticleId");
 
                     b.Property<DateTime>("PublishedDate");
@@ -202,6 +206,8 @@ namespace UndergroundStation.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(2000);
 
+                    b.Property<bool>("IsDeleted");
+
                     b.Property<string>("Tittle")
                         .IsRequired()
                         .HasMaxLength(100);
@@ -223,6 +229,8 @@ namespace UndergroundStation.Data.Migrations
                         .HasMaxLength(2000);
 
                     b.Property<int>("ForumSectionId");
+
+                    b.Property<bool>("IsDeleted");
 
                     b.Property<DateTime>("PublishedDate");
 

@@ -11,6 +11,8 @@
     using Data.Models;
     using Models;
 
+    using static ServiceConstants;
+
 
     public class NewsService : INewsService
     {
@@ -21,12 +23,27 @@
             this.db = db;
         }
 
-        public async Task<IEnumerable<NewsListingServiceModel>> AllNewsAsync()
-          => await this.db
-              .NewsArticles
-              .ProjectTo<NewsListingServiceModel>()
-              .OrderByDescending(na => na.PublishedDate)
-              .ToListAsync();
+        public async Task<IEnumerable<NewsListingServiceModel>> AllHomeNews()
+                => await this.db
+               .NewsArticles
+               .OrderByDescending(a => a.PublishedDate)
+               .ThenByDescending(a => a.PublishedDate.TimeOfDay)
+               .Take(HomeArticlesCount)
+               .ProjectTo<NewsListingServiceModel>()
+               .ToListAsync();
+
+        public async Task<IEnumerable<NewsListingServiceModel>> AllAsync(int page = 1)
+           => await this.db
+               .NewsArticles
+               .OrderByDescending(a => a.PublishedDate)
+               .ThenByDescending(a => a.PublishedDate.TimeOfDay)
+               .Skip((page - 1) * NewsArticlesPageSize)
+               .Take(NewsArticlesPageSize)
+               .ProjectTo<NewsListingServiceModel>()
+               .ToListAsync();
+
+        public async Task<int> TotalAsync()
+                 => await this.db.NewsArticles.CountAsync();
 
         public NewsDetailsServiceModel ByIdAsync(int id)
         {
@@ -36,7 +53,7 @@
                   .ProjectTo<NewsDetailsServiceModel>()
                   .FirstOrDefault();
 
-            var comments =  this.db.Comments
+            var comments = this.db.Comments
                             .Where(c => c.NewsArticleId == id)
                             .Select(na => new CommentsListingServiceModel
                             {
@@ -44,7 +61,7 @@
                                 Content = na.Content,
                                 PublishedDate = na.PublishedDate,
                                 AuthorUserName = na.Author.UserName,
-                                Answers =  this.db.Comments
+                                Answers = this.db.Comments
                                             .Where(c => c.MotherCommentId == na.Id)
                                             .Select(an => new CommentsListingServiceModel
                                             {
@@ -56,7 +73,7 @@
                             }).ToList();
 
             result.Comments = comments;
-    
+
             return result;
         }
 
@@ -147,8 +164,6 @@
 
             return true;
         }
-
-        
 
        
     }

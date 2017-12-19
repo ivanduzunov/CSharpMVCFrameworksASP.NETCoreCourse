@@ -34,6 +34,8 @@
 
         public Comment  MotherComment { get; set; }
 
+        public bool  IsDeleted { get; set; }
+
         public List<Comment> Answers { get; set; } = new List<Comment>();
     }
 }

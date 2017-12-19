@@ -45,7 +45,7 @@
 
             TempData.AddSuccessMessage($"Article {model.Title} successfully published.");
 
-            return this.Redirect("/");
+            return this.Redirect("/articles/All");
         }
     }
 }

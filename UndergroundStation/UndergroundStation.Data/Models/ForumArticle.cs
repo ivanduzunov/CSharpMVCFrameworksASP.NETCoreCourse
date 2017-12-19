@@ -34,6 +34,8 @@
 
         public ForumArticle MotherArticle { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public List<ForumArticle> Answers { get; set; } = new List<ForumArticle>();
 
         public List<Like> Likes { get; set; } = new List<Like>();

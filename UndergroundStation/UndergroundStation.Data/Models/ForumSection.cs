@@ -19,6 +19,8 @@
         [MaxLength(ForumSectionDescriptionMaxLenght)]
         public string Description { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public List<ForumTheme> Themes { get; set; } = new List<ForumTheme>();
     }
 }

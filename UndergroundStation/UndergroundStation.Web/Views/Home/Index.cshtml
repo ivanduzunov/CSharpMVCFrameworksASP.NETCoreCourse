@@ -10,13 +10,6 @@
     <h1 class="text-center">Welcome The Underground Station!</h1>
 </div>
 
-@if (User.IsInRole(WebConstants.AuthorRole))
-{
-    <br />
-    <a class="btn btn-default" href="/author/articles/create">Add Article</a>
-    <br />
-    <br />
-}
 
 
 @if (news.Count() >= 4)

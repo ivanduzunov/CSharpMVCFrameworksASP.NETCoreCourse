@@ -28,6 +28,7 @@ namespace UndergroundStation.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(maxLength: 2000, nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
                     Tittle = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -62,6 +63,7 @@ namespace UndergroundStation.Data.Migrations
                     CreatorId = table.Column<string>(nullable: true),
                     Description = table.Column<string>(maxLength: 2000, nullable: false),
                     ForumSectionId = table.Column<int>(nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
                     PublishedDate = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(maxLength: 100, nullable: false)
                 },
@@ -90,6 +92,7 @@ namespace UndergroundStation.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AuthorId = table.Column<string>(nullable: true),
                     Content = table.Column<string>(maxLength: 1000, nullable: false),
+                    IsDeleted = table.Column<bool>(nullable: false),
                     MotherCommentId = table.Column<int>(nullable: true),
                     NewsArticleId = table.Column<int>(nullable: true),
                     PublishedDate = table.Column<DateTime>(nullable: false),
@@ -127,6 +130,7 @@ namespace UndergroundStation.Data.Migrations
                     AuthorId = table.Column<string>(nullable: true),
                     Content = table.Column<string>(maxLength: 3000, nullable: false),
                     ForumThemeId = table.Column<int>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
                     MotherArticleId = table.Column<int>(nullable: true),
                     PublishedDate = table.Column<DateTime>(nullable: false),
                     Title = table.Column<string>(maxLength: 200, nullable: false)

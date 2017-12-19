@@ -6,6 +6,7 @@
     using UndergroundStation.Services;
     using Microsoft.AspNetCore.Identity;
     using UndergroundStation.Data.Models;
+    using Models.ArticleViewModels;
     using System.Linq;
 
     public class ArticlesController : Controller
@@ -23,6 +24,15 @@
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> All(int page = 1)
+            => View(new NewsListingViewModel
+            {
+                News = await this.news.AllAsync(page),
+                TotalArticles = await this.news.TotalAsync(),
+                CurrentPage = page
+            });
 
         public IActionResult Details(int id)
         {

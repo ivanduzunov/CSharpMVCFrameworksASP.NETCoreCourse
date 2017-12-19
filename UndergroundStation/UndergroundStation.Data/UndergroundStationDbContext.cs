@@ -39,7 +39,7 @@
                  .OnDelete(DeleteBehavior.Restrict)
                  .IsRequired(false);
 
-         
+
             builder.Entity<Comment>()
                 .HasOne(c => c.NewsArticle)
                 .WithMany(na => na.Comments)
@@ -78,7 +78,7 @@
 
             //Likes
 
-          
+
             builder.Entity<Like>()
                 .HasOne(l => l.ForumArtcle)
                 .WithMany(fa => fa.Likes)

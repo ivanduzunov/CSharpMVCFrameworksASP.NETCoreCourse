@@ -30,6 +30,8 @@
 
         public DateTime PublishedDate { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public List<ForumArticle> Articles { get; set; } = new List<ForumArticle>();
     }
 }
