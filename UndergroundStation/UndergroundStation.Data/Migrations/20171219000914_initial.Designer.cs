@@ -12,8 +12,8 @@ using UndergroundStation.Data.Models.Enums;
 namespace UndergroundStation.Data.Migrations
 {
     [DbContext(typeof(UndergroundStationDbContext))]
-    [Migration("20171216134033_Initial")]
-    partial class Initial
+    [Migration("20171219000914_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
