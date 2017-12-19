@@ -51,7 +51,7 @@
             return true;
         }
 
-        public async Task<ThemeDetailsServiceModel> Details(int id)
+        public async Task<ThemeDetailsServiceModel> ById(int id)
            => await this.db.ForumThemes
                 .Where(ft => ft.Id == id)
                 .ProjectTo<ThemeDetailsServiceModel>()

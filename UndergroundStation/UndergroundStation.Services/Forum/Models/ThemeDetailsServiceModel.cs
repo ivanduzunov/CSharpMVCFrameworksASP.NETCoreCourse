@@ -23,23 +23,12 @@ namespace UndergroundStation.Services.Forum.Models
 
         public DateTime PublishedDate { get; set; }
 
-        public List<ArticleListingServiceModel> Articles { get; set; } = new List<ArticleListingServiceModel>();
-
         public void ConfigureMapping(Profile mapper)
         {
             mapper
                   .CreateMap<ForumTheme, ThemeDetailsServiceModel>()
                   .ForMember(c => c.ForumSectionTitle, cfg => cfg.MapFrom(c => c.ForumSection.Tittle))
                   .ForMember(c => c.CreatorName, cfg => cfg.MapFrom(c => c.Creator.UserName));
-
-            mapper
-                 .CreateMap<ForumArticle, ArticleListingServiceModel>()
-                 .ForMember(c => c.authorUserName, cfg => cfg.MapFrom(c => c.Author.UserName));
-
-            mapper
-                 .CreateMap<ForumArticle, ArticleAnswerListingServiceModel>()
-                 .ForMember(c => c.authorUserName, cfg => cfg.MapFrom(c => c.Author.UserName))
-                  .ForMember(c => c.MotherArticleTitle, cfg => cfg.MapFrom(c => c.MotherArticle.Title));
         }
     }
 }

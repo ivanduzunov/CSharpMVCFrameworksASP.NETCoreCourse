@@ -11,6 +11,7 @@
     using Services.Forum;
 
     using static WebConstants;
+    using Microsoft.AspNetCore.Routing;
 
     [Area(ForumArea)]
     public class ArticlesController : Controller
@@ -71,7 +72,12 @@
 
             TempData.AddSuccessMessage($"Article {model.Title} successfully published.");
 
-            return this.Redirect($"/forum/themes/details/{model.ForumThemeId}");
+            return RedirectToAction("Details", "Themes", 
+                new RouteValueDictionary(
+                new {
+                      themeId = model.ForumThemeId.ToString(),
+                      page = "1",
+                    }));
         }
 
         [Authorize]
@@ -120,7 +126,13 @@
 
             TempData.AddSuccessMessage($"Answer {model.Title} successfully published.");
 
-            return this.Redirect($"/forum/themes/details/{model.ForumThemeId}");
+            return RedirectToAction("Details", "Themes",
+               new RouteValueDictionary(
+               new
+               {
+                   themeId = model.ForumThemeId.ToString(),
+                   page = "1",
+               }));
         }
     }
 }

@@ -15,10 +15,16 @@
     <tbody>
         @foreach (var theme in Model.Themes)
         {
+            var dict =
+                 new Dictionary<string, string>
+                 {
+                      {"themeId", theme.Id.ToString()},
+                      {"page", "1"},
+                 };
             <tr>
                 <th>
                     <h3>
-                        <a href="@($"/Forum/Themes/Details/{theme.Id}")">@theme.Title</a>
+                        <a asp-area="Forum" asp-controller="Themes" asp-action="Details" asp-all-route-data="@dict">@theme.Title</a>
                     </h3>
                     <h5>By @theme.Creator.UserName</h5>
                     <h5>Open at: @($"{theme.PublishedDate.ToShortTimeString()} on {theme.PublishedDate.ToShortDateString()}")</h5>

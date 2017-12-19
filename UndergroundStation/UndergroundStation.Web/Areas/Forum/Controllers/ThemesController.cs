@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using Services.Forum;
+    using Models.Themes;
 
     using static WebConstants;
 
@@ -11,18 +12,31 @@
     public class ThemesController : Controller
     {
         private readonly IThemesService themes;
+        private readonly IArticleService articles;
 
-        public ThemesController(IThemesService themes)
+        public ThemesController
+            (IThemesService themes,
+            IArticleService articles)
         {
             this.themes = themes;
+            this.articles = articles;
         }
 
         [Authorize]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string themeId, string page)
         {
-            var result = await themes.Details(id);
+            int id = int.Parse(themeId);
+            int pageNum = int.Parse(page);
 
-            return View(result);
+            var theme = new ThemeDetailsViewModel
+            {
+                ThemeDetails = await this.themes.ById(id),
+                Articles = await this.articles.ByThemeId(id, pageNum),
+                TotalArticles = await this.articles.TotalByThemeId(id),
+                CurrentPage = pageNum
+            };
+
+            return View(theme);
         }
 
 

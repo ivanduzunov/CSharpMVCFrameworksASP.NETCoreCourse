@@ -2,10 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using AutoMapper;
     using Common.Mapping;
     using Data.Models;
 
-    public class ArticleListingServiceModel : IMapFrom<ForumArticle>
+    public class ArticleListingServiceModel : IMapFrom<ForumArticle>, IHaveCustomMapping
     {
         public int Id { get; set; }
 
@@ -17,12 +18,13 @@
 
         public string authorUserName { get; set; }
 
-        public int ForumThemeId { get; set; }
+        public List<ArticleListingServiceModel> Answers { get; set; } = new List<ArticleListingServiceModel>();
 
-        public ForumTheme ForumTheme { get; set; }
-
-        public List<ArticleAnswerListingServiceModel> Answers { get; set; } = new List<ArticleAnswerListingServiceModel>();
-
-        public List<Like> Likes { get; set; } = new List<Like>();
+        public void ConfigureMapping(Profile mapper)
+        {
+            mapper
+                   .CreateMap<ForumArticle, ArticleListingServiceModel>()
+                   .ForMember(c => c.authorUserName, cfg => cfg.MapFrom(c => c.Author.UserName));
+        }
     }
 }

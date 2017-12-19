@@ -9,6 +9,6 @@
     {
         Task <bool> CreateThemeAsync(string title, string description, string creatorId, int forumSectionId, DateTime publishedDate);
 
-        Task<ThemeDetailsServiceModel> Details(int id);
+        Task<ThemeDetailsServiceModel> ById(int id);
     }
 }

@@ -14,20 +14,19 @@
 
 <div class="jumbotron">
     <h3>Sections</h3>
-    <table class="table-bordered table-hover">
-        <tbody>
-            @foreach (var item in Model)
+   <ul>
+       @foreach (var item in Model)
             {
-                <tr>
-                    <th>
-                        <h3>
-                            <a href="@($"/Forum/Sections/Details/{item.Id}")">@item.Tittle</a>
-                        </h3>
-                        <h6>@item.Description</h6>
-                        <h6>Themes: @(item.Themes.Count())</h6>
-                    </th>
-                </tr>
-            }
-        </tbody>
-    </table>
+   
+          <li>
+              <a href="@($"/Forum/Sections/Details/{item.Id}")"><h2>@item.Tittle</h2></a>
+              <h4>@item.Description</h4>
+              <h5>Themes: @(item.Themes.Count())</h5>
+          </li>            
+
+       }
+   </ul>
+        
+           
+
 </div>
