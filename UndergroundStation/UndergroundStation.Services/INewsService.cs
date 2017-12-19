@@ -10,7 +10,11 @@
 
         Task<IEnumerable<NewsListingServiceModel>> AllAsync(int page = 1);
 
+        Task<IEnumerable<NewsListingServiceModel>> AllByTypeAsync(string articleType, int page);
+
         Task<int> TotalAsync();
+
+        Task<int> TotalByTypeAsync(string articleType);
 
         NewsDetailsServiceModel ByIdAsync(int id);
 

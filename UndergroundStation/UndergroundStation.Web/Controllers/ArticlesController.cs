@@ -7,7 +7,10 @@
     using Microsoft.AspNetCore.Identity;
     using UndergroundStation.Data.Models;
     using Models.ArticleViewModels;
+    using Infrastructure.Extentions;
+    using Data.Models.Enums;
     using System.Linq;
+    using System;
 
     public class ArticlesController : Controller
     {
@@ -31,12 +34,27 @@
             {
                 News = await this.news.AllAsync(page),
                 TotalArticles = await this.news.TotalAsync(),
-                CurrentPage = page
+                CurrentPage = page,
+                ArticleTypes = Enum.GetValues(typeof(ArticleType)).Cast<ArticleType>().ToList()
+
             });
+
+        [AllowAnonymous]
+        public async Task<IActionResult> AllByType
+            (string articleType,
+            string articleTypeDescription,
+            string page)
+        => View(new NewsListingViewModelByType
+           {
+               News = await this.news.AllByTypeAsync(articleType, int.Parse(page)),
+               TotalArticles = await this.news.TotalByTypeAsync(articleType),
+               CurrentPage = int.Parse(page),
+               articleTypeDescription = articleTypeDescription
+           });
 
         public IActionResult Details(int id)
         {
-            var userId =  userManager.GetUserId(HttpContext.User);
+            var userId = userManager.GetUserId(HttpContext.User);
 
             var article = news.ByIdAsync(id);
 

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />   
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
@@ -35,10 +35,9 @@
                         <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
                     }
 
-                    @if (User.IsInRole(WebConstants.AuthorRole))
-                    {
-                        <li><a asp-area="" asp-controller="Articles" asp-action="All">News</a></li>
-                    }
+
+                    <li><a asp-area="" asp-controller="Articles" asp-action="All">News</a></li>
+
 
                     <li><a asp-area="Forum" asp-controller="Home" asp-action="Index">Forum</a></li>
 

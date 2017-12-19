@@ -3,11 +3,10 @@
     using System;
     using System.Collections.Generic;
     using Services.Models;
-    using Data.Models.Enums;
 
     using static Services.ServiceConstants;
 
-    public class NewsListingViewModel
+    public class NewsListingViewModelByType
     {
         public IEnumerable<NewsListingServiceModel> News { get; set; }
 
@@ -24,6 +23,6 @@
                 ? this.TotalPages
                 : this.CurrentPage + 1;
 
-        public List<ArticleType> ArticleTypes { get; set; } = new List<ArticleType>();
+        public string articleTypeDescription { get; set; }
     }
 }

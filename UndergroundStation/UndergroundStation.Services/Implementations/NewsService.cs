@@ -42,8 +42,25 @@
                .ProjectTo<NewsListingServiceModel>()
                .ToListAsync();
 
+        public async Task<IEnumerable<NewsListingServiceModel>> AllByTypeAsync(string articleType, int page)
+         => await this.db
+               .NewsArticles
+               .Where(a => a.ArticleType.ToString() == articleType)
+               .OrderByDescending(a => a.PublishedDate)
+               .ThenByDescending(a => a.PublishedDate.TimeOfDay)
+               .Skip((page - 1) * NewsArticlesPageSize)
+               .Take(NewsArticlesPageSize)
+               .ProjectTo<NewsListingServiceModel>()
+               .ToListAsync();
+
         public async Task<int> TotalAsync()
                  => await this.db.NewsArticles.CountAsync();
+
+        public async Task<int> TotalByTypeAsync(string articleType)
+                => await this.db
+                    .NewsArticles
+                    .Where(a => a.ArticleType.ToString() == articleType)
+                    .CountAsync();
 
         public NewsDetailsServiceModel ByIdAsync(int id)
         {
@@ -76,6 +93,8 @@
 
             return result;
         }
+
+
 
         public async Task<bool> AddLikeAsync(int articleId, string userId)
         {
@@ -165,6 +184,6 @@
             return true;
         }
 
-       
+
     }
 }
