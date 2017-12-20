@@ -41,6 +41,12 @@
         <p align="right">
             <a class="btn btn-primary btn-sm" asp-area="Forum" asp-controller="Articles" asp-action="CreateAnswer" asp-route-id="@article.Id" asp-all-route-data="dict">Answer</a>
         </p>
+        @if (User.IsInRole(WebConstants.ForumModeratorRole))
+        {
+            <form asp-area="Forum" asp-controller="Articles" asp-action="DeleteArticle" asp-route-articleId="@article.Id" asp-route-articleId="@Model.Id" model="post">
+                <input type="submit" class="btn btn-danger btn-sm" value="Delete" )" />
+            </form>
+        }
         <div class="clearfix"></div>
 
         @foreach (var answer in article.Answers.OrderBy(a => a.PublishedDate).ThenBy(a => a.PublishedDate.TimeOfDay))

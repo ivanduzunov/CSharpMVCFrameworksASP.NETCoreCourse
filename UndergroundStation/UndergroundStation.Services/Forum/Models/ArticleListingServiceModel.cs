@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using AutoMapper;
     using Common.Mapping;
     using Data.Models;
@@ -24,7 +25,8 @@
         {
             mapper
                    .CreateMap<ForumArticle, ArticleListingServiceModel>()
-                   .ForMember(c => c.authorUserName, cfg => cfg.MapFrom(c => c.Author.UserName));
+                   .ForMember(c => c.authorUserName, cfg => cfg.MapFrom(c => c.Author.UserName))
+                   .ForMember(c => c.Answers, cfg => cfg.MapFrom(c => c.Answers.Where(a => a.IsDeleted == false)));
         }
     }
 }

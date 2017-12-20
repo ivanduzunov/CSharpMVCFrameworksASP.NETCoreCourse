@@ -71,7 +71,7 @@
                   .FirstOrDefault();
 
             var comments = this.db.Comments
-                            .Where(c => c.NewsArticleId == id)
+                            .Where(c => c.NewsArticleId == id && c.IsDeleted == false)
                             .Select(na => new CommentsListingServiceModel
                             {
                                 Id = na.Id,
@@ -79,7 +79,7 @@
                                 PublishedDate = na.PublishedDate,
                                 AuthorUserName = na.Author.UserName,
                                 Answers = this.db.Comments
-                                            .Where(c => c.MotherCommentId == na.Id)
+                                            .Where(c => c.MotherCommentId == na.Id && c.IsDeleted == false)
                                             .Select(an => new CommentsListingServiceModel
                                             {
                                                 Id = an.Id,

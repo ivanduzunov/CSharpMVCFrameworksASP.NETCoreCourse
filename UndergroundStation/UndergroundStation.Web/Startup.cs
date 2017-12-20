@@ -62,6 +62,8 @@
 
             services.AddTransient<IAccountService, AccountService>();
 
+            services.AddTransient<IAdminArticleService, AdminArticleService>();
+
 
             services.AddMvc(options => 
             {

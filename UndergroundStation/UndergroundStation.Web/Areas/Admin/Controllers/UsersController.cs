@@ -67,6 +67,7 @@
             await this.userManager.AddToRoleAsync(user, model.Role);
 
             TempData.AddSuccessMessage($"User {user.UserName} successfully added to the {model.Role} role.");
+
             return RedirectToAction(nameof(Index));
         }
     }

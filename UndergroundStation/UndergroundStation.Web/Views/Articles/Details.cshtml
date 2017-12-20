@@ -57,6 +57,12 @@
                 <div class="jumbotron-fluid" style="background-color:lightgray">
                     <h4 style="background-color:darkgray" font:bold"><a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@comment.AuthorUserName">@comment.AuthorUserName</a>@($" ({comment.PublishedDate.ToShortTimeString()} {comment.PublishedDate.ToShortDateString()})")</h4>
                     <p><h6 style="font:italic">@comment.Content</h6></p>
+                    @if (User.IsInRole(WebConstants.AdministratorRole))
+                    {
+                        <form asp-area="Admin" asp-controller="Articles" asp-action="DeleteComment" asp-route-commentId="@comment.Id" asp-route-articleId="@Model.Id" model="post">
+                            <input type="submit" class="btn btn-danger btn-sm" value="Delete" )" />
+                        </form>                    
+                    }                
                 </div>
                 <div class="clearfix"></div>
 
@@ -67,6 +73,12 @@
                         <div class="jumbotron-fluid; col-md-offset-2" style="background-color:lightgray">
                             <h4 style="background-color:darkgray" font:bold"><a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@answer.AuthorUserName">@answer.AuthorUserName</a>@($" ({answer.PublishedDate.ToShortTimeString()} {answer.PublishedDate.ToShortDateString()})")</h4>
                             <p><h6 style="font:italic">@answer.Content</h6></p>
+                            @if (User.IsInRole(WebConstants.AdministratorRole))
+                            {
+                                <form asp-area="Admin" asp-controller="Articles" asp-action="DeleteComment" asp-route-commentId="@answer.Id" asp-route-articleId="@Model.Id" model="post">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete" )" />
+                                </form>
+                            }
                         </div>
                     }
 
