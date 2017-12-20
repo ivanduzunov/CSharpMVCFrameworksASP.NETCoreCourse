@@ -9,8 +9,8 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using UndergroundStation.Web.Models.AccountViewModels;
-    using Data;
     using Data.Models;
+    using Services;
 
     [Authorize]
     [Route("[controller]/[action]")]
@@ -19,15 +19,32 @@
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
+        private readonly IAccountService accounts;
 
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IAccountService accounts)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _logger = logger;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
+            this._logger = logger;
+            this.accounts = accounts;
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Profile(string username)
+        {
+            var user = await accounts.ProfileByUsername(username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
         }
 
         [TempData]

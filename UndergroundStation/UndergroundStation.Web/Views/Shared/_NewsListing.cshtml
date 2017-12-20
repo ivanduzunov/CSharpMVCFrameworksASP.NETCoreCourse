@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<NewsListingServiceModel>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6; align-middle">
         <ul class="list-group article-list">
             @foreach (var article in Model)
             {
                 <li class="list-group-item">
-                    <span>@article.ArticleType.ToString()</span>
+                    <span class="badge badge-primary badge-pill" style="background-color:orangered; align-self:flex-start">@article.ArticleType.ToString()</span>
                     <br />
                     <a asp-action="Details" asp-route-id="@article.Id">@article.Title</a>
                     <br />

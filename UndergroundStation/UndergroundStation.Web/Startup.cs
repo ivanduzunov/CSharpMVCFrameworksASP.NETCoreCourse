@@ -60,6 +60,8 @@
 
             services.AddTransient<IArticleService, ArticleService>();
 
+            services.AddTransient<IAccountService, AccountService>();
+
 
             services.AddMvc(options => 
             {

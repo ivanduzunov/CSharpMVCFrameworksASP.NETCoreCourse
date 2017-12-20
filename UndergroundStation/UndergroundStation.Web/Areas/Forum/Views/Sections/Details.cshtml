@@ -26,7 +26,7 @@
                     <h3>
                         <a asp-area="Forum" asp-controller="Themes" asp-action="Details" asp-all-route-data="@dict">@theme.Title</a>
                     </h3>
-                    <h5>By @theme.Creator.UserName</h5>
+                    <h5>By <a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@theme.Creator.UserName">@theme.Creator.UserName</a></h5>
                     <h5>Open at: @($"{theme.PublishedDate.ToShortTimeString()} on {theme.PublishedDate.ToShortDateString()}")</h5>
                     <h5>Answers: @(theme.Articles.Count())</h5>
                 </th>

@@ -12,7 +12,7 @@
 </div>
 <div class="jumbotron">
     <div class="jumbotron-fluid" style="border:double">
-        <h3>From: @themeDetails.CreatorName</h3>
+        <h3>From: <a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@themeDetails.CreatorName">@themeDetails.CreatorName</a></h3>
         <h4>@($"Date: {themeDetails.PublishedDate.ToShortTimeString()} / {themeDetails.PublishedDate.ToShortDateString()}")</h4>
         <p>@themeDetails.Description</p>
     </div>
@@ -23,7 +23,7 @@
     @foreach (var article in articles)
     {
         <div class="jumbotron-fluid; col-md-20" style="background-color: darkseagreen">
-            <h4 style="background-color:aqua">@($"{article.Title} From: {article.authorUserName} Date: {article.PublishedDate.ToShortTimeString()}/{article.PublishedDate.ToShortDateString()}")</h4>
+            <h4 style="background-color:aqua">@($"{article.Title} From: ")<a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@article.authorUserName">@article.authorUserName</a> @($"Date: {article.PublishedDate.ToShortTimeString()}/{article.PublishedDate.ToShortDateString()}")</h4>
             <p><h5>@article.Content</h5></p>
             <p align="right">
                 @{
@@ -46,7 +46,7 @@
         @foreach (var answer in article.Answers.OrderBy(a => a.PublishedDate).ThenBy(a => a.PublishedDate.TimeOfDay))
         {
             <div class="jumbotron-fluid; col-md-offset-1 col-md-19" style="background-color: darkseagreen">
-                <h4 style="background-color:aqua">@($"{answer.Title} From: {answer.authorUserName}  Date: {answer.PublishedDate.ToShortTimeString()}/{answer.PublishedDate.ToShortDateString()}")</h4>
+                <h4 style="background-color:aqua">@($"{answer.Title} From: ") <a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@answer.authorUserName">@answer.authorUserName</a> @($"Date: {answer.PublishedDate.ToShortTimeString()}/{answer.PublishedDate.ToShortDateString()}")</h4>
                 <p><h5>@answer.Content</h5></p>
             </div>
             <div class="clearfix"></div>
