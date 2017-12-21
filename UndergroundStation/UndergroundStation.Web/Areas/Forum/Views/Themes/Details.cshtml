@@ -8,7 +8,7 @@
 <br />
 <br />
 <div class="row" align="center">
-    <h2>@($"{themeDetails.ForumSectionTitle}/{themeDetails.Title}")</h2>
+    <h2><a asp-area="Forum" asp-controller="Sections" asp-action="Details" asp-route-id="@themeDetails.ForumSectionId">@themeDetails.ForumSectionTitle</a> @($"/{themeDetails.Title}")</h2>
 </div>
 <div class="jumbotron">
     <div class="jumbotron-fluid" style="border:double">
@@ -43,7 +43,7 @@
         </p>
         @if (User.IsInRole(WebConstants.ForumModeratorRole))
         {
-            <form asp-area="Forum" asp-controller="Articles" asp-action="DeleteArticle" asp-route-articleId="@article.Id" asp-route-articleId="@Model.Id" model="post">
+            <form asp-area="Forum" asp-controller="Articles" asp-action="DeleteArticle" asp-route-articleId="@article.Id" asp-route-themeId="@themeDetails.Id" model="post">
                 <input type="submit" class="btn btn-danger btn-sm" value="Delete" )" />
             </form>
         }
@@ -54,6 +54,12 @@
             <div class="jumbotron-fluid; col-md-offset-1 col-md-19" style="background-color: darkseagreen">
                 <h4 style="background-color:aqua">@($"{answer.Title} From: ") <a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@answer.authorUserName">@answer.authorUserName</a> @($"Date: {answer.PublishedDate.ToShortTimeString()}/{answer.PublishedDate.ToShortDateString()}")</h4>
                 <p><h5>@answer.Content</h5></p>
+                @if (User.IsInRole(WebConstants.ForumModeratorRole))
+                {
+                    <form asp-area="Forum" asp-controller="Articles" asp-action="DeleteArticle" asp-route-articleId="@answer.Id" asp-route-themeId="@themeDetails.Id" model="post">
+                        <input type="submit" class="btn btn-danger btn-sm" value="Delete" )" />
+                    </form>
+                }
             </div>
             <div class="clearfix"></div>
         }

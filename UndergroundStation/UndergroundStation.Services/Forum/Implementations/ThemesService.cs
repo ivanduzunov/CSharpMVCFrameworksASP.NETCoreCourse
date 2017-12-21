@@ -22,12 +22,12 @@
         public async Task<bool> CreateThemeAsync
            (string title,
             string description,
-            string creatorId, 
+            string creatorId,
             int forumSectionId,
             DateTime publishedDate)
         {
-            if (title == null 
-                || description == null 
+            if (title == null
+                || description == null
                 || creatorId == null
                 || forumSectionId == 0
                 || publishedDate == null)
@@ -53,10 +53,36 @@
 
         public async Task<ThemeDetailsServiceModel> ById(int id)
            => await this.db.ForumThemes
-                .Where(ft => ft.Id == id)
+                .Where(ft => ft.Id == id && ft.IsDeleted == false)
                 .ProjectTo<ThemeDetailsServiceModel>()
                 .FirstOrDefaultAsync();
-                
-        
+
+        public async Task<IEnumerable<ThemeListingServiceModel>> BySectionId(int sectonId)
+         => await this.db.ForumThemes
+              .Where(t => t.ForumSectionId == sectonId && t.IsDeleted == false)
+              .ProjectTo<ThemeListingServiceModel>()
+              .ToListAsync();
+
+        public async Task<bool> DeleteTheme(string themeId)
+        {
+            var id = int.Parse(themeId);
+
+            var theme = await this.db.ForumThemes
+                         .Where(t => t.Id == id)
+                         .FirstOrDefaultAsync();
+
+            if (theme == null)
+            {
+                return false;
+            }
+
+            theme.IsDeleted = true;
+
+            await this.db.SaveChangesAsync();
+
+            return true;
+        }
+
+      
     }
 }

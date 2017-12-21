@@ -1,14 +1,15 @@
-﻿@model SectionDetailsServiceModel
+﻿@model SectionsDetailsViewModel
+@using System.Linq
 @{
-    ViewData["Title"] = Model.Tittle;
+    ViewData["Title"] = Model.SectionDetails.Tittle;
 }
+<div class="row" align="center">
+    <h1><a asp-area="Forum" asp-controller="Home" asp-action="Index">Forum</a> @($"/{Model.SectionDetails.Tittle}")</h1>
+</div>
 <br />
+<a class="btn btn-default" href="@($"/forum/sections/AddTheme/{Model.SectionDetails.Id}")">Add Theme</a>
 <br />
-<h1>@ViewData["Title"]</h1>
-<br />
-<a class="btn btn-default" href="@($"/forum/sections/AddTheme/{Model.Id}")">Add Theme</a>
-<br />
-<br />
+
 
 
 <table class="table table-bordered table-hover">
@@ -26,9 +27,15 @@
                     <h3>
                         <a asp-area="Forum" asp-controller="Themes" asp-action="Details" asp-all-route-data="@dict">@theme.Title</a>
                     </h3>
-                    <h5>By <a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@theme.Creator.UserName">@theme.Creator.UserName</a></h5>
+                    <h5>By <a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-username="@theme.CreatorName">@theme.CreatorName</a></h5>
                     <h5>Open at: @($"{theme.PublishedDate.ToShortTimeString()} on {theme.PublishedDate.ToShortDateString()}")</h5>
-                    <h5>Answers: @(theme.Articles.Count())</h5>
+                    <h5>Answers: @(theme.ArticlesCount)</h5>
+                    @if (User.IsInRole(WebConstants.ForumModeratorRole))
+                    {
+                        <form asp-area="Forum" asp-controller="Themes" asp-action="DeleteTheme" asp-route-themeId="@theme.Id" asp-route-sectionId="@Model.SectionDetails.Id" model="post">
+                            <input type="submit" class="btn btn-danger btn-sm" value="Delete" )" />
+                        </form>
+                    }
                 </th>
             </tr>
         }

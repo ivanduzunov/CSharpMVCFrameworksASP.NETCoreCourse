@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-
-namespace UndergroundStation.Services.Forum.Models
+﻿namespace UndergroundStation.Services.Forum.Models
 {
+    using System;
     using AutoMapper;
     using Common.Mapping;
     using Data.Models;
@@ -19,6 +15,8 @@ namespace UndergroundStation.Services.Forum.Models
 
         public string ForumSectionTitle { get; set; }
 
+        public int ForumSectionId { get; set; }
+
         public string CreatorName { get; set; }
 
         public DateTime PublishedDate { get; set; }
@@ -28,6 +26,7 @@ namespace UndergroundStation.Services.Forum.Models
             mapper
                   .CreateMap<ForumTheme, ThemeDetailsServiceModel>()
                   .ForMember(c => c.ForumSectionTitle, cfg => cfg.MapFrom(c => c.ForumSection.Tittle))
+                  .ForMember(c => c.ForumSectionId, cfg => cfg.MapFrom(c => c.ForumSection.Id))
                   .ForMember(c => c.CreatorName, cfg => cfg.MapFrom(c => c.Creator.UserName));
         }
     }

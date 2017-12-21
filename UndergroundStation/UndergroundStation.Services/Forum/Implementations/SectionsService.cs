@@ -26,26 +26,12 @@
                 .ToListAsync();
 
         public async Task<SectionDetailsServiceModel> ById(int id)
-        {
-            var themes = await this.db.ForumThemes
-                .Where(t => t.ForumSectionId == id)
-                .ProjectTo<ThemeListingServiceModel>()
-                .ToListAsync();
-
-            var section = await this.db
-                .ForumSections
+              =>  await this.db.ForumSections
                 .Where(s => s.Id == id)
-                .Select(s => new SectionDetailsServiceModel
-                {
-                    Tittle = s.Tittle,
-                    Id = id,
-                    Themes = themes
-                })
+                .ProjectTo<SectionDetailsServiceModel>()
                 .FirstOrDefaultAsync();
-           
-            return  section;
-        }
 
+           
         public async Task<bool> Create(string title, string description)
         {
             if (title == null || description == null)

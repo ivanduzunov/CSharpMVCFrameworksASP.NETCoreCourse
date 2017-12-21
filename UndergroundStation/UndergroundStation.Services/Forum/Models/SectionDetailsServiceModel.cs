@@ -11,7 +11,5 @@ namespace UndergroundStation.Services.Forum.Models
         public int Id { get; set; }
 
         public string Tittle { get; set; }
-
-        public List<ThemeListingServiceModel> Themes { get; set; } = new List<ThemeListingServiceModel>();
     }
 }

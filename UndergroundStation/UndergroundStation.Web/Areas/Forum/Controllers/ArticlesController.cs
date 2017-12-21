@@ -6,12 +6,13 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Identity;
     using Infrastructure.Extentions;
+    using Microsoft.AspNetCore.Routing;
     using Data.Models;
     using Models.Articles;
     using Services.Forum;
 
     using static WebConstants;
-    using Microsoft.AspNetCore.Routing;
+
 
     [Area(ForumArea)]
     public class ArticlesController : Controller
@@ -133,6 +134,26 @@
                    themeId = model.ForumThemeId.ToString(),
                    page = "1",
                }));
+        }
+
+        [HttpPost]
+        [Authorize(Roles = ForumModeratorRole)]
+        public async Task<IActionResult> DeleteArticle(string articleId, string themeId)
+        {
+            if (articleId == null || themeId == null)
+            {
+                return NotFound();
+            }
+
+            var success = await this.articles.DeleteArticle(articleId);
+
+            if (!success)
+            {
+                return BadRequest();
+            }
+
+            return RedirectToAction
+                ("Details", "Themes", new { area = "Forum", themeId = int.Parse(themeId), page = 1 });
         }
     }
 }

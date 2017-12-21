@@ -39,9 +39,24 @@
             return View(theme);
         }
 
+        [HttpPost]
+        [Authorize(Roles = ForumModeratorRole)]
+        public async Task<IActionResult> DeleteTheme(string themeId, string sectionId)
+        {
+            if (themeId == null || sectionId == null)
+            {
+                return NotFound();
+            }
 
+            var success = await this.themes.DeleteTheme(themeId);
 
+            if (!success)
+            {
+                return BadRequest();
+            }
 
-
+            return RedirectToAction
+                ("Details", "Sections", new { area = "Forum", id = int.Parse(sectionId)});
+        }
     }
 }

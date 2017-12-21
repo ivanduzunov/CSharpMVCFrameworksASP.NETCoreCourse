@@ -21,7 +21,7 @@
           <li>
               <a href="@($"/Forum/Sections/Details/{item.Id}")"><h2>@item.Tittle</h2></a>
               <h4>@item.Description</h4>
-              <h5>Themes: @(item.Themes.Count())</h5>
+              <h5>Themes: @(item.Themes.Where(t => t.IsDeleted == false).Count())</h5>
           </li>            
 
        }

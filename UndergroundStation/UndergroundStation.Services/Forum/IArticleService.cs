@@ -14,5 +14,7 @@
         Task<IEnumerable<ArticleListingServiceModel>> ByThemeId(int themeId, int page);
 
         Task<int> TotalByThemeId(int themeId);
+
+        Task<bool> DeleteArticle(string articleId);
     }
 }

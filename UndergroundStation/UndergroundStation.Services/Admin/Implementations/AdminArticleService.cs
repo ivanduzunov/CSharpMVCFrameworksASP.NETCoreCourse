@@ -19,16 +19,16 @@
         {
             int id = int.Parse(commentId);
 
-            if (id == 0)
-            {
-                return false;
-            }
-
             var comment = await this.db.Comments
                    .Where(c => c.Id == id)
                    .FirstOrDefaultAsync();
 
-           comment.IsDeleted = true;
+            if (comment == null)
+            {
+                return false;
+            }
+
+            comment.IsDeleted = true;
 
             await this.db.SaveChangesAsync();
 

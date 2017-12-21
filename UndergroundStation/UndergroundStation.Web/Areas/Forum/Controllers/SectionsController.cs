@@ -63,7 +63,17 @@
         [Authorize]
         public async Task<IActionResult> Details(int id)
         {
-            var section = await sections.ById(id);
+
+            var secDetails = await this.sections.ById(id);
+
+            var themes = await this.themes.BySectionId(id);
+
+            var section = 
+                new SectionsDetailsViewModel
+            {
+                SectionDetails = secDetails,
+                Themes = themes
+            };
 
             return View(section);
         }

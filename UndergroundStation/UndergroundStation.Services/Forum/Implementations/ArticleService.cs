@@ -35,21 +35,20 @@
                 return false;
             }
 
-            if (motherArticleId == 0)
+
+            var article = new ForumArticle
             {
-                var article = new ForumArticle
-                {
-                    Title = title,
-                    Content = content,
-                    AuthorId = authorId,
-                    ForumThemeId = forumThemeId,
-                    PublishedDate = publishedDate
-                };
+                Title = title,
+                Content = content,
+                AuthorId = authorId,
+                ForumThemeId = forumThemeId,
+                PublishedDate = publishedDate
+            };
 
-                this.db.Add(article);
+            this.db.Add(article);
 
-                await this.db.SaveChangesAsync();
-            }
+            await this.db.SaveChangesAsync();
+
 
             return true;
         }
@@ -83,7 +82,7 @@
         }
 
         public async Task<IEnumerable<ArticleListingServiceModel>> ByThemeId(int themeId, int page)
-         =>  await this.db
+         => await this.db
                  .ForumArticles
                  .Where(fa => fa.ForumThemeId == themeId && fa.IsDeleted == false)
                  .OrderBy(a => a.PublishedDate)
@@ -99,5 +98,26 @@
             .ForumArticles
             .Where(fa => fa.ForumThemeId == themeId && fa.IsDeleted == false)
             .CountAsync();
+
+        public async Task<bool> DeleteArticle(string articleId)
+        {
+            int id = int.Parse(articleId);
+
+            var article = await this.db
+                            .ForumArticles
+                            .Where(fm => fm.Id == id)
+                            .FirstOrDefaultAsync();
+
+            if (article == null)
+            {
+                return false;
+            }
+
+            article.IsDeleted = true;
+
+            await this.db.SaveChangesAsync();
+
+            return true;
+        }
     }
 }
