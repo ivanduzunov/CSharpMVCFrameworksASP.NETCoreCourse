@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UndergroundStation.Data", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UndergroundStation.Common", "UndergroundStation.Common\UndergroundStation.Common.csproj", "{962B4250-21EE-4919-B21F-3A237A26B7F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndergroundStation.Services", "UndergroundStation.Services\UndergroundStation.Services.csproj", "{32F66C4B-CB23-4281-8DAB-EC66E95A8404}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UndergroundStation.Services", "UndergroundStation.Services\UndergroundStation.Services.csproj", "{32F66C4B-CB23-4281-8DAB-EC66E95A8404}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndergroundStation.Test", "UdergroundStation.Test\UndergroundStation.Test.csproj", "{686EDC7B-64E3-460C-AA5D-64E3D104CBA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{32F66C4B-CB23-4281-8DAB-EC66E95A8404}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32F66C4B-CB23-4281-8DAB-EC66E95A8404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32F66C4B-CB23-4281-8DAB-EC66E95A8404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{686EDC7B-64E3-460C-AA5D-64E3D104CBA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{686EDC7B-64E3-460C-AA5D-64E3D104CBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{686EDC7B-64E3-460C-AA5D-64E3D104CBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{686EDC7B-64E3-460C-AA5D-64E3D104CBA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -64,9 +64,9 @@
         public async Task<IActionResult> Details(int id)
         {
 
-            var secDetails = await this.sections.ById(id);
+            var secDetails = await this.sections.ByIdAsync(id);
 
-            var themes = await this.themes.BySectionId(id);
+            var themes = await this.themes.BySectionIdAsync(id);
 
             var section = 
                 new SectionsDetailsViewModel

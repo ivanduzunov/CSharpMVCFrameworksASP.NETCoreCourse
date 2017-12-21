@@ -7,14 +7,14 @@
 
     public interface IArticleService
     {
-        Task<bool> Create(string title, string content, string authorId, int forumThemeId, DateTime publishedDate, int motherArticleId);
+        Task<bool> CreateAsync(string title, string content, string authorId, int forumThemeId, DateTime publishedDate, int motherArticleId);
 
         Task<bool> CreateAnswerAsync(string title, string content, string authorId, DateTime publishedDate, int motherArticleId);
 
-        Task<IEnumerable<ArticleListingServiceModel>> ByThemeId(int themeId, int page);
+        Task<IEnumerable<ArticleListingServiceModel>> ByThemeIdAsync(int themeId, int page);
 
-        Task<int> TotalByThemeId(int themeId);
+        Task<int> TotalByThemeIdAsync(int themeId);
 
-        Task<bool> DeleteArticle(string articleId);
+        Task<bool> DeleteArticleAsync(string articleId);
     }
 }

@@ -31,8 +31,8 @@
             var theme = new ThemeDetailsViewModel
             {
                 ThemeDetails = await this.themes.ById(id),
-                Articles = await this.articles.ByThemeId(id, pageNum),
-                TotalArticles = await this.articles.TotalByThemeId(id),
+                Articles = await this.articles.ByThemeIdAsync(id, pageNum),
+                TotalArticles = await this.articles.TotalByThemeIdAsync(id),
                 CurrentPage = pageNum
             };
 

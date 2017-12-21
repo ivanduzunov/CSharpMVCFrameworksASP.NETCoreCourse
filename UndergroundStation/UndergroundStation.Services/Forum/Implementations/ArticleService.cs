@@ -22,7 +22,7 @@
         }
 
 
-        public async Task<bool> Create
+        public async Task<bool> CreateAsync
             (string title,
             string content,
             string authorId,
@@ -81,7 +81,7 @@
             return true;
         }
 
-        public async Task<IEnumerable<ArticleListingServiceModel>> ByThemeId(int themeId, int page)
+        public async Task<IEnumerable<ArticleListingServiceModel>> ByThemeIdAsync(int themeId, int page)
          => await this.db
                  .ForumArticles
                  .Where(fa => fa.ForumThemeId == themeId && fa.IsDeleted == false)
@@ -93,13 +93,13 @@
                  .ToListAsync();
 
 
-        public async Task<int> TotalByThemeId(int themeId)
+        public async Task<int> TotalByThemeIdAsync(int themeId)
         => await this.db
             .ForumArticles
             .Where(fa => fa.ForumThemeId == themeId && fa.IsDeleted == false)
             .CountAsync();
 
-        public async Task<bool> DeleteArticle(string articleId)
+        public async Task<bool> DeleteArticleAsync(string articleId)
         {
             int id = int.Parse(articleId);
 

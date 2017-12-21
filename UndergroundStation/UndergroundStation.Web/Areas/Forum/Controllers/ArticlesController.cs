@@ -58,7 +58,7 @@
                 return BadRequest();
             }
 
-            var success = await this.articles.Create
+            var success = await this.articles.CreateAsync
                 (model.Title,
                 model.Content,
                 model.AuthorId,
@@ -145,7 +145,7 @@
                 return NotFound();
             }
 
-            var success = await this.articles.DeleteArticle(articleId);
+            var success = await this.articles.DeleteArticleAsync(articleId);
 
             if (!success)
             {

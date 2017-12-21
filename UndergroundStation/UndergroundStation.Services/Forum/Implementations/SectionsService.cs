@@ -22,10 +22,11 @@
         public async Task<IEnumerable<SectionListingServiceModel>> AllAsync()
              => await this.db
                 .ForumSections
+                .OrderBy(fs => fs.Tittle)
                 .ProjectTo<SectionListingServiceModel>()
                 .ToListAsync();
 
-        public async Task<SectionDetailsServiceModel> ById(int id)
+        public async Task<SectionDetailsServiceModel> ByIdAsync(int id)
               =>  await this.db.ForumSections
                 .Where(s => s.Id == id)
                 .ProjectTo<SectionDetailsServiceModel>()

@@ -23,7 +23,7 @@
             this.db = db;
         }
 
-        public async Task<IEnumerable<NewsListingServiceModel>> AllHomeNews()
+        public async Task<IEnumerable<NewsListingServiceModel>> AllHomeNewsAsync()
                 => await this.db
                .NewsArticles
                .OrderByDescending(a => a.PublishedDate)

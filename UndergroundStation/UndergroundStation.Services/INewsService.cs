@@ -6,7 +6,7 @@
 
     public interface INewsService
     {
-        Task<IEnumerable<NewsListingServiceModel>> AllHomeNews();
+        Task<IEnumerable<NewsListingServiceModel>> AllHomeNewsAsync();
 
         Task<IEnumerable<NewsListingServiceModel>> AllAsync(int page = 1);
 

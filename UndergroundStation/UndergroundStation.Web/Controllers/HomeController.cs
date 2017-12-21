@@ -18,7 +18,7 @@
 
         public async Task<IActionResult> Index()
         {
-            var newsList = await news.AllHomeNews();
+            var newsList = await news.AllHomeNewsAsync();
 
             return View(new NewsListingModel
             {

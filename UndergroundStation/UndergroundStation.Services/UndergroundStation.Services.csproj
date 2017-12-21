@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UndergroundStation.Common\UndergroundStation.Common.csproj" />
-    <ProjectReference Include="..\UndergroundStation.Data\UndergroundStation.Data.csproj" />
+    <Compile Remove="Author\Models\**" />
+    <EmbeddedResource Remove="Author\Models\**" />
+    <None Remove="Author\Models\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Author\Models\" />
+    <ProjectReference Include="..\UndergroundStation.Common\UndergroundStation.Common.csproj" />
+    <ProjectReference Include="..\UndergroundStation.Data\UndergroundStation.Data.csproj" />
   </ItemGroup>
 
 </Project>

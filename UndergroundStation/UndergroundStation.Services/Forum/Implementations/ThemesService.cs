@@ -57,9 +57,11 @@
                 .ProjectTo<ThemeDetailsServiceModel>()
                 .FirstOrDefaultAsync();
 
-        public async Task<IEnumerable<ThemeListingServiceModel>> BySectionId(int sectonId)
+        public async Task<IEnumerable<ThemeListingServiceModel>> BySectionIdAsync(int sectonId)
          => await this.db.ForumThemes
               .Where(t => t.ForumSectionId == sectonId && t.IsDeleted == false)
+              .OrderBy(t => t.PublishedDate)
+              .ThenBy(t => t.PublishedDate.TimeOfDay)
               .ProjectTo<ThemeListingServiceModel>()
               .ToListAsync();
 
@@ -83,6 +85,6 @@
             return true;
         }
 
-      
+
     }
 }

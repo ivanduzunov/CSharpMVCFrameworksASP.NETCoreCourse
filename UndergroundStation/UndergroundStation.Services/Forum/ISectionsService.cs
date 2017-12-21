@@ -8,7 +8,7 @@
     {
         Task<IEnumerable<SectionListingServiceModel>> AllAsync();
 
-        Task<SectionDetailsServiceModel> ById(int id);
+        Task<SectionDetailsServiceModel> ByIdAsync(int id);
 
         Task <bool> Create(string title, string description);
     }
