@@ -25,4 +25,8 @@
     <ProjectReference Include="..\UndergroundStation.Services\UndergroundStation.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\images\" />
+  </ItemGroup>
+
 </Project>

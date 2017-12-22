@@ -3,9 +3,10 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="jumbotron home-jumbotron">
-    <h1 class="text-center">Welcome to The Underground Station Forum!</h1>
-    <h3 class="text-center">The voice of the underground community</h3>
+<div class="jumbotron vertical-center" style="">
+    <img style="max-width:900px; margin-top:40px; margin-left: 0;"
+         class="img-responsive; col-lg-offset-3" src="~/images/logo.png" )>
+    <h3 class="text-center"><em>The voice of the underground community!</em></h3>
 </div>
 @if (User.IsInRole(WebConstants.ForumModeratorRole))
 {
@@ -13,20 +14,17 @@
 }
 
 <div class="jumbotron">
-    <h3>Sections</h3>
+    <h2 class="col-md-offset-1">Sections</h2>
    <ul>
        @foreach (var item in Model)
             {
    
           <li>
-              <a href="@($"/Forum/Sections/Details/{item.Id}")"><h2>@item.Tittle</h2></a>
+              <a asp-area="forum" asp-controller="Sections" asp-action="Details" asp-route-id="@item.Id"><h2>@item.Tittle</h2></a>
               <h4>@item.Description</h4>
               <h5>Themes: @(item.Themes.Where(t => t.IsDeleted == false).Count())</h5>
           </li>            
 
        }
    </ul>
-        
-           
-
 </div>

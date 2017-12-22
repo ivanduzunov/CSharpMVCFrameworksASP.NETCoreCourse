@@ -6,8 +6,10 @@
 @{
     var news = Model.News.ToList();
 }
-<div class="jumbotron home-jumbotron">
-    <h1 class="text-center">Welcome The Underground Station!</h1>
+<div class="jumbotron vertical-center" style="">
+    <img style="max-width:800px; margin-top:40px; margin-left: 0;"
+         class="img-responsive; col-lg-offset-3" src="~/images/logo2.png" )>
+    <h3 class="text-center"><em>The home of the underground community!</em></h3>
 </div>
 
 
@@ -25,9 +27,9 @@
             <div class="item active">
                 <img src="@(news[0].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200" />
                 <div class="carousel-caption" role="option">
-                    <p style="border:groove; background-color:maroon">
+                    <p style="background-color:black">
                         @(news[0].Title)
-                        <a class="btn btn-success" href="@($"/articles/details/{news[0].Id}")">
+                        <a class="btn btn-success btn-sm" href="@($"/articles/details/{news[0].Id}")">
                             Learn More
                         </a>
                     </p>
@@ -35,11 +37,11 @@
             </div>
 
             <div class="item">
-                <img src="@(news[1].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200"  />
+                <img src="@(news[1].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200" />
                 <div class="carousel-caption" role="option">
-                    <p style="border:groove; background-color:maroon">
+                    <p style="background-color:black">
                         @(news[1].Title)
-                        <a class="btn btn-success" href="@($"/articles/details/{news[1].Id}")">
+                        <a class="btn btn-success  btn-sm" href="@($"/articles/details/{news[1].Id}")">
                             Learn More
                         </a>
                     </p>
@@ -47,11 +49,11 @@
             </div>
 
             <div class="item">
-                <img src="@(news[2].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200"  />
+                <img src="@(news[2].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200" />
                 <div class="carousel-caption" role="option">
-                    <p style="border:groove; background-color:maroon">
+                    <p style="background-color:black">
                         @(news[2].Title)
-                        <a class="btn btn-success" href="@($"/articles/details/{news[2].Id}")">
+                        <a class="btn btn-success  btn-sm" href="@($"/articles/details/{news[2].Id}")">
                             Learn More
                         </a>
                     </p>
@@ -61,9 +63,9 @@
             <div class="item">
                 <img src="@(news[3].ImageUrl)" alt="News" class="img-responsive" height="800" width="1200" />
                 <div class="carousel-caption" role="option">
-                    <p style="border:groove; background-color:maroon">
+                    <p style="background-color:black">
                         @(news[3].Title)
-                        <a class="btn btn-success" href="@($"/articles/details/{news[3].Id}")">
+                        <a class="btn btn-success  btn-sm" href="@($"/articles/details/{news[3].Id}")">
                             Learn More
                         </a>
                     </p>
@@ -87,11 +89,11 @@
         <ul class="list-group">
             @foreach (var article in news)
             {
-               
+
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span class="badge badge-primary badge-pill" style="background-color: orangered">@article.ArticleType</span>
                     <span class="badge badge-primary badge-pill">@article.PublishedDate.ToShortDateString()</span>
-                    <a href="@($"/articles/details/{article.Id}")"><h5>@article.Title</h5></a>              
+                    <a href="@($"/articles/details/{article.Id}")"><h5>@article.Title</h5></a>
                 </li>
             }
         </ul>

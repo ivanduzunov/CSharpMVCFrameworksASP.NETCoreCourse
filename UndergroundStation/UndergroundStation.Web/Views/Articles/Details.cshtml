@@ -6,12 +6,15 @@
     ViewData["Title"] = Model.Title;
 }
 <div class="jumbotron jumbotron-fluid">
-    <h3>
-        @Model.Title
-    </h3>
+    <p style="text-align:center">
+        <h3 style="text-align:center">
+            <em>@Model.Title</em>
+        </h3>
+    </p>
+   
     <span class="badge badge-primary badge-pill">@Model.ArticleType</span>
     <img src="@Model.ImageUrl" class="img-responsive" height="400" width="800">
-    <p>
+    <p style="text-align:justify">
         @Model.Content
     </p>
 
@@ -34,18 +37,23 @@
 
         @if (!Model.IsLiked && User.Identity.IsAuthenticated)
             {
-            <form asp-action="AddLike" asp-route-id="@Model.Id" method="post">
-                <input type="submit" class="btn btn-success" value="@($"Like {likes}")" />
-            </form>
-            <form asp-action="AddUnlike" asp-route-id="@Model.Id" method="post">
-                <input type="submit" class="btn btn-danger" value="@($"Unlike {unlikes}")" />
-            </form>
+            <div class="col-sm-offset-1">
+                <form asp-action="AddLike" asp-route-id="@Model.Id" method="post">
+                    <input type="submit" class="btn btn-success" style="width:80px" value="@($"Like {likes} ")" />
+                </form>
+                <form asp-action="AddUnlike" asp-route-id="@Model.Id" method="post">
+                    <input type="submit" class="btn btn-danger" style="width:80px" value="@($"Unlike {unlikes}")" />
+                </form>
+            </div>
+            
         }
         else
         {
-            <h4 align="center" class="btn btn-success">Likes @likes </h4>
-            <br />
-            <h4 align="center" class="btn btn-danger">Unlikes @unlikes</h4>
+            <div class="col-sm-offset-1">
+                <h6  class="btn btn-success" style="width:80px">Likes @likes</h6>
+                <h4  class="btn btn-danger" style="width:80px">Unlikes @unlikes</h4>
+            </div>
+           
         }
         <br />
         <br />
@@ -87,7 +95,7 @@
                 {
                   
                        <form asp-action="AddCommentByComment" asp-route-id="@comment.Id" method="post">
-                           <textarea cols="20" rows="2" name="answer" id="answer"></textarea>
+                           <textarea  cols="30" rows="1" name="answer" id="answer" required></textarea>
                            <input type="hidden" name="articleId" id="articleId" value="@Model.Id" class="form-control">
                            <br />
                            <input type="submit" class="btn btn-info btn-sm" value="Add answer" )" />
@@ -109,7 +117,7 @@
             <br />
             <div>
                 <form asp-action="AddCommentByArticle" asp-route-id="@Model.Id" method="post">
-                    <textarea cols="60" rows="3" name="comment" id="comment"></textarea>
+                    <textarea cols="70" rows="3" name="comment" id="comment" required></textarea>
                     <br />
                     <input type="submit" class="btn btn-primary btn-sm" value="Add comment" )" />
                 </form>

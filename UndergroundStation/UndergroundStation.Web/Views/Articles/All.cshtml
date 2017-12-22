@@ -28,11 +28,13 @@
             </li>
         }
     </ul>
+    <br />
+
+    @await Html.PartialAsync("_NewsListing", Model.News)
+
+    @if (Model.TotalArticles > Model.News.Count())
+    {
+        @await Html.PartialAsync("_ArticlesPegination", Model)
+    }
 </div>
 
-@await Html.PartialAsync("_NewsListing", Model.News)
-
-@if (Model.TotalArticles > Model.News.Count())
-{
-    @await Html.PartialAsync("_ArticlesPegination", Model)
-}
